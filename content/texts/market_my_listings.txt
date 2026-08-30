@@ -1,0 +1,9 @@
+📋 <b>═══ MINHAS OFERTAS NO MERCADO ═══</b>
+
+👤 <b>Aventureiro:</b> {character_name}
+Aqui você acompanha os itens que colocou à venda para outros jogadores.
+
+<b>─── SEUS ANÚNCIOS ATIVOS ───</b>
+{my_listings_body}
+
+<i>Você pode cancelar qualquer anúncio para recuperar o item de volta em sua mochila.</i>

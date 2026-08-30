@@ -1,0 +1,20 @@
+🪄 <b>═══ HABILIDADES & MAESTRIAS ═══</b>
+
+👤 <b>Aventureiro:</b> {character_name}
+
+<b>─── ESTILOS DE ESPADA ───</b>
+🗡️ <b>Deus da Espada:</b> {sword_god_rank}
+🌊 <b>Deus da Água:</b> {water_god_rank}
+🪓 <b>Deus do Norte:</b> {north_god_rank}
+⚔️ <b>Técnicas Dominadas:</b> {known_sword_skills_str}
+
+<b>─── ESCOLAS DE MAGIA ───</b>
+🔥 <b>Fogo:</b> {fire_rank} | 💧 <b>Água:</b> {water_rank}
+🌱 <b>Terra:</b> {earth_rank} | 🌪️ <b>Vento:</b> {wind_rank}
+✨ <b>Cura & Desintoxicação:</b> {heal_rank}
+📖 <b>Feitiços Dominados:</b> {known_spells_str}
+
+<b>─── APTIDÕES ESPECIAIS ───</b>
+⚡ <b>Conjuração Silenciosa:</b> {voiceless_str}
+👁️ <b>Olho Demoníaco:</b> {demon_eye_str}
+🥋 <b>Despertar de Touki:</b> {touki_awakened_str}

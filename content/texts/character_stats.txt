@@ -1,0 +1,9 @@
+📈 <b>═══ DISTRIBUIÇÃO DE ATRIBUTOS ═══</b>
+
+Aventureiro, você possui <b>{status_points}</b> pontos livres para fortalecer seu corpo e mente.
+
+💪 <b>Força (+Dano Físico):</b> {strength}
+🛡️ <b>Defesa (+Resistência Física):</b> {defense}
+💨 <b>Agilidade (+Velocidade/Esquiva):</b> {speed}
+🔮 <b>Poder Mágico (+Dano Mágico & +5 Mana):</b> {magic_power}
+❤️ <b>Vitalidade (+10 Vida Máxima):</b> {max_hp}

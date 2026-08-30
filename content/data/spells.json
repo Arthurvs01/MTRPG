@@ -1,0 +1,67 @@
+{
+  "spells": {
+    "fireball_1": {
+      "name": "Bola de Fogo (Fireball)",
+      "element": "Fogo",
+      "rank": "Iniciante",
+      "mana_cost": 8,
+      "base_power": 25,
+      "incantation": "Ó chamas ardentes da purificação, manifestem vosso calor! [Fireball]",
+      "description": "Dispara uma esfera flamejante contra o alvo."
+    },
+    "water_ball_1": {
+      "name": "Projétil de Água (Water Ball)",
+      "element": "Água",
+      "rank": "Iniciante",
+      "mana_cost": 6,
+      "base_power": 20,
+      "incantation": "Fonte suave das marés celestes, condensai a gota fluida! [Water Ball]",
+      "description": "Lança uma esfera densa de água em alta pressão."
+    },
+    "stone_bullet_1": {
+      "name": "Projétil de Pedra (Stone Bullet)",
+      "element": "Terra",
+      "rank": "Iniciante",
+      "mana_cost": 7,
+      "base_power": 24,
+      "incantation": "Poderosa mãe terra, endurecei a rocha pontiaguda! [Stone Bullet]",
+      "description": "Arremessa um projétil de rocha cônica perfurante."
+    },
+    "wind_blade_1": {
+      "name": "Lâmina de Vento (Wind Blade)",
+      "element": "Vento",
+      "rank": "Iniciante",
+      "mana_cost": 6,
+      "base_power": 22,
+      "incantation": "Brisa veloz que corta o horizonte, afiai vosso sopro! [Wind Blade]",
+      "description": "Gera uma rajada cortante invisível de ar comprimido."
+    },
+    "heal_1": {
+      "name": "Cura Menor (Healing)",
+      "element": "Cura",
+      "rank": "Iniciante",
+      "mana_cost": 12,
+      "base_power": -35,
+      "incantation": "Luz bendita dos deuses da vida, cicatrizai as feridas da carne! [Heal]",
+      "description": "Restaura parte vital da vida do conjurador."
+    },
+    "exodus_flame_2": {
+      "name": "Chama de Êxodo (Exodus Flame)",
+      "element": "Fogo",
+      "rank": "Intermediário",
+      "mana_cost": 20,
+      "base_power": 65,
+      "incantation": "Chamas consumidoras dos abismos, reduzi a cinzas o que rasteja! [Exodus Flame]",
+      "description": "Uma erupção em cone de fogo ardente."
+    },
+    "cumulonimbus_4": {
+      "name": "Cumulonimbus (Tempestade de Nuvens Cumulonimbus)",
+      "element": "Água",
+      "rank": "Santo",
+      "mana_cost": 60,
+      "base_power": 180,
+      "incantation": "Que os céus se fechem e as tempestades ancestrais despenquem sobre o mundo! [Cumulonimbus]",
+      "description": "Magia combinada de rank Santo que evoca uma tempestade devastadora com relâmpagos e granizo."
+    }
+  }
+}

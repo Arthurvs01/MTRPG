@@ -1,0 +1,11 @@
+.env
+*.log
+*.md
+*.pyc
+
+.venv/
+.pytest_cache/
+__pycache__/
+Aincrad-RPG/
+database/data/
+tests/

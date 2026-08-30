@@ -1,0 +1,9 @@
+🗺️ <b>═══ EXPEDIÇÃO & CAÇADA SELVAGEM ═══</b>
+
+👤 <b>Aventureiro:</b> {character_name} | 📍 <b>Local:</b> {current_location}
+❤️ <b>Vida:</b> {hp}/{max_hp} | 💧 <b>Mana:</b> {mana}/{max_mana}
+⚡ <b>Energia de Ação:</b> {energy}/{max_energy}
+
+<i>Cada caçada consome energia de ação. Garanta que possui vigor suficiente para lutar!</i>
+
+Escolha seu destino de expedição:

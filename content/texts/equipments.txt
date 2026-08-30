@@ -1,0 +1,12 @@
+⚔️ <b>═══ EQUIPAMENTOS & ARMAS ═══</b>
+
+👤 <b>Aventureiro:</b> {character_name}
+
+<b>─── EM USO NO CORPO ───</b>
+🗡️ <b>Arma Principal:</b> {weapon_str}
+🪄 <b>Cajado Mágico:</b> {staff_str}
+🛡️ <b>Armadura:</b> {armor_str}
+💍 <b>Acessório:</b> {accessory_str}
+
+<b>─── EQUIPAMENTOS NA BOLSA ───</b>
+{bag_equipments_list}

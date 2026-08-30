@@ -1,0 +1,8 @@
+🛒 <b>═══ MERCADO & ARSENAL DA GUILDA ═══</b>
+
+👤 <b>Aventureiro:</b> {character_name}
+💰 <b>Fundos:</b> {iron_coins} Moedas de Ferro | 💎 {diamonds} Diamantes
+
+Selecione um suprimento ou equipamento para adquirir:
+
+{shop_items_body}

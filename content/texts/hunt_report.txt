@@ -1,0 +1,6 @@
+⚔️ <b>═══ RELATÓRIO DE EXPEDIÇÃO: {region_name} ═══</b>
+
+{battle_logs}
+
+{result_summary}
+⚡ <b>Energia Restante:</b> {energy}/{max_energy}

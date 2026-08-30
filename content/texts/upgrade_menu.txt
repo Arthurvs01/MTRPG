@@ -1,0 +1,12 @@
+⚡ <b>═══ APRIMORAMENTO & RUNAS MÁGICAS ═══</b>
+
+👤 <b>Aventureiro:</b> {character_name} | 💰 <b>Moedas:</b> {iron_coins} Ferros
+
+Aqui você pode aumentar o Nível do seu equipamento (+1 a +10) e engastar Runas Mágicas nos slots abertos.
+<i>O Nível do Equipamento amplifica o poder de todas as Runas engastadas nele!</i>
+
+<b>─── EQUIPAMENTO SELECIONADO ───</b>
+{selected_equipment_info}
+
+<b>─── RUNAS DISPONÍVEIS NA BOLSA ───</b>
+{available_runes_body}

@@ -1,0 +1,16 @@
+🎒 <b>═══ MOCHILA & INVENTÁRIO ═══</b>
+
+👤 <b>Aventureiro:</b> {character_name}
+💰 <b>Moedas de Ferro:</b> {iron_coins} | 💎 <b>Diamantes:</b> {diamonds}
+
+<b>─── CONSUMÍVEIS ───</b>
+{consumables_list}
+
+<b>─── MATERIAIS & DESPOJOS ───</b>
+{materials_list}
+
+<b>─── RUNAS MÁGICAS ───</b>
+{runes_list}
+
+<b>─── BAÚS DE CAÇADA NO INVENTÁRIO ───</b>
+🎁 <b>Baús de Fera/Labirinto:</b> {lootbox_hunt_count} (Abra no menu de Baús)

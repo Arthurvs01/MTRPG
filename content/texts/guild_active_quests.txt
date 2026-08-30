@@ -1,0 +1,5 @@
+📋 <b>═══ CONTRATOS ATIVOS ═══</b>
+
+👤 <b>Aventureiro:</b> {character_name}
+
+{active_quests_body}

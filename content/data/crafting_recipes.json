@@ -1,0 +1,97 @@
+{
+  "recipes": {
+    "craft_iron_sword": {
+      "name": "Espada de Ferro de Asura",
+      "equip_id": "iron_sword",
+      "slot": "weapon",
+      "required_materials": {
+        "iron_ore": 3,
+        "boar_hide": 1
+      },
+      "iron_coins_cost": 30,
+      "description": "Forja básica de lâmina de ferro temperado no padrão militar de Asura."
+    },
+    "craft_steel_rapier": {
+      "name": "Florete de Aço do Deus da Espada",
+      "equip_id": "steel_rapier",
+      "slot": "weapon",
+      "required_materials": {
+        "iron_ore": 4,
+        "steel_silk": 2,
+        "acid_fang": 1
+      },
+      "iron_coins_cost": 80,
+      "description": "Lâmina de alta flexibilidade e corte relâmpago, afiada com toxinas e forjada em aço leve."
+    },
+    "craft_wooden_staff": {
+      "name": "Cajado de Aprendiz de Magia",
+      "equip_id": "wooden_staff",
+      "slot": "staff",
+      "required_materials": {
+        "treant_elder_wood": 2,
+        "demon_stone_fragment": 1
+      },
+      "iron_coins_cost": 30,
+      "description": "Entalhe em madeira ancestral com pedra mágica acoplada para canalização elemental."
+    },
+    "craft_aqua_heartia": {
+      "name": "Cajado do Coração D'Água (Réplica)",
+      "equip_id": "aqua_heartia_replica",
+      "slot": "staff",
+      "required_materials": {
+        "treant_elder_wood": 4,
+        "magic_stone_green": 2,
+        "steel_silk": 2
+      },
+      "iron_coins_cost": 150,
+      "description": "Cajado nobre que replica as propriedades de condução mágica da lendária Aqua Heartia."
+    },
+    "craft_leather_tunic": {
+      "name": "Túnica de Couro de Aventureiro",
+      "equip_id": "leather_tunic",
+      "slot": "armor",
+      "required_materials": {
+        "boar_hide": 3,
+        "wolf_pelt": 2
+      },
+      "iron_coins_cost": 25,
+      "description": "Costura reforçada de couro de javali e pele de lobo para proteção leve e ágil."
+    },
+    "craft_knight_armor": {
+      "name": "Armadura de Placas dos Cavaleiros de Asura",
+      "equip_id": "knight_asura_armor",
+      "slot": "armor",
+      "required_materials": {
+        "iron_ore": 6,
+        "steel_silk": 3,
+        "boar_hide": 2
+      },
+      "iron_coins_cost": 120,
+      "description": "Armadura pesada de placas de metal reluzente com forro de seda demoníaca."
+    },
+    "craft_wolf_ring": {
+      "name": "Anel de Presa de Lobo",
+      "equip_id": "wolf_fang_ring",
+      "slot": "accessory",
+      "required_materials": {
+        "wolf_horn": 2,
+        "wolf_pelt": 1,
+        "demon_stone_fragment": 1
+      },
+      "iron_coins_cost": 50,
+      "description": "Anel artesanal esculpido em chifre de lobo que ressoa com instinto e reflexo animal."
+    },
+    "craft_dragon_amulet": {
+      "name": "Amuleto do Coração Dracônico",
+      "equip_id": "dragon_heart_amulet",
+      "slot": "accessory",
+      "required_materials": {
+        "dragon_scale_red": 2,
+        "dragon_magic_core": 1,
+        "magic_stone_green": 2
+      },
+      "iron_coins_cost": 300,
+      "description": "Amuleto supremo forjado a partir de restos sagrados de um dragão, transbordando poder."
+    }
+  }
+}

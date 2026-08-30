@@ -1,0 +1,12 @@
+🏰 <b>═══ MUNDO DAS SEIS FACES: HUB PRINCIPAL ═══</b>
+
+Bem-vindo(a), Aventureiro(a) <b>{character_name}</b>!
+📍 <b>Região:</b> {current_location}
+
+<b>─── STATUS RÁPIDO ───</b>
+⭐ <b>Nível:</b> {level} | 🎖️ <b>Rank:</b> {adventurer_rank}
+❤️ <b>Vida:</b> {hp}/{max_hp} | 💧 <b>Mana:</b> {mana}/{max_mana}
+⚡ <b>Energia:</b> {energy}/{max_energy} (Recupera no descanso ou passivamente)
+💰 <b>Moedas de Ferro:</b> {iron_coins} | 💎 <b>Diamantes:</b> {diamonds}
+
+O que você deseja fazer agora?

@@ -1,0 +1,10 @@
+🏛️ <b>═══ MERCADO DE TROCAS DA GUILDA ═══</b>
+
+Bem-vindo(a) ao Pavilhão Comercial da Guilda de Aventureiros!
+Aqui aventureiros de todas as regiões negociam materiais raros, runas e equipamentos forjados entre si.
+
+👤 <b>Aventureiro:</b> {character_name}
+💰 <b>Seus Fundos:</b> {iron_coins} Moedas de Ferro | 💎 {diamonds} Diamantes
+
+<b>─── OFERTAS DISPONÍVEIS DA COMUNIDADE ───</b>
+{market_listings_body}

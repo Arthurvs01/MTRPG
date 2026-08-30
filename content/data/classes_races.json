@@ -1,0 +1,105 @@
+{
+  "races": {
+    "humano": {
+      "name": "Humano",
+      "description": "A raça mais populosa do Continente Central e Milis. Possuem grande adaptabilidade e equilíbrio entre capacidade física e mágica.",
+      "hp_bonus": 10,
+      "mana_bonus": 10,
+      "strength_bonus": 2,
+      "defense_bonus": 1,
+      "speed_bonus": 2,
+      "magic_bonus": 2,
+      "traits": ["Versatilidade de Aprendizado", "Reserva Balanceada"]
+    },
+    "demonio_migurd": {
+      "name": "Demônio (Tribo Migurd)",
+      "description": "Nativos do Continente Demônio com longos cabelos azuis. Possuem longevidade superior, afinidade mágica nata e comunicação telepática com outros de sua raça.",
+      "hp_bonus": 0,
+      "mana_bonus": 40,
+      "strength_bonus": 0,
+      "defense_bonus": 0,
+      "speed_bonus": 2,
+      "magic_bonus": 6,
+      "traits": ["Afinidade Mágica Nata", "Telepatia Migurd"]
+    },
+    "demonio_superd": {
+      "name": "Demônio (Tribo Superd)",
+      "description": "Guerreiros temidos do Continente Demônio com cabelos verde-esmeralda e uma joia na testa. Especialistas absolutos no manejo de lanças e reflexos de combate.",
+      "hp_bonus": 30,
+      "mana_bonus": 0,
+      "strength_bonus": 5,
+      "defense_bonus": 3,
+      "speed_bonus": 4,
+      "magic_bonus": 0,
+      "traits": ["Terceiro Olho de Percepção", "Instinto de Lança"]
+    },
+    "homem_fera": {
+      "name": "Homem-Fera (Tribo Lobo/Gato)",
+      "description": "Habitantes da Grande Floresta com orelhas e caudas de animais. Possuem velocidade e força física extraordinárias, excelentes caçadores.",
+      "hp_bonus": 20,
+      "mana_bonus": 5,
+      "strength_bonus": 4,
+      "defense_bonus": 2,
+      "speed_bonus": 5,
+      "magic_bonus": 0,
+      "traits": ["Sentidos Aguçados", "Velocidade Selvagem"]
+    },
+    "elfo": {
+      "name": "Elfo",
+      "description": "Seres das florestas antigas com extrema sensibilidade ao fluxo de mana e pontaria lendária.",
+      "hp_bonus": 0,
+      "mana_bonus": 30,
+      "strength_bonus": 1,
+      "defense_bonus": 1,
+      "speed_bonus": 4,
+      "magic_bonus": 5,
+      "traits": ["Controle Fino de Mana", "Pontaria Élfica"]
+    },
+    "anao": {
+      "name": "Anão",
+      "description": "Mestres da metalurgia e mineração. Possuem constituição física rígida e grande resistência a impactos e magias.",
+      "hp_bonus": 40,
+      "mana_bonus": 0,
+      "strength_bonus": 4,
+      "defense_bonus": 6,
+      "speed_bonus": -1,
+      "magic_bonus": 1,
+      "traits": ["Pele de Pedra", "Mestria em Equipamentos"]
+    }
+  },
+  "vocations": {
+    "espadachim": {
+      "name": "Espadachim",
+      "description": "Focado nas artes marciais e nos 3 Grandes Estilos de Espada. Usa vigor, reflexos e desenvolve o Touki (Aura de Batalha).",
+      "main_style": "Deus da Espada",
+      "initial_hp": 140,
+      "initial_mana": 30,
+      "initial_strength": 15,
+      "initial_defense": 10,
+      "initial_speed": 12,
+      "initial_magic": 5
+    },
+    "mago": {
+      "name": "Mago",
+      "description": "Estudioso dos princípios da mana, capaz de invocar feitiços das quatro grandes escolas elementais e magia de cura.",
+      "main_school": "Fogo",
+      "initial_hp": 90,
+      "initial_mana": 80,
+      "initial_strength": 6,
+      "initial_defense": 5,
+      "initial_speed": 9,
+      "initial_magic": 16
+    },
+    "hibrido": {
+      "name": "Guerreiro Mágico (Híbrido)",
+      "description": "Equilibra o treinamento com a lâmina e o uso tático de feitiços de apoio e encantamentos rápidos.",
+      "main_style": "Deus do Norte",
+      "initial_hp": 115,
+      "initial_mana": 55,
+      "initial_strength": 11,
+      "initial_defense": 8,
+      "initial_speed": 10,
+      "initial_magic": 11
+    }
+  }
+}

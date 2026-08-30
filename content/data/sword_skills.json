@@ -1,0 +1,64 @@
+{
+  "sword_skills": {
+    "sword_strike_1": {
+      "name": "Corte Direto do Deus da Espada",
+      "style": "Deus da Espada",
+      "rank": "Iniciante",
+      "stamina_cost": 5,
+      "base_power": 28,
+      "speed_modifier": 1.15,
+      "parry_chance": 0.0,
+      "description": "Golpe rápido e direto mirando pontos vitais."
+    },
+    "longsword_of_light_4": {
+      "name": "Espada de Luz (Longsword of Light - 光の太刀)",
+      "style": "Deus da Espada",
+      "rank": "Santo",
+      "stamina_cost": 30,
+      "base_power": 170,
+      "speed_modifier": 2.5,
+      "parry_chance": 0.0,
+      "description": "A técnica suprema de velocidade onde a ponta da lâmina quebra a barreira do som, decapitando o inimigo antes que ele perceba o movimento."
+    },
+    "water_flow_1": {
+      "name": "Postura do Fluxo D'Água (Flow)",
+      "style": "Deus da Água",
+      "rank": "Iniciante",
+      "stamina_cost": 6,
+      "base_power": 18,
+      "speed_modifier": 1.0,
+      "parry_chance": 0.40,
+      "description": "Postura defensiva fluida que desvia o golpe adversário e contra-ataca com a força recebida."
+    },
+    "water_reflection_3": {
+      "name": "Espelho da Água Serena (Water Reflection)",
+      "style": "Deus da Água",
+      "rank": "Avançado",
+      "stamina_cost": 18,
+      "base_power": 65,
+      "speed_modifier": 1.2,
+      "parry_chance": 0.70,
+      "description": "Apara perfeitamente o impacto frontal e desfere um contra-ataque devastador de 100% de precisão."
+    },
+    "north_feint_1": {
+      "name": "Finta Suja do Deus do Norte",
+      "style": "Deus do Norte",
+      "rank": "Iniciante",
+      "stamina_cost": 5,
+      "base_power": 24,
+      "speed_modifier": 1.3,
+      "parry_chance": 0.15,
+      "description": "Arremessa terra aos olhos do oponente enquanto golpeia uma brecha inesperada."
+    },
+    "north_blade_toss_2": {
+      "name": "Arremesso Pragmático de Lâmina",
+      "style": "Deus do Norte",
+      "rank": "Intermediário",
+      "stamina_cost": 12,
+      "base_power": 55,
+      "speed_modifier": 1.4,
+      "parry_chance": 0.1,
+      "description": "Arremessa uma adaga ou objeto cortante para quebrar a guarda do alvo antes do ataque principal."
+    }
+  }
+}

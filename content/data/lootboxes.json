@@ -1,0 +1,62 @@
+{
+  "lootboxes": {
+    "daily_free": {
+      "name": "Baú de Provisões da Guilda",
+      "cost_type": "free",
+      "cost_amount": 0,
+      "cooldown_hours": 24,
+      "min_iron_coins": 50,
+      "max_iron_coins": 150,
+      "min_diamonds": 0,
+      "max_diamonds": 5,
+      "possible_items": [
+        {"id": "potion_hp_minor", "min_qty": 2, "max_qty": 4, "weight": 40},
+        {"id": "potion_mana_minor", "min_qty": 1, "max_qty": 3, "weight": 35},
+        {"id": "boar_hide", "min_qty": 2, "max_qty": 5, "weight": 20},
+        {"id": "steel_rapier", "type": "equipment", "weight": 5}
+      ]
+    },
+    "hunt_chest": {
+      "name": "Baú Arcano de Caçada",
+      "cost_type": "item_hunt_chest",
+      "cost_amount": 1,
+      "min_iron_coins": 100,
+      "max_iron_coins": 300,
+      "min_diamonds": 1,
+      "max_diamonds": 8,
+      "possible_items": [
+        {"id": "potion_hp_minor", "min_qty": 3, "max_qty": 6, "weight": 30},
+        {"id": "potion_mana_minor", "min_qty": 2, "max_qty": 5, "weight": 30},
+        {"id": "magic_stone_green", "min_qty": 1, "max_qty": 2, "weight": 20},
+        {"id": "treant_elder_wood", "min_qty": 2, "max_qty": 4, "weight": 15},
+        {"id": "steel_rapier", "type": "equipment", "weight": 10},
+        {"id": "knight_asura_armor", "type": "equipment", "weight": 5}
+      ]
+    },
+    "asura_noble": {
+      "name": "Baú Nobre de Asura",
+      "cost_type": "diamonds",
+      "cost_amount": 50,
+      "min_iron_coins": 400,
+      "max_iron_coins": 1000,
+      "possible_items": [
+        {"id": "steel_rapier", "type": "equipment", "weight": 30},
+        {"id": "knight_asura_armor", "type": "equipment", "weight": 30},
+        {"id": "aqua_heartia_replica", "type": "equipment", "weight": 20},
+        {"id": "steel_silk", "min_qty": 3, "max_qty": 6, "weight": 20}
+      ]
+    },
+    "six_sided_relic": {
+      "name": "Relíquia das Seis Faces",
+      "cost_type": "diamonds",
+      "cost_amount": 100,
+      "min_iron_coins": 1000,
+      "max_iron_coins": 3000,
+      "possible_items": [
+        {"id": "aqua_heartia_replica", "type": "equipment", "weight": 40},
+        {"id": "knight_asura_armor", "type": "equipment", "weight": 35},
+        {"id": "steel_rapier", "type": "equipment", "weight": 25}
+      ]
+    }
+  }
+}

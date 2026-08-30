@@ -1,0 +1,235 @@
+{
+  "items": {
+    "potion_hp_minor": {
+      "name": "Poção de Vida Menor",
+      "description": "Elixir restaurador básico produzido a partir de ervas medicinais.",
+      "item_type": "consumable",
+      "value_in_iron_coins": 20,
+      "effects": {"heal_hp": 60}
+    },
+    "potion_mana_minor": {
+      "name": "Frasco de Água Mágica Refinada",
+      "description": "Restaura o fluxo de mana e alivia o desgaste espiritual.",
+      "item_type": "consumable",
+      "value_in_iron_coins": 30,
+      "effects": {"restore_mana": 40}
+    },
+    "boar_hide": {
+      "name": "Couro de Javali",
+      "description": "Material resistente utilizado na confecção de coletes de couro.",
+      "item_type": "material",
+      "value_in_iron_coins": 12
+    },
+    "boar_meat": {
+      "name": "Carne de Javali Selvagem",
+      "description": "Carne suculenta rica em nutrientes, ótima para ensopados de estalagem.",
+      "item_type": "material",
+      "value_in_iron_coins": 8
+    },
+    "wolf_horn": {
+      "name": "Chifre de Lobo de Fittoa",
+      "description": "Chifre pontiagudo rígido, condutor de impactos e base para empunhaduras de armas.",
+      "item_type": "material",
+      "value_in_iron_coins": 18
+    },
+    "wolf_pelt": {
+      "name": "Pele de Lobo Ágil",
+      "description": "Pele macia e leve que concede flexibilidade a vestimentas de caçador.",
+      "item_type": "material",
+      "value_in_iron_coins": 16
+    },
+    "treant_elder_wood": {
+      "name": "Madeira de Treant Ancestral",
+      "description": "Madeira nobre altamente condutora de mana, ideal para entalhe de cajados mágicos.",
+      "item_type": "material",
+      "value_in_iron_coins": 45
+    },
+    "magic_stone_green": {
+      "name": "Pedra Mágica Verde de Vento",
+      "description": "Núcleo condensado com mana elemental de vento de alto grau.",
+      "item_type": "material",
+      "value_in_iron_coins": 80
+    },
+    "acid_fang": {
+      "name": "Presa Ácida de Coiote",
+      "description": "Dente afiado embebido em toxinas corrosivas do Continente Demônio.",
+      "item_type": "material",
+      "value_in_iron_coins": 25
+    },
+    "demon_stone_fragment": {
+      "name": "Fragmento de Pedra Demoníaca",
+      "description": "Fragmento mineral com forte ressonância mágica das terras áridas.",
+      "item_type": "material",
+      "value_in_iron_coins": 35
+    },
+    "steel_silk": {
+      "name": "Seda de Aço de Kougumo",
+      "description": "Fios de seda demoníaca tão resistentes e flexíveis quanto aço puro temperado.",
+      "item_type": "material",
+      "value_in_iron_coins": 60
+    },
+    "spider_venom_gland": {
+      "name": "Glândula de Veneno de Kougumo",
+      "description": "Bolsa de veneno concentrado para têmpera de armas letais.",
+      "item_type": "material",
+      "value_in_iron_coins": 50
+    },
+    "dragon_scale_red": {
+      "name": "Escama de Dragão Vermelho",
+      "description": "Escama dracônica de resistência térmica e física suprema.",
+      "item_type": "material",
+      "value_in_iron_coins": 200
+    },
+    "dragon_magic_core": {
+      "name": "Núcleo Mágico de Dragão",
+      "description": "Coração de mana pura de um dragão, material de nível Santo/Imperial.",
+      "item_type": "material",
+      "value_in_iron_coins": 350
+    },
+    "iron_ore": {
+      "name": "Minério de Ferro de Asura",
+      "description": "Minério bruto de ferro de alta pureza extraído das montanhas.",
+      "item_type": "material",
+      "value_in_iron_coins": 15
+    },
+    "rune_str_1": {
+      "name": "Runa da Força Bruta",
+      "description": "Runa rúnica que infunde energia física na arma. Concede +5 Ataque Base.",
+      "item_type": "rune",
+      "rune_type": "attack",
+      "rune_value": 5,
+      "value_in_iron_coins": 75
+    },
+    "rune_mag_1": {
+      "name": "Runa da Mente Arcana",
+      "description": "Runa encantada que amplifica o canal de feitiços. Concede +6 Poder Mágico Base.",
+      "item_type": "rune",
+      "rune_type": "magic",
+      "rune_value": 6,
+      "value_in_iron_coins": 75
+    },
+    "rune_def_1": {
+      "name": "Runa da Carapaça Firme",
+      "description": "Runa de endurecimento que reforça armaduras. Concede +4 Defesa Base.",
+      "item_type": "rune",
+      "rune_type": "defense",
+      "rune_value": 4,
+      "value_in_iron_coins": 70
+    },
+    "rune_spd_1": {
+      "name": "Runa do Vento Veloz",
+      "description": "Runa de leveza que reduz o atrito e peso. Concede +4 Velocidade Base.",
+      "item_type": "rune",
+      "rune_type": "speed",
+      "rune_value": 4,
+      "value_in_iron_coins": 70
+    }
+  },
+  "equipments": {
+    "iron_sword": {
+      "name": "Espada de Ferro de Asura",
+      "slot": "weapon",
+      "description": "Lâmina forjada pelos renomados ferreiros do Reino de Asura.",
+      "attack_bonus": 12,
+      "magic_bonus": 0,
+      "defense_bonus": 0,
+      "speed_bonus": 1,
+      "value_in_iron_coins": 80,
+      "rarity": "Comum"
+    },
+    "steel_rapier": {
+      "name": "Florete de Aço do Deus da Espada",
+      "slot": "weapon",
+      "description": "Lâmina leve projetada para estocadas em altíssima velocidade.",
+      "attack_bonus": 24,
+      "magic_bonus": 0,
+      "defense_bonus": 0,
+      "speed_bonus": 5,
+      "value_in_iron_coins": 250,
+      "rarity": "Raro"
+    },
+    "wooden_staff": {
+      "name": "Cajado de Aprendiz de Magia",
+      "slot": "staff",
+      "description": "Cajado simples com ponta entalhada para canalização de feitiços.",
+      "attack_bonus": 2,
+      "magic_bonus": 15,
+      "defense_bonus": 0,
+      "speed_bonus": 0,
+      "value_in_iron_coins": 75,
+      "rarity": "Comum"
+    },
+    "aqua_heartia_replica": {
+      "name": "Cajado do Coração D'Água (Réplica)",
+      "slot": "staff",
+      "description": "Cajado refinado com pedra mágica de alto grau, amplia o poder e economiza mana.",
+      "attack_bonus": 5,
+      "magic_bonus": 45,
+      "defense_bonus": 5,
+      "speed_bonus": 2,
+      "value_in_iron_coins": 600,
+      "rarity": "Santo"
+    },
+    "leather_tunic": {
+      "name": "Túnica de Couro de Aventureiro",
+      "slot": "armor",
+      "description": "Proteção leve padrão para aventureiros novatos.",
+      "attack_bonus": 0,
+      "magic_bonus": 0,
+      "defense_bonus": 8,
+      "speed_bonus": 2,
+      "value_in_iron_coins": 60,
+      "rarity": "Comum"
+    },
+    "knight_asura_armor": {
+      "name": "Armadura de Placas dos Cavaleiros de Asura",
+      "slot": "armor",
+      "description": "Armadura pesada de aço reluzente que confere enorme proteção física.",
+      "attack_bonus": 0,
+      "magic_bonus": 0,
+      "defense_bonus": 28,
+      "speed_bonus": -2,
+      "value_in_iron_coins": 350,
+      "rarity": "Raro"
+    },
+    "wolf_fang_ring": {
+      "name": "Anel de Presa de Lobo",
+      "slot": "accessory",
+      "description": "Acessório rústico feito de chifre de lobo que aguça os reflexos.",
+      "attack_bonus": 4,
+      "magic_bonus": 0,
+      "defense_bonus": 2,
+      "speed_bonus": 4,
+      "value_in_iron_coins": 140,
+      "rarity": "Raro"
+    },
+    "dragon_heart_amulet": {
+      "name": "Amuleto do Coração Dracônico",
+      "slot": "accessory",
+      "description": "Artefato supremo banhado na mana de um dragão antigo.",
+      "attack_bonus": 20,
+      "magic_bonus": 25,
+      "defense_bonus": 15,
+      "speed_bonus": 10,
+      "value_in_iron_coins": 1200,
+      "rarity": "Imperial"
+    }
+  },
+  "shops": {
+    "central": [
+      {"id": "potion_hp_minor", "price": 20, "type": "item"},
+      {"id": "potion_mana_minor", "price": 30, "type": "item"},
+      {"id": "iron_ore", "price": 15, "type": "item"},
+      {"id": "rune_str_1", "price": 75, "type": "item"},
+      {"id": "rune_mag_1", "price": 75, "type": "item"},
+      {"id": "rune_def_1", "price": 70, "type": "item"},
+      {"id": "rune_spd_1", "price": 70, "type": "item"}
+    ],
+    "demon": [
+      {"id": "potion_hp_minor", "price": 25, "type": "item"},
+      {"id": "potion_mana_minor", "price": 35, "type": "item"},
+      {"id": "rune_str_1", "price": 80, "type": "item"},
+      {"id": "rune_mag_1", "price": 80, "type": "item"}
+    ]
+  }
+}

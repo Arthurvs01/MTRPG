@@ -1,0 +1,5 @@
+✨ Muito bem, <b>{character_name}</b>!
+
+Agora, determine a sua <b>Linhagem / Raça</b> neste mundo:
+
+{races_description}

@@ -1,0 +1,20 @@
+🎁 <b>═══ COFRE DAS RELÍQUIAS & BAÚS MÁGICOS ═══</b>
+
+Aqui você pode abrir Baús de Recompensas diárias, despojos raros de caçadas ou relíquias raras com Diamantes.
+
+👤 <b>Aventureiro:</b> {character_name}
+💎 <b>Diamantes:</b> {diamonds} | 📦 <b>Baús de Caçada na Bolsa:</b> {hunt_lootbox_count}
+⏰ <b>Status do Baú Diário:</b> {daily_status_str}
+
+<b>─── BAÚS DISPONÍVEIS ───</b>
+🎁 <b>Baú de Provisões da Guilda (Gratuito Diário):</b>
+   <i>Contém: Moedas de Ferro, Poções de Vida/Mana, Materiais e chance de equipamentos.</i>
+
+🐺 <b>Baú Arcano de Caçada (Despojo de Feras/Labirintos):</b>
+   <i>Obtido com chance ao derrotar monstros em expedições selvagens.</i>
+
+👑 <b>Baú Nobre de Asura (50 Diamantes):</b>
+   <i>Garante: Grande quantidade de Moedas, Materiais Raros e Equipamentos de Alta Raridade.</i>
+
+✨ <b>Relíquia das Seis Faces (100 Diamantes):</b>
+   <i>Garante: Equipamentos Raros/Santos, Itens de Grau Superior e Alta chance de Artefatos Especiais!</i>

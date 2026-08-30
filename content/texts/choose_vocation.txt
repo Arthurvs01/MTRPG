@@ -1,0 +1,5 @@
+⚔️ <b>═══ ESCOLHA SUA VOCAÇÃO DE COMBATE ═══</b>
+
+Como você pretende trilhar seu caminho pelas terras selvagens?
+
+{vocations_description}

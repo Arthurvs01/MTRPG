@@ -1,0 +1,14 @@
+🔨 <b>═══ FORJA & OFICINA MÁGICA DA GUILDA ═══</b>
+
+Bem-vindo(a) à Forja de Armamentos e Artefatos!
+Aqui os artesãos utilizam minérios de Asura, madeiras de Treant e núcleos de monstros para forjar equipamentos com <b>Raridades Aleatórias</b>:
+
+🔸 <b>Comum (55%):</b> 1 Slot de Runa | 1.0x Atributos
+🔸 <b>Raro (30%):</b> 2 Slots de Runa | 1.3x Atributos
+🔸 <b>Santo (11%):</b> 3 Slots de Runa | 1.7x Atributos
+🔸 <b>Imperial (3.5%):</b> 4 Slots de Runa | 2.2x Atributos
+🔸 <b>Divino (0.5%):</b> 5 Slots de Runa | 3.0x Atributos
+
+👤 <b>Aventureiro:</b> {character_name} | 💰 <b>Moedas:</b> {iron_coins} Ferros
+
+Escolha uma categoria de forja ou acesse o aprimoramento de equipamentos:

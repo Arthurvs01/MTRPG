@@ -1,0 +1,10 @@
+🏛️ <b>═══ GUILDA DE AVENTUREIROS ═══</b>
+
+Bem-vindo(a) à filial da Guilda de Aventureiros!
+Aqui você registra feitos, aceita contratos oficiais de caça e adquire suprimentos.
+
+👤 <b>Aventureiro:</b> {character_name}
+🎖️ <b>Rank Oficial:</b> <b>Rank {adventurer_rank}</b>
+🏆 <b>Pontos de Reputação:</b> {guild_points} pts
+⚡ <b>Energia de Ação:</b> {energy}/{max_energy}
+💰 <b>Bolsa:</b> {iron_coins} Moedas de Ferro | 💎 {diamonds} Diamantes

@@ -1,0 +1,8 @@
+✨ <b>═══ ABERTURA DE BAÚ: {box_name} ═══</b>
+
+O selo arcano do baú se rompeu em uma explosão de mana brilhante!
+
+<b>─── RECOMPENSAS OBTIDAS ───</b>
+{rewards_body}
+
+💰 <b>Moedas Atuais:</b> {iron_coins} Ferros | 💎 <b>Diamantes:</b> {diamonds}

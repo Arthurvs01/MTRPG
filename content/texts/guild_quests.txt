@@ -1,0 +1,6 @@
+📜 <b>═══ QUADRO DE MISSÕES DA GUILDA ═══</b>
+
+Seu rank atual é <b>Rank {adventurer_rank}</b>.
+Contratos disponíveis para seu prestígio:
+
+{quests_body}

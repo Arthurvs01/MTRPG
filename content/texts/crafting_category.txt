@@ -1,0 +1,6 @@
+🔨 <b>═══ RECEITAS DE FORJA: {category_name} ═══</b>
+
+👤 <b>Aventureiro:</b> {character_name} | 💰 <b>Seus Fundos:</b> {iron_coins} Ferros
+
+<b>─── ITENS FORJÁVEIS ───</b>
+{recipes_list}

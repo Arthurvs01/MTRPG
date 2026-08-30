@@ -1,0 +1,69 @@
+{
+  "quests": {
+    "quest_f_boar": {
+      "title": "Controle de Pragas: Javalis de Fittoa",
+      "rank": "F",
+      "region": "central",
+      "description": "Fazendeiros dos arredores da Aldeia Buena solicitam a caça de Javalis Selvagens que destroem plantações.",
+      "quest_type": "slay",
+      "target_id": "buena_wild_boar",
+      "required_count": 2,
+      "reward_iron_coins": 50,
+      "reward_guild_points": 15,
+      "reward_xp": 80,
+      "reward_items": ["potion_hp_minor"]
+    },
+    "quest_e_wolf": {
+      "title": "Ameaça na Estrada: Lobos com Chifre",
+      "rank": "E",
+      "region": "central",
+      "description": "Mercadores foram emboscados na trilha norte. Elimine a alcateia de Lobos com Chifre de Fittoa.",
+      "quest_type": "slay",
+      "target_id": "horned_wolf",
+      "required_count": 2,
+      "reward_iron_coins": 90,
+      "reward_guild_points": 25,
+      "reward_xp": 150,
+      "reward_items": ["potion_mana_minor"]
+    },
+    "quest_d_treant": {
+      "title": "Investigação Florestal: O Treant Ancião",
+      "rank": "D",
+      "region": "central",
+      "description": "Um antigo espírito das árvores enlouqueceu na floresta profunda. Derrote o Treant e colete sua madeira ancestral.",
+      "quest_type": "slay",
+      "target_id": "treant_forest",
+      "required_count": 1,
+      "reward_iron_coins": 180,
+      "reward_guild_points": 50,
+      "reward_xp": 300,
+      "reward_items": ["treant_elder_wood"]
+    },
+    "quest_e_coyote_demon": {
+      "title": "Deserto de Rikarisu: Coiotes Ácidos",
+      "rank": "E",
+      "region": "demon",
+      "description": "A Guilda de Aventureiros de Rikarisu emitiu um aviso sobre Coiotes Ácidos atacando viajantes.",
+      "quest_type": "slay",
+      "target_id": "demon_coyote_rikarisu",
+      "required_count": 3,
+      "reward_iron_coins": 120,
+      "reward_guild_points": 35,
+      "reward_xp": 220,
+      "reward_items": ["potion_hp_minor"]
+    },
+    "quest_c_kougumo": {
+      "title": "Eliminação de Elite: A Aranha Kougumo",
+      "rank": "C",
+      "region": "demon",
+      "description": "Uma gigantesca Kougumo teceu seus ninhos de seda de aço bloqueando as passagens rochosas de Rikarisu.",
+      "quest_type": "slay",
+      "target_id": "kougumo_spider",
+      "required_count": 1,
+      "reward_iron_coins": 350,
+      "reward_guild_points": 100,
+      "reward_xp": 550,
+      "reward_items": ["steel_silk"]
+    }
+  }
+}

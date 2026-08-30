@@ -1,0 +1,100 @@
+{
+  "monsters": {
+    "buena_wild_boar": {
+      "name": "Javali Selvagem de Fittoa",
+      "level": 1,
+      "hp": 90,
+      "attack": 12,
+      "magic_power": 0,
+      "defense": 6,
+      "speed": 8,
+      "danger_rank": "F",
+      "xp_reward": 35,
+      "coins_reward": 15,
+      "drops": [
+        {"item_id": "boar_hide", "chance": 0.8, "name": "Couro de Javali"},
+        {"item_id": "boar_meat", "chance": 0.9, "name": "Carne de Javali"}
+      ]
+    },
+    "horned_wolf": {
+      "name": "Lobo com Chifre de Fittoa",
+      "level": 2,
+      "hp": 130,
+      "attack": 18,
+      "magic_power": 4,
+      "defense": 8,
+      "speed": 14,
+      "danger_rank": "E",
+      "xp_reward": 60,
+      "coins_reward": 30,
+      "drops": [
+        {"item_id": "wolf_horn", "chance": 0.7, "name": "Chifre de Lobo"},
+        {"item_id": "wolf_pelt", "chance": 0.6, "name": "Pele de Lobo Ágil"}
+      ]
+    },
+    "treant_forest": {
+      "name": "Treant Guardião da Floresta",
+      "level": 4,
+      "hp": 260,
+      "attack": 25,
+      "magic_power": 15,
+      "defense": 22,
+      "speed": 6,
+      "danger_rank": "D",
+      "xp_reward": 140,
+      "coins_reward": 75,
+      "drops": [
+        {"item_id": "treant_elder_wood", "chance": 0.9, "name": "Madeira de Treant Ancestral"},
+        {"item_id": "magic_stone_green", "chance": 0.5, "name": "Pedra Mágica Verde"}
+      ]
+    },
+    "demon_coyote_rikarisu": {
+      "name": "Coiote Ácido do Continente Demônio",
+      "level": 3,
+      "hp": 160,
+      "attack": 22,
+      "magic_power": 12,
+      "defense": 10,
+      "speed": 16,
+      "danger_rank": "E",
+      "xp_reward": 85,
+      "coins_reward": 45,
+      "drops": [
+        {"item_id": "acid_fang", "chance": 0.75, "name": "Presa Ácida"},
+        {"item_id": "demon_stone_fragment", "chance": 0.6, "name": "Fragmento de Pedra Demoníaca"}
+      ]
+    },
+    "kougumo_spider": {
+      "name": "Kougumo (Aranha Executor de Rikarisu)",
+      "level": 5,
+      "hp": 320,
+      "attack": 34,
+      "magic_power": 20,
+      "defense": 18,
+      "speed": 18,
+      "danger_rank": "C",
+      "xp_reward": 220,
+      "coins_reward": 120,
+      "drops": [
+        {"item_id": "steel_silk", "chance": 0.8, "name": "Seda de Aço de Kougumo"},
+        {"item_id": "spider_venom_gland", "chance": 0.6, "name": "Glândula de Veneno Puro"}
+      ]
+    },
+    "red_dragon_inferior": {
+      "name": "Dragão Vermelho Jovem (Terras Ermas)",
+      "level": 10,
+      "hp": 850,
+      "attack": 75,
+      "magic_power": 60,
+      "defense": 45,
+      "speed": 22,
+      "danger_rank": "A",
+      "xp_reward": 800,
+      "coins_reward": 500,
+      "drops": [
+        {"item_id": "dragon_scale_red", "chance": 1.0, "name": "Escama de Dragão Vermelho"},
+        {"item_id": "dragon_magic_core", "chance": 0.8, "name": "Núcleo Mágico de Dragão"}
+      ]
+    }
+  }
+}
