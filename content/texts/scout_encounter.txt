@@ -1,0 +1,21 @@
+👁️ <b>═══ AVISTAMENTO DE CRIATURA SELVAGEM ═══</b>
+
+📍 <b>Região:</b> {region_title}
+Você farejou o rastro de mana e avistou uma criatura à frente!
+
+👾 <b>─── INFORMAÇÕES DA CRIATURA ───</b>
+📛 <b>Nome:</b> {monster_name}
+⭐ <b>Nível:</b> {monster_level} | ⚠️ <b>Perigo:</b> <b>Rank {danger_rank}</b>
+❤️ <b>Vida Estimada:</b> ~{monster_hp} HP
+⚔️ <b>Ataque:</b> {monster_attack} | 🔮 <b>Poder Mágico:</b> {monster_magic}
+🛡️ <b>Defesa:</b> {monster_defense} | 💨 <b>Velocidade:</b> {monster_speed}
+📦 <b>Possíveis Despojos:</b> {drops_preview}
+
+👤 <b>─── SEUS ATRIBUTOS ATUAIS ───</b>
+❤️ <b>Vida:</b> {player_hp}/{player_max_hp} | 💧 <b>Mana:</b> {player_mana}/{player_max_mana}
+⚔️ <b>Ataque Total:</b> {player_attack} | 🔮 <b>Magia:</b> {player_magic}
+🛡️ <b>Defesa Total:</b> {player_defense} | 💨 <b>Velocidade:</b> {player_speed}
+🥋 <b>Touki:</b> {player_touki_str}
+⚡ <b>Sua Energia:</b> {energy}/{max_energy}
+
+<i>Deseja desembainhar sua arma para combater ou recuar silenciosamente?</i>

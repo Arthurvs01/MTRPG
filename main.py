@@ -153,7 +153,12 @@ def build_app():
 
     # Mercado entre Players (Player-to-Player)
     router.register("market_main", market_main)
-    router.register("mkt_buy_", market_buy_action)
+    router.register("mkt_all", market_main)           # Filtro: todos itens
+    router.register("mkt_weapon", market_main)      # Filtro: armas
+    router.register("mkt_staff", market_main)       # Filtro: cajados
+    router.register("mkt_armor", market_main)       # Filtro: armaduras
+    router.register("mkt_accessory", market_main)   # Filtro: acessórios
+    router.register("mkt_buy_", market_buy_action)  # Compra de listing específico
     router.register("mkt_my_listings", market_my_listings)
     router.register("mkt_cancel_", market_cancel_action)
     router.register("mkt_create_menu", market_create_menu)

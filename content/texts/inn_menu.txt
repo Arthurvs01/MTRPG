@@ -1,15 +1,17 @@
 🏨 <b>═══ ESTALAGEM & DESCANSO ═══</b>
 
-Bem-vindo(a) à acolhedora Estalagem de {current_location}!
+Bem-vindo(a) à acolhedora Estalagem de {current_location}! 🍷
+
 O descanso repõe completamente sua Vida, Mana e Energia de Ação para novas jornadas.
 
-👤 <b>Aventureiro:</b> {character_name}
-❤️ <b>Vida Atual:</b> {hp}/{max_hp}
-💧 <b>Mana Atual:</b> {mana}/{max_mana}
-⚡ <b>Energia Atual:</b> {energy}/{max_energy}
-💰 <b>Suas Moedas:</b> {iron_coins} Ferros | 💎 {diamonds} Diamantes
+<b>Seu Status:</b>
+• ❤️ Vida Atual: {hp}/{max_hp}
+• 💧 Mana Atual: {mana}/{max_mana}
+• ⚡ Energia Atual: {energy}/{max_energy}
+• 💰 {iron_coins} Ferros | 💎 {diamonds} Diamantes
 
-<b>─── OPÇÕES DE DESCANSO ───</b>
-🛏️ <b>Quarto Simples com Refeição:</b> Restaura 100% de HP, Mana e +50 de Energia. (Custo: 20 Moedas de Ferro)
-👑 <b>Suíte Nobre de Luxo:</b> Restaura 100% de HP, Mana e 100% de Energia Total imediatamente. (Custo: 50 Moedas de Ferro)
-⚡ <b>Revigorar Instantâneo (Elixir Divino):</b> Restaura 100% de Energia instantaneamente. (Custo: 10 Diamantes)
+<b>Opções de Descanso:</b>
+• 🛏️ Quarto Simples: Restaura 100% HP, Mana e +50 Energia (20 F)
+• 👑 Suíte Nobre: Restaura 100% HP, Mana e 100% Energia Imediato (50 F)
+• ⚡ Elixir Divino: Restaura 100% Energia instantaneamente (10 💎)
+• ⬅️ Voltar ao Hub Principal

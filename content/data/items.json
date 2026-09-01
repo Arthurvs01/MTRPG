@@ -38,6 +38,24 @@
       "item_type": "material",
       "value_in_iron_coins": 16
     },
+    "pax_fur": {
+      "name": "Pelo de Macaco Pax",
+      "description": "Pelo espesso e flexível de criaturas que habitam as árvores altas.",
+      "item_type": "material",
+      "value_in_iron_coins": 20
+    },
+    "serpent_scale": {
+      "name": "Escama de Serpente de Rio",
+      "description": "Escama impermeável com leve resistência a magias d'água.",
+      "item_type": "material",
+      "value_in_iron_coins": 30
+    },
+    "iron_claw": {
+      "name": "Garra de Ferro Maciço",
+      "description": "Garra mineralizada de urso selvagem, excelente para pontas de lâminas pesadas.",
+      "item_type": "material",
+      "value_in_iron_coins": 55
+    },
     "treant_elder_wood": {
       "name": "Madeira de Treant Ancestral",
       "description": "Madeira nobre altamente condutora de mana, ideal para entalhe de cajados mágicos.",
@@ -55,6 +73,12 @@
       "description": "Dente afiado embebido em toxinas corrosivas do Continente Demônio.",
       "item_type": "material",
       "value_in_iron_coins": 25
+    },
+    "sandworm_skin": {
+      "name": "Carapaça Flexível de Sandworm",
+      "description": "Pele espessa do deserto que resiste a altas temperaturas e atritos.",
+      "item_type": "material",
+      "value_in_iron_coins": 40
     },
     "demon_stone_fragment": {
       "name": "Fragmento de Pedra Demoníaca",
@@ -74,6 +98,66 @@
       "item_type": "material",
       "value_in_iron_coins": 50
     },
+    "roc_feather": {
+      "name": "Pena Negra de Roc",
+      "description": "Pluma gigante aerodinâmica com grande leveza e propriedades mágicas de corte.",
+      "item_type": "material",
+      "value_in_iron_coins": 70
+    },
+    "ancient_stone_shell": {
+      "name": "Placa de Carapaça de Pedra",
+      "description": "Placa fóssil mineralizada de enorme densidade e defesa impenetrável.",
+      "item_type": "material",
+      "value_in_iron_coins": 95
+    },
+    "wyvern_wing_membrane": {
+      "name": "Membrana de Asa de Wyvern",
+      "description": "Membrana alar durável para confecção de mantos e reforços de couro.",
+      "item_type": "material",
+      "value_in_iron_coins": 120
+    },
+    "wyvern_poison_claw": {
+      "name": "Garra Venenosa de Wyvern",
+      "description": "Garra dracônica gotejando toxinas de combate aéreo.",
+      "item_type": "material",
+      "value_in_iron_coins": 140
+    },
+    "flame_pelt": {
+      "name": "Pelo Ígneo da Floresta",
+      "description": "Pelagem avermelhada naturalmente aquecida por mana elemental de fogo.",
+      "item_type": "material",
+      "value_in_iron_coins": 28
+    },
+    "croc_leather": {
+      "name": "Couro Escamado de Crocodilo",
+      "description": "Couro espesso de réptil dos pântanos com alta durabilidade contra cortes.",
+      "item_type": "material",
+      "value_in_iron_coins": 45
+    },
+    "golem_mud_core": {
+      "name": "Núcleo Telúrico de Golem",
+      "description": "Massa concentrada de mana terrestre que anima criaturas de lama e rocha.",
+      "item_type": "material",
+      "value_in_iron_coins": 65
+    },
+    "shadow_fang": {
+      "name": "Presa Sombria Ágil",
+      "description": "Dente afiado de predador noturno infundido em mana de ocultamento.",
+      "item_type": "material",
+      "value_in_iron_coins": 90
+    },
+    "crystal_stinger": {
+      "name": "Ferrão Cristalino Brilhante",
+      "description": "Ponta mineralizada que corta matéria sólida com precisão cirúrgica.",
+      "item_type": "material",
+      "value_in_iron_coins": 85
+    },
+    "gargoyle_stone_wing": {
+      "name": "Asa de Pedra Rúnica",
+      "description": "Fragmento rochoso com inscrições mágicas antigas dos labirintos de Begaritt.",
+      "item_type": "material",
+      "value_in_iron_coins": 110
+    },
     "dragon_scale_red": {
       "name": "Escama de Dragão Vermelho",
       "description": "Escama dracônica de resistência térmica e física suprema.",
@@ -85,6 +169,12 @@
       "description": "Coração de mana pura de um dragão, material de nível Santo/Imperial.",
       "item_type": "material",
       "value_in_iron_coins": 350
+    },
+    "behemoth_horn": {
+      "name": "Chifre Titânico de Behemoth",
+      "description": "Chifre lendário de besta colossal do deserto de Begaritt.",
+      "item_type": "material",
+      "value_in_iron_coins": 300
     },
     "iron_ore": {
       "name": "Minério de Ferro de Asura",

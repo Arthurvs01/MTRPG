@@ -1,9 +1,16 @@
 🗺️ <b>═══ EXPEDIÇÃO & CAÇADA SELVAGEM ═══</b>
 
-👤 <b>Aventureiro:</b> {character_name} | 📍 <b>Local:</b> {current_location}
-❤️ <b>Vida:</b> {hp}/{max_hp} | 💧 <b>Mana:</b> {mana}/{max_mana}
-⚡ <b>Energia de Ação:</b> {energy}/{max_energy}
+<b>Aventureiro:</b> {character_name} | 📍 <b>Local:</b> {current_location}
 
-<i>Cada caçada consome energia de ação. Garanta que possui vigor suficiente para lutar!</i>
+<b>Status Atual:</b>
+• ❤️ Vida: {hp}/{max_hp}
+• 💧 Mana: {mana}/{max_mana}
+• ⚡ Energia de Ação: {energy}/{max_energy}
 
-Escolha seu destino de expedição:
+<i>Cada caçada consome energia de ação. Certifique-se de ter vigor suficiente para lutar!</i>
+
+<b>Destinos de Expedição:</b>
+• 🌲 Floresta de Fittoa (15 ⚡ - Rank F/E) - Faunas leves
+• 🏜️ Terras Ermas de Rikarisu (15 ⚡ - Rank E/C) - Feras demoníacas
+• ⬅️ Voltar ao Hub Principal
+• 🏨 Ir à Estalagem para Descansar

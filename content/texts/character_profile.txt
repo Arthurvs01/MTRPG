@@ -1,22 +1,24 @@
 📜 <b>═══ CARTÃO DE AVENTUREIRO ═══</b>
 
-👤 <b>Nome:</b> {character_name}
-🧬 <b>Linhagem:</b> {race} | <b>Vocação:</b> {vocation}
-📍 <b>Localização:</b> {current_location}
-🎖️ <b>Rank Oficial:</b> <b>{adventurer_rank}</b> ({guild_points} Pontos de Guilda)
-⭐ <b>Nível:</b> {level} (XP: {xp}/{xp_next_level})
+📋 <b>Identificação:</b>
+• 👤 Nome: {character_name}
+• 🧬 Linhagem: {race} | 🗡️ Vocação: {vocation}
+• 📍 Localização: {current_location}
+• 🎖️ Rank Oficial: {adventurer_rank} ({guild_points} pts de Guilda)
+• ⭐ Nível: {level} (XP: {xp}/{xp_next_level})
 
-<b>─── VITAIS & RECURSOS ───</b>
-❤️ <b>Vida (HP):</b> {hp}/{max_hp}
-💧 <b>Mana:</b> {mana}/{max_mana}
-⚡ <b>Energia de Ação:</b> {energy}/{max_energy}
-🥋 <b>Touki (Manto de Mana):</b> {touki_str}
+<b>Vitais:</b>
+• ❤️ Vida (HP): {hp}/{max_hp}
+• 💧 Mana: {mana}/{max_mana}
+• 🛡️ Touki (Manto de Mana): {touki}
+• ⚡ Energia de Ação: {energy}/{max_energy}
 
-<b>─── PODER TOTAL DE COMBATE ───</b>
-⚔️ <b>Ataque Total:</b> {total_attack}
-🛡️ <b>Defesa Total:</b> {total_defense}
-💨 <b>Velocidade Total:</b> {total_speed}
-🔮 <b>Poder Mágico:</b> {total_magic}
+<b>Poder de Combate:</b>
+• ⚔️ Ataque Total: {total_attack}
+• 🛡️ Defesa Total: {total_defense}
+• 💨 Velocidade Total: {total_speed}
+• 🔮 Poder Mágico: {total_magic}
 
-💰 <b>Fundos:</b> {iron_coins} Ferro | {silver_coins} Prata | {gold_coins} Ouro
-💎 <b>Diamantes Nobres:</b> {diamonds}
+<b>Recursos:</b>
+• 💰 Fundos: {iron_coins} Ferro | {silver_coins} Prata | {gold_coins} Ouro
+• 💎 Diamantes Nobres: {diamonds}

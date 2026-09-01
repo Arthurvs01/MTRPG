@@ -2,6 +2,7 @@
   "monsters": {
     "buena_wild_boar": {
       "name": "Javali Selvagem de Fittoa",
+      "region": "fittoa",
       "level": 1,
       "hp": 90,
       "attack": 12,
@@ -13,11 +14,12 @@
       "coins_reward": 15,
       "drops": [
         {"item_id": "boar_hide", "chance": 0.8, "name": "Couro de Javali"},
-        {"item_id": "boar_meat", "chance": 0.9, "name": "Carne de Javali"}
+        {"item_id": "boar_meat", "chance": 0.9, "name": "Carne de Javali Selvagem"}
       ]
     },
     "horned_wolf": {
       "name": "Lobo com Chifre de Fittoa",
+      "region": "fittoa",
       "level": 2,
       "hp": 130,
       "attack": 18,
@@ -28,28 +30,81 @@
       "xp_reward": 60,
       "coins_reward": 30,
       "drops": [
-        {"item_id": "wolf_horn", "chance": 0.7, "name": "Chifre de Lobo"},
+        {"item_id": "wolf_horn", "chance": 0.7, "name": "Chifre de Lobo de Fittoa"},
         {"item_id": "wolf_pelt", "chance": 0.6, "name": "Pele de Lobo Ágil"}
+      ]
+    },
+    "pax_monkey": {
+      "name": "Macaco Pax Imitador",
+      "region": "fittoa",
+      "level": 3,
+      "hp": 150,
+      "attack": 20,
+      "magic_power": 8,
+      "defense": 10,
+      "speed": 17,
+      "danger_rank": "E",
+      "xp_reward": 80,
+      "coins_reward": 40,
+      "drops": [
+        {"item_id": "pax_fur", "chance": 0.75, "name": "Pelo de Macaco Pax"},
+        {"item_id": "iron_ore", "chance": 0.4, "name": "Minério de Ferro de Asura"}
+      ]
+    },
+    "freshwater_snake": {
+      "name": "Serpente Gigante de Água Doce (Mizuhebi)",
+      "region": "fittoa",
+      "level": 4,
+      "hp": 210,
+      "attack": 24,
+      "magic_power": 14,
+      "defense": 15,
+      "speed": 12,
+      "danger_rank": "D",
+      "xp_reward": 120,
+      "coins_reward": 60,
+      "drops": [
+        {"item_id": "serpent_scale", "chance": 0.8, "name": "Escama de Serpente de Rio"},
+        {"item_id": "magic_stone_green", "chance": 0.4, "name": "Pedra Mágica Verde de Vento"}
       ]
     },
     "treant_forest": {
       "name": "Treant Guardião da Floresta",
-      "level": 4,
-      "hp": 260,
-      "attack": 25,
-      "magic_power": 15,
-      "defense": 22,
+      "region": "fittoa",
+      "level": 5,
+      "hp": 280,
+      "attack": 28,
+      "magic_power": 18,
+      "defense": 24,
       "speed": 6,
       "danger_rank": "D",
-      "xp_reward": 140,
-      "coins_reward": 75,
+      "xp_reward": 150,
+      "coins_reward": 85,
       "drops": [
         {"item_id": "treant_elder_wood", "chance": 0.9, "name": "Madeira de Treant Ancestral"},
-        {"item_id": "magic_stone_green", "chance": 0.5, "name": "Pedra Mágica Verde"}
+        {"item_id": "magic_stone_green", "chance": 0.5, "name": "Pedra Mágica Verde de Vento"}
+      ]
+    },
+    "iron_claw_bear": {
+      "name": "Urso com Garras de Ferro de Fittoa",
+      "region": "fittoa",
+      "level": 7,
+      "hp": 380,
+      "attack": 40,
+      "magic_power": 10,
+      "defense": 26,
+      "speed": 11,
+      "danger_rank": "C",
+      "xp_reward": 240,
+      "coins_reward": 130,
+      "drops": [
+        {"item_id": "iron_claw", "chance": 0.85, "name": "Garra de Ferro Maciço"},
+        {"item_id": "boar_hide", "chance": 0.8, "name": "Couro de Javali"}
       ]
     },
     "demon_coyote_rikarisu": {
       "name": "Coiote Ácido do Continente Demônio",
+      "region": "rikarisu",
       "level": 3,
       "hp": 160,
       "attack": 22,
@@ -60,40 +115,247 @@
       "xp_reward": 85,
       "coins_reward": 45,
       "drops": [
-        {"item_id": "acid_fang", "chance": 0.75, "name": "Presa Ácida"},
+        {"item_id": "acid_fang", "chance": 0.75, "name": "Presa Ácida de Coiote"},
         {"item_id": "demon_stone_fragment", "chance": 0.6, "name": "Fragmento de Pedra Demoníaca"}
+      ]
+    },
+    "sand_worm_demon": {
+      "name": "Verme de Areia do Deserto (Sandworm)",
+      "region": "rikarisu",
+      "level": 5,
+      "hp": 290,
+      "attack": 30,
+      "magic_power": 15,
+      "defense": 20,
+      "speed": 10,
+      "danger_rank": "D",
+      "xp_reward": 160,
+      "coins_reward": 90,
+      "drops": [
+        {"item_id": "sandworm_skin", "chance": 0.8, "name": "Carapaça Flexível de Sandworm"},
+        {"item_id": "demon_stone_fragment", "chance": 0.5, "name": "Fragmento de Pedra Demoníaca"}
       ]
     },
     "kougumo_spider": {
       "name": "Kougumo (Aranha Executor de Rikarisu)",
-      "level": 5,
-      "hp": 320,
-      "attack": 34,
-      "magic_power": 20,
+      "region": "rikarisu",
+      "level": 6,
+      "hp": 340,
+      "attack": 36,
+      "magic_power": 22,
       "defense": 18,
       "speed": 18,
       "danger_rank": "C",
-      "xp_reward": 220,
-      "coins_reward": 120,
+      "xp_reward": 230,
+      "coins_reward": 130,
       "drops": [
         {"item_id": "steel_silk", "chance": 0.8, "name": "Seda de Aço de Kougumo"},
-        {"item_id": "spider_venom_gland", "chance": 0.6, "name": "Glândula de Veneno Puro"}
+        {"item_id": "spider_venom_gland", "chance": 0.6, "name": "Glândula de Veneno de Kougumo"}
+      ]
+    },
+    "demon_vulture_roc": {
+      "name": "Pássaro Carniceiro Roc Demoníaco",
+      "region": "rikarisu",
+      "level": 8,
+      "hp": 420,
+      "attack": 45,
+      "magic_power": 25,
+      "defense": 22,
+      "speed": 21,
+      "danger_rank": "C",
+      "xp_reward": 300,
+      "coins_reward": 170,
+      "drops": [
+        {"item_id": "roc_feather", "chance": 0.8, "name": "Pena Negra de Roc"},
+        {"item_id": "demon_stone_fragment", "chance": 0.7, "name": "Fragmento de Pedra Demoníaca"}
+      ]
+    },
+    "stone_shell_tortoise": {
+      "name": "Tartaruga de Carapaça de Pedra Ancestral",
+      "region": "rikarisu",
+      "level": 10,
+      "hp": 650,
+      "attack": 48,
+      "magic_power": 30,
+      "defense": 45,
+      "speed": 8,
+      "danger_rank": "B",
+      "xp_reward": 450,
+      "coins_reward": 260,
+      "drops": [
+        {"item_id": "ancient_stone_shell", "chance": 0.85, "name": "Placa de Carapaça de Pedra"},
+        {"item_id": "magic_stone_green", "chance": 0.6, "name": "Pedra Mágica Verde de Vento"}
+      ]
+    },
+    "two_headed_wyvern": {
+      "name": "Wyvern Demoníaco de Duas Cabeças",
+      "region": "rikarisu",
+      "level": 12,
+      "hp": 780,
+      "attack": 65,
+      "magic_power": 50,
+      "defense": 35,
+      "speed": 22,
+      "danger_rank": "B",
+      "xp_reward": 600,
+      "coins_reward": 380,
+      "drops": [
+        {"item_id": "wyvern_wing_membrane", "chance": 0.9, "name": "Membrana de Asa de Wyvern"},
+        {"item_id": "wyvern_poison_claw", "chance": 0.75, "name": "Garra Venenosa de Wyvern"}
+      ]
+    },
+    "flame_squirrel": {
+      "name": "Esquilo Flamejante da Grande Floresta",
+      "region": "milis",
+      "level": 2,
+      "hp": 120,
+      "attack": 17,
+      "magic_power": 12,
+      "defense": 7,
+      "speed": 16,
+      "danger_rank": "E",
+      "xp_reward": 65,
+      "coins_reward": 35,
+      "drops": [
+        {"item_id": "flame_pelt", "chance": 0.75, "name": "Pelo Ígneo da Floresta"},
+        {"item_id": "magic_stone_green", "chance": 0.3, "name": "Pedra Mágica Verde de Vento"}
+      ]
+    },
+    "swamp_croc_milis": {
+      "name": "Crocodilo dos Pântanos Sagrados",
+      "region": "milis",
+      "level": 4,
+      "hp": 230,
+      "attack": 26,
+      "magic_power": 8,
+      "defense": 18,
+      "speed": 10,
+      "danger_rank": "D",
+      "xp_reward": 130,
+      "coins_reward": 70,
+      "drops": [
+        {"item_id": "croc_leather", "chance": 0.8, "name": "Couro Escamado de Crocodilo"},
+        {"item_id": "iron_ore", "chance": 0.5, "name": "Minério de Ferro de Asura"}
+      ]
+    },
+    "forest_mud_golem": {
+      "name": "Golem de Lama da Floresta Sagrada",
+      "region": "milis",
+      "level": 6,
+      "hp": 370,
+      "attack": 34,
+      "magic_power": 25,
+      "defense": 28,
+      "speed": 7,
+      "danger_rank": "C",
+      "xp_reward": 220,
+      "coins_reward": 125,
+      "drops": [
+        {"item_id": "golem_mud_core", "chance": 0.8, "name": "Núcleo Telúrico de Golem"},
+        {"item_id": "demon_stone_fragment", "chance": 0.5, "name": "Fragmento de Pedra Demoníaca"}
+      ]
+    },
+    "shadow_leopard": {
+      "name": "Leopardo Sombra das Terras Feras",
+      "region": "milis",
+      "level": 9,
+      "hp": 520,
+      "attack": 55,
+      "magic_power": 20,
+      "defense": 25,
+      "speed": 26,
+      "danger_rank": "B",
+      "xp_reward": 420,
+      "coins_reward": 240,
+      "drops": [
+        {"item_id": "shadow_fang", "chance": 0.85, "name": "Presa Sombria Ágil"},
+        {"item_id": "wolf_pelt", "chance": 0.7, "name": "Pele de Lobo Ágil"}
+      ]
+    },
+    "crystal_scorpion": {
+      "name": "Escorpião Gigante de Cristal",
+      "region": "begaritt",
+      "level": 7,
+      "hp": 410,
+      "attack": 42,
+      "magic_power": 28,
+      "defense": 32,
+      "speed": 14,
+      "danger_rank": "C",
+      "xp_reward": 280,
+      "coins_reward": 160,
+      "drops": [
+        {"item_id": "crystal_stinger", "chance": 0.85, "name": "Ferrão Cristalino Brilhante"},
+        {"item_id": "magic_stone_green", "chance": 0.6, "name": "Pedra Mágica Verde de Vento"}
+      ]
+    },
+    "labyrinth_gargoyle": {
+      "name": "Gárgula Guardiã do Labirinto",
+      "region": "begaritt",
+      "level": 10,
+      "hp": 620,
+      "attack": 56,
+      "magic_power": 45,
+      "defense": 38,
+      "speed": 19,
+      "danger_rank": "B",
+      "xp_reward": 480,
+      "coins_reward": 290,
+      "drops": [
+        {"item_id": "gargoyle_stone_wing", "chance": 0.85, "name": "Asa de Pedra Rúnica"},
+        {"item_id": "demon_stone_fragment", "chance": 0.7, "name": "Fragmento de Pedra Demoníaca"}
       ]
     },
     "red_dragon_inferior": {
       "name": "Dragão Vermelho Jovem (Terras Ermas)",
-      "level": 10,
-      "hp": 850,
-      "attack": 75,
-      "magic_power": 60,
+      "region": "begaritt",
+      "level": 13,
+      "hp": 890,
+      "attack": 78,
+      "magic_power": 65,
       "defense": 45,
       "speed": 22,
       "danger_rank": "A",
-      "xp_reward": 800,
-      "coins_reward": 500,
+      "xp_reward": 850,
+      "coins_reward": 550,
       "drops": [
         {"item_id": "dragon_scale_red", "chance": 1.0, "name": "Escama de Dragão Vermelho"},
         {"item_id": "dragon_magic_core", "chance": 0.8, "name": "Núcleo Mágico de Dragão"}
+      ]
+    },
+    "desert_behemoth": {
+      "name": "Behemoth Brutal do Deserto de Begaritt",
+      "region": "begaritt",
+      "level": 16,
+      "hp": 1350,
+      "attack": 98,
+      "magic_power": 40,
+      "defense": 60,
+      "speed": 14,
+      "danger_rank": "A",
+      "xp_reward": 1200,
+      "coins_reward": 800,
+      "drops": [
+        {"item_id": "behemoth_horn", "chance": 1.0, "name": "Chifre Titânico de Behemoth"},
+        {"item_id": "dragon_scale_red", "chance": 0.7, "name": "Escama de Dragão Vermelho"}
+      ]
+    },
+    "magic_hydra_boss": {
+      "name": "Hidra de Escamas Mágicas do Labirinto",
+      "region": "begaritt",
+      "level": 20,
+      "hp": 2200,
+      "attack": 135,
+      "magic_power": 110,
+      "defense": 75,
+      "speed": 24,
+      "danger_rank": "S",
+      "xp_reward": 2500,
+      "coins_reward": 1800,
+      "drops": [
+        {"item_id": "dragon_magic_core", "chance": 1.0, "name": "Núcleo Mágico de Dragão"},
+        {"item_id": "dragon_scale_red", "chance": 1.0, "name": "Escama de Dragão Vermelho"},
+        {"item_id": "steel_silk", "chance": 1.0, "name": "Seda de Aço de Kougumo"}
       ]
     }
   }

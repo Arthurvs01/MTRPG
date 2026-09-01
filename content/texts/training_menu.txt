@@ -1,12 +1,14 @@
 🥋 <b>═══ DOJO & TORRE DE MAGIA: TREINAMENTO ═══</b>
 
 Aqui aventureiros dedicam tempo e esforço para lapidar sua técnica de espada e compreensão mágica.
+
 Cada sessão de treino aprimora atributos e concede experiência.
 
-👤 <b>Aventureiro:</b> {character_name}
-⚡ <b>Energia Disponível:</b> {energy}/{max_energy} (Consome 20 de energia por treino)
+<b>Seu Perfil:</b>
+• ⚡ Energia Disponível: {energy}/{max_energy} (Consome 20 por treino)
 
-<b>─── OPÇÕES DE TREINAMENTO ───</b>
-🗡️ <b>Treino no Dojo de Espadas (1000 Cortes de Madeira):</b> Foco em Força, Velocidade e Técnicas de Espada (+XP, +Força/Agilidade).
-🪄 <b>Meditação Elemental na Torre de Magia:</b> Foco em Controle de Mana, Poder Mágico e Magias (+XP, +Magia/Mana).
-🥋 <b>Condicionamento Extremo de Touki:</b> Foco em Defesa e Revestimento de Mana (+XP, +Defesa/Touki).
+<b>Opções de Treinamento:</b>
+• 🗡️ Dojo de Espadas: 1000 Cortes de Madeira - Foco em Força, Velocidade e Técnica
+• 🪄 Torre de Magia: Meditação Elemental - Foco em Controle de Mana e Poder
+• 🥋 Condicionamento de Touki: Revestimento de Mana e Defesa Física
+• ⬅️ Voltar ao Hub Principal

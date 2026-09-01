@@ -13,10 +13,16 @@ from database.item_repo import ItemRepository
 logger = logging.getLogger(__name__)
 
 
+def _sort_listings_by_price(listings: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Ordena listagens do mais barato para o mais caro."""
+    return sorted(listings, key=lambda l: l.get("price_iron_coins", 0))
+
+
 class MarketRepository:
     """
     Repositório de Persistência do Mercado de Trocas entre Jogadores (Player-to-Player Marketplace).
     Armazena ofertas de venda ativas de forma atômica e segura.
+    Itens são separados de equipamentos e sempre ordenados do mais barato para o mais caro.
     """
 
     FILE_PATH = os.path.join(DATABASE_DIR, "market_listings.json")
@@ -48,8 +54,22 @@ class MarketRepository:
 
     @classmethod
     def get_all_active_listings(cls) -> List[Dict[str, Any]]:
-        """Retorna todas as listagens de venda disponíveis."""
-        return cls._load_listings()
+        """Retorna todas as listagens de venda disponíveis, ordenadas do mais barato para o mais caro."""
+        return _sort_listings_by_price(cls._load_listings())
+
+    @classmethod
+    def get_listings_by_type(cls, item_type: str) -> List[Dict[str, Any]]:
+        """Retorna listagens filtradas por tipo ('material', 'consumable', 'rune', 'equipment')."""
+        all_listings = cls._load_listings()
+        filtered = [l for l in all_listings if l.get("item_type") == item_type]
+        return _sort_listings_by_price(filtered)
+
+    @classmethod
+    def get_equipment_listings_by_slot(cls, slot: str) -> List[Dict[str, Any]]:
+        """Retorna listagens de equipamentos filtrados por slot (weapon, staff, armor, accessory)."""
+        all_listings = cls._load_listings()
+        equipment_listings = [l for l in all_listings if l.get("item_type") == "equipment" and l.get("slot") == slot]
+        return _sort_listings_by_price(equipment_listings)
 
     @classmethod
     def create_listing(
@@ -64,6 +84,9 @@ class MarketRepository:
         """Cria uma nova oferta de venda no mercado."""
         if price_iron_coins <= 0:
             return False, "O preço deve ser superior a 0 Moedas de Ferro."
+
+        if quantity <= 0:
+            return False, "A quantidade deve ser superior a 0."
 
         listing_id = str(uuid.uuid4())[:8]
 
@@ -91,7 +114,7 @@ class MarketRepository:
         listings = cls._load_listings()
         listings.append(listing)
         if cls._save_listings(listings):
-            return True, f"Oferta cadastrada com sucesso no Mercado da Guilda! (Preço: {price_iron_coins} Ferros)"
+            return True, f"Oferta cadastrada com sucesso no Mercado da Guilda! (Preço: {price_iron_coins} Ferros / Qtd: {quantity})"
         return False, "Erro ao salvar anúncio no mercado."
 
     @classmethod

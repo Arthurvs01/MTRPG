@@ -14,47 +14,79 @@ async def market_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not player:
         return
 
-    listings = MarketRepository.get_all_active_listings()
-
-    listings_lines = []
-    keyboard = []
-
-    for l in listings:
-        seller_tag = " (Sua Oferta)" if l["seller_chat_id"] == player.chat_id else f" [Vendedor: {l['seller_name']}]"
-        listings_lines.append(
-            f"🔹 <b>{l['item_name']}</b> x{l.get('quantity', 1)}\n"
-            f"   💰 Preço: <b>{l['price_iron_coins']} Ferros</b> {seller_tag}"
-        )
-
-        if l["seller_chat_id"] != player.chat_id:
-            keyboard.append([
-                InlineKeyboardButton(f"Comprar {l['item_name'][:16]} ({l['price_iron_coins']} F)", callback_data=f"mkt_buy_{l['id']}")
-            ])
-
-    keyboard.append([
-        InlineKeyboardButton("➕ Anunciar Item para Venda", callback_data="mkt_create_menu"),
-        InlineKeyboardButton("📋 Meus Anúncios", callback_data="mkt_my_listings"),
-    ])
-    keyboard.append([
-        InlineKeyboardButton("🏛️ Voltar à Guilda", callback_data="guild_main"),
-        InlineKeyboardButton("🏰 Hub Principal", callback_data="hub_main"),
-    ])
-
-    text = TextLoader.load(
-        "market_main.txt",
-        character_name=player.character_name,
-        iron_coins=player.iron_coins,
-        diamonds=player.diamonds,
-        market_listings_body="\n\n".join(listings_lines) if listings_lines else "<i>Nenhum anúncio ativo no mercado no momento. Seja o primeiro a anunciar!</i>",
-    )
-
-    await MessageManager.send_or_edit(
-        update=update,
-        context=context,
-        image_path="mercado_loja.png",
-        text=text,
-        reply_markup=InlineKeyboardMarkup(keyboard)
-    )
+    # Determinar filtro baseado nos dados do callback
+    query = update.callback_query
+    callback_data = query.data if query else ""
+    
+    # Filtrar por tipo baseado nos padrões de callback
+    # Padrões: mkt_all (todos), mkt_weapon (armas), mkt_staff (cajados), etc.
+    market_filter = None
+    if callback_data == "mkt_all":
+        market_filter = None  # Nenhum filtro, mostrar tudo
+    elif callback_data.startswith("mkt_weapon"):
+        market_filter = "weapon"
+    elif callback_data.startswith("mkt_staff"):
+        market_filter = "staff"
+    elif callback_data.startswith("mkt_armor"):
+        market_filter = "armor"
+    elif callback_data.startswith("mkt_accessory"):
+        market_filter = "accessory"
+    
+    all_listings = MarketRepository.get_all_active_listings()
+    
+    # Separar itens de equipamentos
+    item_listings = [l for l in all_listings if l.get("item_type") != "equipment"]
+    equipment_by_slot = {
+        "weapon": MarketRepository.get_equipment_listings_by_slot("weapon"),
+        "staff": MarketRepository.get_equipment_listings_by_slot("staff"),
+        "armor": MarketRepository.get_equipment_listings_by_slot("armor"),
+        "accessory": MarketRepository.get_equipment_listings_by_slot("accessory"),
+    }
+    
+    # Filtrar apenas listagens disponíveis (quantidade > 0)
+    active_item_listings = [l for l in item_listings if l.get("quantity", 0) > 0]
+    active_equipment_by_slot = {k: [l for l in v if l.get("quantity", 0) > 0] for k, v in equipment_by_slot.items()}
+    
+    # Aplicar filtro se especificado
+    if market_filter == "weapon":
+        displayed_listings = [l for l in active_item_listings if False]  # itens não são armas
+        # Adicionar listings de armas
+        weapon_listings = active_equipment_by_slot.get("weapon", [])
+        displayed_listings.extend(weapon_listings)
+    elif market_filter == "staff":
+        displayed_listings = [l for l in active_item_listings if False]
+        staff_listings = active_equipment_by_slot.get("staff", [])
+        displayed_listings.extend(staff_listings)
+    elif market_filter == "armor":
+        displayed_listings = [l for l in active_item_listings if False]
+        armor_listings = active_equipment_by_slot.get("armor", [])
+        displayed_listings.extend(armor_listings)
+    elif market_filter == "accessory":
+        displayed_listings = [l for l in active_item_listings if False]
+        accessory_listings = active_equipment_by_slot.get("accessory", [])
+        displayed_listings.extend(accessory_listings)
+    else:
+        # Nenhum filtro: mostrar todos
+        displayed_listings = []
+        # Adicionar itens gerais
+        displayed_listings.extend(active_item_listings)
+        # Adicionar equipamentos de todos os tipos
+        for slot_listings in active_equipment_by_slot.values():
+            displayed_listings.extend(slot_listings)
+    
+    # Organizar keyboard com filtros
+    filter_buttons = []
+    if market_filter != "weapon":
+        filter_buttons.append(InlineKeyboardButton("🗡️ Armas", callback_data="mkt_weapon"))
+    if market_filter != "staff":
+        filter_buttons.append(InlineKeyboardButton("🪄 Cajados", callback_data="mkt_staff"))
+    if market_filter != "armor":
+        filter_buttons.append(InlineKeyboardButton("🛡️ Armaduras", callback_data="mkt_armor"))
+    if market_filter != "accessory":
+        filter_buttons.append(InlineKeyboardButton("💍 Acessórios", callback_data="mkt_accessory"))
+    filter_buttons.append(InlineKeyboardButton("📦 Todos Itens", callback_data="mkt_all"))
+    
+    keyboard = [filter_buttons]
 
 
 async def market_buy_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -65,6 +97,12 @@ async def market_buy_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     buyer = PlayerRepository.get_player(chat_id)
     if not buyer:
+        return
+
+    # Se for "Comprar Itens" geral, apenas recarregar o mercado
+    if listing_id == "items":
+        await query.answer("Selecione um item específico para comprar.", show_alert=True)
+        await market_main(update, context)
         return
 
     success, msg = MarketRepository.buy_listing(buyer, listing_id)
