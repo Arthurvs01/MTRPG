@@ -3,7 +3,7 @@ from telegram.ext import ContextTypes
 from core.message_manager import MessageManager
 from core.text_loader import TextLoader
 from database.player_repo import PlayerRepository
-from database.market_repo import MarketRepository
+from database.market_repo import MarketRepository, _sort_listings_by_price
 from database.item_repo import ItemRepository
 
 
@@ -12,14 +12,38 @@ async def market_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     player = PlayerRepository.get_player(chat_id)
     if not player:
+        await MessageManager.send_or_edit(
+            update=update,
+            context=context,
+            image_path=None,
+            text="⚠️ <b>Erro:</b> Seu perfil não foi encontrado. Use o comando /start para iniciar o bot.",
+            parse_mode="HTML",
+        )
         return
 
-    # Determinar filtro baseado nos dados do callback
     query = update.callback_query
     callback_data = query.data if query else ""
     
-    # Filtrar por tipo baseado nos padrões de callback
-    # Padrões: mkt_all (todos), mkt_weapon (armas), mkt_staff (cajados), etc.
+    # Carregar todas as listagens uma única vez (performance - evita 5 carregamentos de arquivo)
+    all_listings = MarketRepository._load_listings()
+    all_listings_sorted = _sort_listings_by_price(all_listings)
+    
+    # Separar itens de equipamentos
+    item_listings = [l for l in all_listings_sorted if l.get("item_type") != "equipment"]
+    equipment_by_slot = {
+        "weapon": [l for l in all_listings_sorted if l.get("item_type") == "equipment" and l.get("slot") == "weapon"],
+        "staff": [l for l in all_listings_sorted if l.get("item_type") == "equipment" and l.get("slot") == "staff"],
+        "armor": [l for l in all_listings_sorted if l.get("item_type") == "equipment" and l.get("slot") == "armor"],
+        "accessory": [l for l in all_listings_sorted if l.get("item_type") == "equipment" and l.get("slot") == "accessory"],
+    }
+    
+    # Filtrar apenas listagens disponíveis (quantidade > 0)
+    active_item_listings = [l for l in item_listings if l.get("quantity", 0) > 0]
+    active_equipment_by_slot = {
+        k: [l for l in v if l.get("quantity", 0) > 0] for k, v in equipment_by_slot.items()
+    }
+    
+    # Determinar filtro baseado nos dados do callback
     market_filter = None
     if callback_data == "mkt_all":
         market_filter = None  # Nenhum filtro, mostrar tudo
@@ -32,37 +56,21 @@ async def market_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif callback_data.startswith("mkt_accessory"):
         market_filter = "accessory"
     
-    all_listings = MarketRepository.get_all_active_listings()
-    
-    # Separar itens de equipamentos
-    item_listings = [l for l in all_listings if l.get("item_type") != "equipment"]
-    equipment_by_slot = {
-        "weapon": MarketRepository.get_equipment_listings_by_slot("weapon"),
-        "staff": MarketRepository.get_equipment_listings_by_slot("staff"),
-        "armor": MarketRepository.get_equipment_listings_by_slot("armor"),
-        "accessory": MarketRepository.get_equipment_listings_by_slot("accessory"),
-    }
-    
-    # Filtrar apenas listagens disponíveis (quantidade > 0)
-    active_item_listings = [l for l in item_listings if l.get("quantity", 0) > 0]
-    active_equipment_by_slot = {k: [l for l in v if l.get("quantity", 0) > 0] for k, v in equipment_by_slot.items()}
-    
     # Aplicar filtro se especificado
     if market_filter == "weapon":
-        displayed_listings = [l for l in active_item_listings if False]  # itens não são armas
-        # Adicionar listings de armas
+        displayed_listings = [l for l in active_item_listings if l.get("item_type") != "equipment"]
         weapon_listings = active_equipment_by_slot.get("weapon", [])
         displayed_listings.extend(weapon_listings)
     elif market_filter == "staff":
-        displayed_listings = [l for l in active_item_listings if False]
+        displayed_listings = [l for l in active_item_listings if l.get("item_type") != "equipment"]
         staff_listings = active_equipment_by_slot.get("staff", [])
         displayed_listings.extend(staff_listings)
     elif market_filter == "armor":
-        displayed_listings = [l for l in active_item_listings if False]
+        displayed_listings = [l for l in active_item_listings if l.get("item_type") != "equipment"]
         armor_listings = active_equipment_by_slot.get("armor", [])
         displayed_listings.extend(armor_listings)
     elif market_filter == "accessory":
-        displayed_listings = [l for l in active_item_listings if False]
+        displayed_listings = [l for l in active_item_listings if l.get("item_type") != "equipment"]
         accessory_listings = active_equipment_by_slot.get("accessory", [])
         displayed_listings.extend(accessory_listings)
     else:

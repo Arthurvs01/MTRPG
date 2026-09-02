@@ -32,9 +32,11 @@ class CallbackRouter:
         """Processa a callback query recebida e despacha para a função correspondente."""
         query = update.callback_query
         if not query:
+            print("DEBUG: query is None")
             return
 
         data = query.data or ""
+        print(f"DEBUG Callback data: '{data}'")
         logger.debug(f"Processando Callback: {data}")
 
         # Ordena rotas por especificidade (maior comprimento de chave primeiro)
@@ -42,14 +44,24 @@ class CallbackRouter:
             self.routes.items(), key=lambda item: len(item[0]), reverse=True
         )
 
+        print(f"DEBUG Total routes: {len(self.routes)}")
+        print(f"DEBUG First few routes: {list(self.routes.keys())[:5]}")
+
         # 1. Correspondência exata
         if data in self.routes:
+            print(f"DEBUG Exact match for: {data}")
             return await self.routes[data](update, context)
 
         # 2. Correspondência por prefixo
+        matched = False
         for key, handler in sorted_routes:
             if data.startswith(key):
+                print(f"DEBUG Prefix match: '{data}' -> '{key}'")
+                matched = True
                 return await handler(update, context)
+
+        if not matched:
+            print(f"DEBUG No match found for: {data}")
 
         # 3. Fallback se nenhuma rota for encontrada
         if self.fallback_handler:
