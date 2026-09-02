@@ -10,7 +10,7 @@ from systems.quest_system import QuestSystem
 async def guild_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Hub Central da Guilda de Aventureiros."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -54,7 +54,7 @@ async def guild_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def guild_quests_board(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Exibe as missões disponíveis para o Rank do jogador."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -97,7 +97,7 @@ async def accept_quest_action(update: Update, context: ContextTypes.DEFAULT_TYPE
     quest_id = query.data.replace("accept_quest_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -112,7 +112,7 @@ async def accept_quest_action(update: Update, context: ContextTypes.DEFAULT_TYPE
 async def guild_active_quests(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Lista as missões atualmente aceitas pelo jogador."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -155,7 +155,7 @@ async def claim_quest_action(update: Update, context: ContextTypes.DEFAULT_TYPE)
     quest_id = query.data.replace("claim_quest_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 

@@ -15,6 +15,14 @@ class CallbackRouter:
     def __init__(self):
         self.routes: Dict[str, Callable] = {}
         self.fallback_handler: Optional[Callable] = None
+        self._sorted_routes: List[Tuple[str, Callable]] = []
+        self._rebuild_sorted_routes()
+
+    def _rebuild_sorted_routes(self):
+        """Reconstroi a lista de rotas ordenadas por especificidade (chave mais longa primeiro)."""
+        self._sorted_routes = sorted(
+            self.routes.items(), key=lambda item: len(item[0]), reverse=True
+        )
 
     def register(self, key: str, handler: Callable):
         """
@@ -23,6 +31,7 @@ class CallbackRouter:
         - Prefixo: 'race_', 'style_', 'cast_spell_', 'quest_'
         """
         self.routes[key] = handler
+        self._rebuild_sorted_routes()
 
     def set_fallback(self, handler: Callable):
         """Define o manipulador padrão para callbacks não correspondidos."""
@@ -32,36 +41,27 @@ class CallbackRouter:
         """Processa a callback query recebida e despacha para a função correspondente."""
         query = update.callback_query
         if not query:
-            print("DEBUG: query is None")
+            logger.warning("Callback query is None")
             return
 
         data = query.data or ""
-        print(f"DEBUG Callback data: '{data}'")
         logger.debug(f"Processando Callback: {data}")
-
-        # Ordena rotas por especificidade (maior comprimento de chave primeiro)
-        sorted_routes: List[Tuple[str, Callable]] = sorted(
-            self.routes.items(), key=lambda item: len(item[0]), reverse=True
-        )
-
-        print(f"DEBUG Total routes: {len(self.routes)}")
-        print(f"DEBUG First few routes: {list(self.routes.keys())[:5]}")
 
         # 1. Correspondência exata
         if data in self.routes:
-            print(f"DEBUG Exact match for: {data}")
+            logger.debug(f"Exact match for: {data}")
             return await self.routes[data](update, context)
 
-        # 2. Correspondência por prefixo
+        # 2. Correspondência por prefixo (já ordenado por especificidade)
         matched = False
-        for key, handler in sorted_routes:
+        for key, handler in self._sorted_routes:
             if data.startswith(key):
-                print(f"DEBUG Prefix match: '{data}' -> '{key}'")
+                logger.debug(f"Prefix match: '{data}' -> '{key}'")
                 matched = True
                 return await handler(update, context)
 
         if not matched:
-            print(f"DEBUG No match found for: {data}")
+            logger.debug(f"No match found for: {data}")
 
         # 3. Fallback se nenhuma rota for encontrada
         if self.fallback_handler:

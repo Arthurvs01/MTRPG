@@ -10,7 +10,7 @@ from database.item_repo import ItemRepository
 async def market_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Exibe o Mercado Global de Trocas entre Aventureiros."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         await MessageManager.send_or_edit(
             update=update,
@@ -24,8 +24,8 @@ async def market_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     callback_data = query.data if query else ""
     
-    # Carregar todas as listagens uma única vez (performance - evita 5 carregamentos de arquivo)
-    all_listings = MarketRepository._load_listings()
+    # Carregar todas as listagens do cache em memória (performance - não bloqueia event loop)
+    all_listings = await MarketRepository.get_all_active_listings()
     all_listings_sorted = _sort_listings_by_price(all_listings)
     
     # Separar itens de equipamentos
@@ -96,6 +96,29 @@ async def market_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     keyboard = [filter_buttons]
 
+    # Carregar template do mercado
+    market_listings_body = []
+    for l in active_item_listings:
+        market_listings_body.append(f"🔸 <b>{l['item_name']}</b> x{l.get('quantity', 1)} — 💰 {l['price_iron_coins']} Ferros")
+    for slot_listings in active_equipment_by_slot.values():
+        for l in slot_listings:
+            market_listings_body.append(f"🔸 <b>{l['item_name']}</b> (Equipamento) — 💰 {l['price_iron_coins']} Ferros")
+    market_listings_body_str = "\n".join(market_listings_body) if market_listings_body else "<i>Nenhuma oferta disponível no momento.</i>"
+
+    market_text = TextLoader.load(
+        "market_main.txt",
+        character_name=player.character_name,
+        market_listings_body=market_listings_body_str,
+    )
+
+    await MessageManager.send_or_edit(
+        update=update,
+        context=context,
+        image_path="mercado_loja.png",
+        text=market_text,
+        reply_markup=InlineKeyboardMarkup(keyboard),
+    )
+
 
 async def market_buy_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Executa a compra de uma oferta de outro jogador."""
@@ -103,7 +126,7 @@ async def market_buy_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     listing_id = query.data.replace("mkt_buy_", "")
 
     chat_id = update.effective_chat.id
-    buyer = PlayerRepository.get_player(chat_id)
+    buyer = await PlayerRepository.get_player(chat_id)
     if not buyer:
         return
 
@@ -126,7 +149,7 @@ async def market_buy_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def market_my_listings(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Exibe as ofertas anunciadas pelo próprio jogador."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -168,7 +191,7 @@ async def market_cancel_action(update: Update, context: ContextTypes.DEFAULT_TYP
     listing_id = query.data.replace("mkt_cancel_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -185,7 +208,7 @@ async def market_cancel_action(update: Update, context: ContextTypes.DEFAULT_TYP
 async def market_create_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Menu para o jogador escolher um item da sua bolsa para colocar à venda."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -244,7 +267,7 @@ async def market_sell_item_action(update: Update, context: ContextTypes.DEFAULT_
     price = int(parts[4])
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 

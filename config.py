@@ -14,8 +14,6 @@ BASE_DIR = Path(__file__).resolve().parent
 
 # Configuração do Telegram Bot
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
-if not BOT_TOKEN:
-    print("AVISO: BOT_TOKEN não encontrado nas variáveis de ambiente (.env).")
 
 # Caminhos de Armazenamento e Conteúdo
 DATABASE_DIR = BASE_DIR / os.getenv("DATABASE_DIR", "database/data")

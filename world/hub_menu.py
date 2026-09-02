@@ -8,7 +8,7 @@ from database.player_repo import PlayerRepository
 async def hub_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Renderiza o Menu Principal / Hub Central despoluído e organizado."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 

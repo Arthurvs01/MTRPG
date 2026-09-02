@@ -1,7 +1,7 @@
 import uuid
 from dataclasses import dataclass, field
 from typing import Dict, Any, Optional, List
-from core.json_loader import JsonLoader
+from core.json_loader import get_items_data
 
 
 @dataclass
@@ -95,7 +95,7 @@ class Equipment:
         # O nível do equipamento amplia o efeito das runas acopladas (+15% por nível do item)
         rune_scale = 1.0 + (0.15 * self.level)
 
-        items_data = JsonLoader.load("items.json").get("items", {})
+        items_data = get_items_data()
 
         for rune_id in self.socketed_runes:
             r_info = items_data.get(rune_id)

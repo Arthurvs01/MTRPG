@@ -9,7 +9,7 @@ from systems.training_system import TrainingSystem
 async def training_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Exibe o menu de Treinamento no Dojo e Torre de Magia."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -48,7 +48,7 @@ async def training_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def train_sword_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -63,7 +63,7 @@ async def train_sword_action(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 async def train_magic_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -78,7 +78,7 @@ async def train_magic_action(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 async def train_touki_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 

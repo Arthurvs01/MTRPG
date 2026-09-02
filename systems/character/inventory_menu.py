@@ -11,7 +11,7 @@ from systems.inventory_system import InventorySystem
 async def inventory_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Menu da mochila (consumíveis, materiais de monstros, runas e baús)."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -87,7 +87,7 @@ async def inventory_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def equipments_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Submenu dedicado para equipamentos ativos e armaduras na bolsa."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -150,7 +150,7 @@ async def equip_item_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     equip_identifier = query.data.replace("equip_item_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -193,7 +193,7 @@ async def use_item_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     item_id = query.data.replace("use_item_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 

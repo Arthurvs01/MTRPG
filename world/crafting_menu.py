@@ -19,7 +19,7 @@ CATEGORY_NAMES = {
 async def crafting_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Exibe o menu principal de Forja organizado por categorias."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -62,7 +62,7 @@ async def crafting_category_menu(update: Update, context: ContextTypes.DEFAULT_T
     category = query.data.replace("craft_cat_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -130,7 +130,7 @@ async def craft_exec_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     recipe_id = query.data.replace("craft_exec_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -164,7 +164,7 @@ async def craft_exec_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def upgrade_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Menu para seleção de equipamentos e aprimoramento de nível / runas."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -236,7 +236,7 @@ async def upgrade_level_action(update: Update, context: ContextTypes.DEFAULT_TYP
     instance_id = query.data.replace("up_lvl_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -256,7 +256,7 @@ async def select_rune_for_socket(update: Update, context: ContextTypes.DEFAULT_T
     instance_id = query.data.replace("up_rune_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -308,7 +308,7 @@ async def socket_rune_action(update: Update, context: ContextTypes.DEFAULT_TYPE)
     rune_id = parts[2]
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 

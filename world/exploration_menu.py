@@ -13,7 +13,7 @@ from systems.energy_system import EnergySystem
 async def explore_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Menu principal de exploração e áreas selvagens."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -59,7 +59,7 @@ async def explore_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def hunt_region_fittoa(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Realiza uma caçada na região florestal de Fittoa."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -89,7 +89,7 @@ async def hunt_region_fittoa(update: Update, context: ContextTypes.DEFAULT_TYPE)
 async def hunt_region_rikarisu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Realiza uma caçada no Continente Demônio (Rikarisu)."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 

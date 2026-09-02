@@ -1,5 +1,6 @@
-import os
+import asyncio
 import json
+import os
 import uuid
 import time
 import tempfile
@@ -21,14 +22,27 @@ def _sort_listings_by_price(listings: List[Dict[str, Any]]) -> List[Dict[str, An
 class MarketRepository:
     """
     Repositório de Persistência do Mercado de Trocas entre Jogadores (Player-to-Player Marketplace).
-    Armazena ofertas de venda ativas de forma atômica e segura.
+    Mantém listagens em cache em memória para acesso rápido e persiste em disco assincronamente.
     Itens são separados de equipamentos e sempre ordenados do mais barato para o mais caro.
     """
 
     FILE_PATH = os.path.join(DATABASE_DIR, "market_listings.json")
+    _listings_cache: List[Dict[str, Any]] = []
+    _initialized: bool = False
 
     @classmethod
-    def _load_listings(cls) -> List[Dict[str, Any]]:
+    async def ensure_initialized(cls):
+        """Carrega o cache de listagens em memória uma única vez na inicialização do bot."""
+        if not cls._initialized:
+            # Tenta carregar do arquivo; se não existir, começa com lista vazia
+            cache = await asyncio.to_thread(cls._load_listings_sync)
+            cls._listings_cache = cache
+            cls._initialized = True
+            logger.info(f"Market cache initialized with {len(cls._listings_cache)} listings")
+
+    @classmethod
+    def _load_listings_sync(cls) -> List[Dict[str, Any]]:
+        """Carrega listagens do arquivo de forma síncrona (chamado em thread separado)."""
         if not os.path.exists(cls.FILE_PATH):
             return []
         try:
@@ -39,7 +53,8 @@ class MarketRepository:
             return []
 
     @classmethod
-    def _save_listings(cls, listings: List[Dict[str, Any]]) -> bool:
+    def _save_listings_sync(cls, listings: List[Dict[str, Any]]) -> bool:
+        """Salva listagens em arquivo de forma síncrona (chamado em thread separado)."""
         os.makedirs(os.path.dirname(cls.FILE_PATH), exist_ok=True)
         try:
             dir_name = os.path.dirname(cls.FILE_PATH)
@@ -53,26 +68,30 @@ class MarketRepository:
             return False
 
     @classmethod
-    def get_all_active_listings(cls) -> List[Dict[str, Any]]:
+    async def get_all_active_listings(cls) -> List[Dict[str, Any]]:
         """Retorna todas as listagens de venda disponíveis, ordenadas do mais barato para o mais caro."""
-        return _sort_listings_by_price(cls._load_listings())
+        await cls.ensure_initialized()
+        return _sort_listings_by_price(list(cls._listings_cache))
 
     @classmethod
-    def get_listings_by_type(cls, item_type: str) -> List[Dict[str, Any]]:
+    async def get_listings_by_type(cls, item_type: str) -> List[Dict[str, Any]]:
         """Retorna listagens filtradas por tipo ('material', 'consumable', 'rune', 'equipment')."""
-        all_listings = cls._load_listings()
-        filtered = [l for l in all_listings if l.get("item_type") == item_type]
+        await cls.ensure_initialized()
+        filtered = [l for l in cls._listings_cache if l.get("item_type") == item_type]
         return _sort_listings_by_price(filtered)
 
     @classmethod
-    def get_equipment_listings_by_slot(cls, slot: str) -> List[Dict[str, Any]]:
+    async def get_equipment_listings_by_slot(cls, slot: str) -> List[Dict[str, Any]]:
         """Retorna listagens de equipamentos filtrados por slot (weapon, staff, armor, accessory)."""
-        all_listings = cls._load_listings()
-        equipment_listings = [l for l in all_listings if l.get("item_type") == "equipment" and l.get("slot") == slot]
+        await cls.ensure_initialized()
+        equipment_listings = [
+            l for l in cls._listings_cache
+            if l.get("item_type") == "equipment" and l.get("slot") == slot
+        ]
         return _sort_listings_by_price(equipment_listings)
 
     @classmethod
-    def create_listing(
+    async def create_listing(
         cls,
         seller: Player,
         item_id: str,
@@ -103,7 +122,7 @@ class MarketRepository:
             "seller_chat_id": seller.chat_id,
             "seller_name": seller.character_name,
             "item_id": item_id,
-            "item_type": item_type,  # 'material', 'consumable', 'rune', 'equipment'
+            "item_type": item_type,
             "item_name": item_name,
             "quantity": quantity,
             "price_iron_coins": price_iron_coins,
@@ -111,16 +130,19 @@ class MarketRepository:
             "created_at": time.time(),
         }
 
-        listings = cls._load_listings()
-        listings.append(listing)
-        if cls._save_listings(listings):
-            return True, f"Oferta cadastrada com sucesso no Mercado da Guilda! (Preço: {price_iron_coins} Ferros / Qtd: {quantity})"
-        return False, "Erro ao salvar anúncio no mercado."
+        # Atualiza cache em memória
+        cls._listings_cache.append(listing)
+
+        # Persiste em disco de forma assíncrona (não-blocking)
+        await asyncio.to_thread(cls._save_listings_sync, list(cls._listings_cache))
+
+        return True, f"Oferta cadastrada com sucesso no Mercado da Guilda! (Preço: {price_iron_coins} Ferros / Qtd: {quantity})"
 
     @classmethod
-    def buy_listing(cls, buyer: Player, listing_id: str) -> Tuple[bool, str]:
+    async def buy_listing(cls, buyer: Player, listing_id: str) -> Tuple[bool, str]:
         """Processa a compra de uma oferta listada no mercado."""
-        listings = cls._load_listings()
+        await cls.ensure_initialized()
+        listings = list(cls._listings_cache)
         target_listing = None
         for l in listings:
             if l["id"] == listing_id:
@@ -159,21 +181,22 @@ class MarketRepository:
 
         # 3. Credita moedas no vendedor
         seller_chat_id = target_listing["seller_chat_id"]
-        seller = PlayerRepository.get_player(seller_chat_id)
+        seller = await PlayerRepository.get_player_async(seller_chat_id)
         if seller:
             seller.iron_coins += price
-            PlayerRepository.save_player(seller)
+            await PlayerRepository.save_player_async(seller)
 
         # 4. Remove a listagem do mercado
-        listings = [l for l in listings if l["id"] != listing_id]
-        cls._save_listings(listings)
+        cls._listings_cache = [l for l in cls._listings_cache if l["id"] != listing_id]
+        await asyncio.to_thread(cls._save_listings_sync, list(cls._listings_cache))
 
         return True, f"Você comprou [{target_listing['item_name']}] por {price} Moedas de Ferro!"
 
     @classmethod
-    def cancel_listing(cls, player: Player, listing_id: str) -> Tuple[bool, str]:
+    async def cancel_listing(cls, player: Player, listing_id: str) -> Tuple[bool, str]:
         """Cancela uma oferta do próprio jogador e devolve os itens à sua mochila."""
-        listings = cls._load_listings()
+        await cls.ensure_initialized()
+        listings = list(cls._listings_cache)
         target_listing = None
         for l in listings:
             if l["id"] == listing_id and l["seller_chat_id"] == player.chat_id:
@@ -200,7 +223,7 @@ class MarketRepository:
             materials = player.inventory.setdefault("materials", {})
             materials[item_id] = materials.get(item_id, 0) + qty
 
-        listings = [l for l in listings if l["id"] != listing_id]
-        cls._save_listings(listings)
+        cls._listings_cache = [l for l in cls._listings_cache if l["id"] != listing_id]
+        await asyncio.to_thread(cls._save_listings_sync, list(cls._listings_cache))
 
         return True, f"Anúncio cancelado! O item [{target_listing['item_name']}] retornou para sua mochila."

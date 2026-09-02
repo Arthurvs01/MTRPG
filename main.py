@@ -1,19 +1,17 @@
 """
 Módulo Principal do Bot de RPG de Mushoku Tensei via Telegram.
-Inicializa o bot, registra todas as rotas de menus, forja, mercado entre players,
-treinamentos por classe, energia e inicia o polling de eventos.
+Inicializa o bot, registra comandos e handlers de callbacks (botões).
 """
 import logging
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
+    CallbackQueryHandler,
     MessageHandler,
     ConversationHandler,
-    CallbackQueryHandler,
     filters,
 )
 from config import BOT_TOKEN
-from core.callback_router import CallbackRouter
 
 # Handlers de Registro e Hub
 from systems.login_system import (
@@ -98,9 +96,6 @@ logger = logging.getLogger(__name__)
 
 def build_app():
     """Constrói e configura a aplicação do Telegram Bot."""
-    if not BOT_TOKEN:
-        raise ValueError("BOT_TOKEN não está definido. Verifique o arquivo .env.")
-
     app = (
         ApplicationBuilder()
         .token(BOT_TOKEN)
@@ -112,81 +107,7 @@ def build_app():
     )
 
     # ==========================================
-    # 1. Roteamento Centralizado de Callbacks
-    # ==========================================
-    router = CallbackRouter()
-
-    # Criação de Personagem
-    router.register("race_", select_race_callback)
-    router.register("vocation_", select_vocation_callback)
-
-    # Hub Principal
-    router.register("hub_main", hub_main_menu)
-
-    # Menus de Personagem & Perfil Despoluídos
-    router.register("profile", character_profile)
-    router.register("skills_menu", character_skills_menu)
-    router.register("stat_distribute_menu", stat_distribute_menu)
-    router.register("add_stat_", add_stat)
-
-    # Mochila & Equipamentos
-    router.register("inventory_menu", inventory_menu)
-    router.register("equipments_menu", equipments_menu)
-    router.register("equip_item_", equip_item_action)
-    router.register("use_item_", use_item_action)
-
-    # Guilda de Aventureiros
-    router.register("guild_main", guild_main)
-    router.register("guild_quests_board", guild_quests_board)
-    router.register("guild_active_quests", guild_active_quests)
-    router.register("accept_quest_", accept_quest_action)
-    router.register("claim_quest_", claim_quest_action)
-
-    # Forja, Crafting e Upgrades
-    router.register("crafting_main", crafting_main)
-    router.register("craft_cat_", crafting_category_menu)
-    router.register("craft_exec_", craft_exec_action)
-    router.register("upgrade_menu", upgrade_menu)
-    router.register("up_lvl_", upgrade_level_action)
-    router.register("up_rune_", select_rune_for_socket)
-    router.register("sock_", socket_rune_action)
-
-    # Mercado entre Players (Player-to-Player)
-    router.register("market_main", market_main)
-    router.register("mkt_all", market_main)           # Filtro: todos itens
-    router.register("mkt_weapon", market_main)      # Filtro: armas
-    router.register("mkt_staff", market_main)       # Filtro: cajados
-    router.register("mkt_armor", market_main)       # Filtro: armaduras
-    router.register("mkt_accessory", market_main)   # Filtro: acessórios
-    router.register("mkt_buy_", market_buy_action)  # Compra de listing específico
-    router.register("mkt_my_listings", market_my_listings)
-    router.register("mkt_cancel_", market_cancel_action)
-    router.register("mkt_create_menu", market_create_menu)
-    router.register("mkt_sell_", market_sell_item_action)
-
-    # Exploração e Caçada
-    router.register("explore_menu", explore_menu)
-    router.register("hunt_fittoa", hunt_region_fittoa)
-    router.register("hunt_rikarisu", hunt_region_rikarisu)
-
-    # Estalagem e Descanso
-    router.register("inn_main", inn_main)
-    router.register("inn_rest_simple", inn_rest_simple_action)
-    router.register("inn_rest_luxury", inn_rest_luxury_action)
-    router.register("inn_rest_diamonds", inn_rest_diamonds_action)
-
-    # Treinamento & Dojo
-    router.register("training_main", training_main)
-    router.register("train_sword", train_sword_action)
-    router.register("train_magic", train_magic_action)
-    router.register("train_touki", train_touki_action)
-
-    # Baús & LootBoxes
-    router.register("lootbox_main", lootbox_main)
-    router.register("open_box_", open_box_action)
-
-    # ==========================================
-    # 2. Handlers de Conversação e Comandos
+    # 1. Comando /start (único comando restante)
     # ==========================================
     login_conv = ConversationHandler(
         entry_points=[CommandHandler("start", start_login)],
@@ -200,19 +121,81 @@ def build_app():
     )
 
     app.add_handler(login_conv)
-    app.add_handler(CommandHandler("hub", hub_main_menu))
-    app.add_handler(CommandHandler("menu", hub_main_menu))
-    app.add_handler(CommandHandler("perfil", character_profile))
-    app.add_handler(CommandHandler("guilda", guild_main))
-    app.add_handler(CommandHandler("forja", crafting_main))
-    app.add_handler(CommandHandler("mercado", market_main))
-    app.add_handler(CommandHandler("explorar", explore_menu))
-    app.add_handler(CommandHandler("estalagem", inn_main))
-    app.add_handler(CommandHandler("treino", training_main))
-    app.add_handler(CommandHandler("bau", lootbox_main))
 
-    # Handler Central de Callbacks Inline
-    app.add_handler(CallbackQueryHandler(router.handle))
+    # ==========================================
+    # 2. Handlers de CallbackQuery (Botões Inline)
+    # Usamos regex patterns para matching - o Telegram filtra antes de chamar
+    # ==========================================
+
+    #menu principal
+    app.add_handler(CallbackQueryHandler(hub_main_menu, pattern="^hub_main$"))
+
+    # Personagem & Perfil
+    app.add_handler(CallbackQueryHandler(character_profile, pattern="^profile$"))
+    app.add_handler(CallbackQueryHandler(character_skills_menu, pattern="^skills_menu$"))
+    app.add_handler(CallbackQueryHandler(stat_distribute_menu, pattern="^stat_distribute_menu$"))
+    app.add_handler(CallbackQueryHandler(add_stat, pattern="^add_stat_$"))
+
+    # Mochila & Equipamentos
+    app.add_handler(CallbackQueryHandler(inventory_menu, pattern="^inventory_menu$"))
+    app.add_handler(CallbackQueryHandler(equipments_menu, pattern="^equipments_menu$"))
+    app.add_handler(CallbackQueryHandler(equip_item_action, pattern="^equip_item_$"))
+    app.add_handler(CallbackQueryHandler(use_item_action, pattern="^use_item_$"))
+
+    # Guilda de Aventureiros
+    app.add_handler(CallbackQueryHandler(guild_main, pattern="^guild_main$"))
+    app.add_handler(CallbackQueryHandler(guild_quests_board, pattern="^guild_quests_board$"))
+    app.add_handler(CallbackQueryHandler(guild_active_quests, pattern="^guild_active_quests$"))
+    app.add_handler(CallbackQueryHandler(accept_quest_action, pattern="^accept_quest_$"))
+    app.add_handler(CallbackQueryHandler(claim_quest_action, pattern="^claim_quest_$"))
+
+    # Forja, Crafting e Upgrades
+    app.add_handler(CallbackQueryHandler(crafting_main, pattern="^crafting_main$"))
+    app.add_handler(CallbackQueryHandler(crafting_category_menu, pattern="^craft_cat_$"))
+    app.add_handler(CallbackQueryHandler(craft_exec_action, pattern="^craft_exec_$"))
+    app.add_handler(CallbackQueryHandler(upgrade_menu, pattern="^upgrade_menu$"))
+    app.add_handler(CallbackQueryHandler(upgrade_level_action, pattern="^up_lvl_$"))
+    app.add_handler(CallbackQueryHandler(select_rune_for_socket, pattern="^up_rune_$"))
+    app.add_handler(CallbackQueryHandler(socket_rune_action, pattern="^sock_$"))
+
+    # Mercado entre Players (Player-to-Player)
+    app.add_handler(CallbackQueryHandler(market_main, pattern="^market_main$"))
+    app.add_handler(CallbackQueryHandler(market_main, pattern="^mkt_all$"))        # Filtro: todos itens
+    app.add_handler(CallbackQueryHandler(market_main, pattern="^mkt_weapon$"))     # Filtro: armas
+    app.add_handler(CallbackQueryHandler(market_main, pattern="^mkt_staff$"))      # Filtro: cajados
+    app.add_handler(CallbackQueryHandler(market_main, pattern="^mkt_armor$"))      # Filtro: armaduras
+    app.add_handler(CallbackQueryHandler(market_main, pattern="^mkt_accessory$"))   # Filtro: acessórios
+    app.add_handler(CallbackQueryHandler(market_buy_action, pattern="^mkt_buy_$"))  # Compra de listing específico
+    app.add_handler(CallbackQueryHandler(market_my_listings, pattern="^mkt_my_listings$"))
+    app.add_handler(CallbackQueryHandler(market_cancel_action, pattern="^mkt_cancel_$"))
+    app.add_handler(CallbackQueryHandler(market_create_menu, pattern="^mkt_create_menu$"))
+    app.add_handler(CallbackQueryHandler(market_sell_item_action, pattern="^mkt_sell_$"))
+
+    # Exploração e Caçada
+    app.add_handler(CallbackQueryHandler(explore_menu, pattern="^explore_menu$"))
+    app.add_handler(CallbackQueryHandler(hunt_region_fittoa, pattern="^hunt_fittoa$"))
+    app.add_handler(CallbackQueryHandler(hunt_region_rikarisu, pattern="^hunt_rikarisu$"))
+
+    # Estalagem e Descanso
+    app.add_handler(CallbackQueryHandler(inn_main, pattern="^inn_main$"))
+    app.add_handler(CallbackQueryHandler(inn_rest_simple_action, pattern="^inn_rest_simple$"))
+    app.add_handler(CallbackQueryHandler(inn_rest_luxury_action, pattern="^inn_rest_luxury$"))
+    app.add_handler(CallbackQueryHandler(inn_rest_diamonds_action, pattern="^inn_rest_diamonds$"))
+
+    # Treinamento & Dojo
+    app.add_handler(CallbackQueryHandler(training_main, pattern="^training_main$"))
+    app.add_handler(CallbackQueryHandler(train_sword_action, pattern="^train_sword$"))
+    app.add_handler(CallbackQueryHandler(train_magic_action, pattern="^train_magic$"))
+    app.add_handler(CallbackQueryHandler(train_touki_action, pattern="^train_touki$"))
+
+    # Baús & LootBoxes
+    app.add_handler(CallbackQueryHandler(lootbox_main, pattern="^lootbox_main$"))
+    app.add_handler(CallbackQueryHandler(open_box_action, pattern="^open_box_$"))
+
+    # ==========================================
+    # 3. Handler Central de Erros (opcional)
+    # ==========================================
+    # Pode adicionar error handlers aqui se desejar
 
     return app
 

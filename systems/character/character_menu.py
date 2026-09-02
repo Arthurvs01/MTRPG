@@ -9,13 +9,13 @@ from systems.progression_system import ProgressionSystem
 async def character_profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Renderiza a ficha resumida e cartão de aventureiro do jogador."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
     player.regen_energy_passively()
 
-    touki_str = f"🛡️ {player.touki}/{player.max_touki}" if player.has_touki_awakened else "Não Despertado"
+    touki_display = f"🛡️ {player.touki}/{player.max_touki}" if player.has_touki_awakened else "Não Despertado"
 
     text = TextLoader.load(
         "character_profile.txt",
@@ -34,7 +34,7 @@ async def character_profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
         max_mana=player.max_mana,
         energy=player.energy,
         max_energy=player.max_energy,
-        touki_str=touki_str,
+        touki=touki_display,
         total_attack=player.get_total_attack(),
         total_defense=player.get_total_defense(),
         total_speed=player.get_total_speed(),
@@ -71,7 +71,7 @@ async def character_profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def character_skills_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Submenu dedicado para visualização das Habilidades de Espada e Magias."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -115,7 +115,7 @@ async def character_skills_menu(update: Update, context: ContextTypes.DEFAULT_TY
 async def stat_distribute_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Menu para alocação de pontos de status adquiridos por nível."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -162,7 +162,7 @@ async def add_stat(update: Update, context: ContextTypes.DEFAULT_TYPE):
     stat_key = data.replace("add_stat_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 

@@ -9,7 +9,7 @@ from systems.lootbox_system import LootboxSystem
 async def lootbox_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Exibe o Cofre das Relíquias e os Baús disponíveis."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -56,7 +56,7 @@ async def open_box_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     box_id = query.data.replace("open_box_", "")
 
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 

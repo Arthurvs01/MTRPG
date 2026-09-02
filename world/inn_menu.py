@@ -9,7 +9,7 @@ from systems.energy_system import EnergySystem
 async def inn_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Exibe o menu da Estalagem para restauração de vida, mana e energia."""
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -55,7 +55,7 @@ async def inn_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def inn_rest_simple_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -69,7 +69,7 @@ async def inn_rest_simple_action(update: Update, context: ContextTypes.DEFAULT_T
 
 async def inn_rest_luxury_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
@@ -83,7 +83,7 @@ async def inn_rest_luxury_action(update: Update, context: ContextTypes.DEFAULT_T
 
 async def inn_rest_diamonds_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
-    player = PlayerRepository.get_player(chat_id)
+    player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
