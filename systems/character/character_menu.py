@@ -143,6 +143,7 @@ async def stat_distribute_menu(update: Update, context: ContextTypes.DEFAULT_TYP
         ],
         [
             InlineKeyboardButton("⬅️ Voltar ao Cartão", callback_data="profile"),
+            InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
         ]
     ]
 
@@ -168,6 +169,6 @@ async def add_stat(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     success, msg = ProgressionSystem.distribute_stat(player, stat_key, 1)
     if success:
-        PlayerRepository.save_player(player)
+        await PlayerRepository.save_player(player)
 
     await stat_distribute_menu(update, context)

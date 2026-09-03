@@ -140,7 +140,7 @@ async def select_vocation_callback(update: Update, context: ContextTypes.DEFAULT
         player.sword_styles["Deus da Espada"] = "Iniciante"
 
     # Salva no banco de dados
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
 
     await query.answer("Registro concluído! Bem-vindo à sua nova vida!", show_alert=True)
     await hub_main_menu(update, context)

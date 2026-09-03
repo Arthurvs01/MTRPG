@@ -74,14 +74,20 @@ async def hunt_region_fittoa(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     EnergySystem.consume(player, EnergySystem.HUNT_ENERGY_COST)
 
-    # Sorteio de monstro por probabilidade
+    # Sorteio de monstro por probabilidade escalonada
     roll = random.random()
-    if roll < 0.55:
+    if roll < 0.35:
         monster_id = "buena_wild_boar"
-    elif roll < 0.85:
+    elif roll < 0.60:
         monster_id = "horned_wolf"
-    else:
+    elif roll < 0.78:
+        monster_id = "pax_monkey"
+    elif roll < 0.88:
+        monster_id = "freshwater_snake"
+    elif roll < 0.95:
         monster_id = "treant_forest"
+    else:
+        monster_id = "iron_claw_bear"
 
     await _process_hunt(update, context, player, monster_id, "Floresta de Fittoa", "exploracao_floresta.jpg")
 
@@ -105,10 +111,18 @@ async def hunt_region_rikarisu(update: Update, context: ContextTypes.DEFAULT_TYP
     EnergySystem.consume(player, EnergySystem.HUNT_ENERGY_COST)
 
     roll = random.random()
-    if roll < 0.65:
+    if roll < 0.35:
         monster_id = "demon_coyote_rikarisu"
-    else:
+    elif roll < 0.60:
+        monster_id = "sand_worm_demon"
+    elif roll < 0.78:
         monster_id = "kougumo_spider"
+    elif roll < 0.90:
+        monster_id = "demon_vulture_roc"
+    elif roll < 0.96:
+        monster_id = "stone_shell_tortoise"
+    else:
+        monster_id = "two_headed_wyvern"
 
     await _process_hunt(update, context, player, monster_id, "Terras de Rikarisu", "exploracao_deserto.jpg")
 
@@ -154,7 +168,7 @@ async def _process_hunt(update: Update, context: ContextTypes.DEFAULT_TYPE, play
         summary_lines.append("⚖️ O combate terminou em empate e ambos recuaram.")
 
     # Salva o estado atualizado do jogador
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
 
     text = TextLoader.load(
         "hunt_report.txt",

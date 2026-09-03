@@ -1,6 +1,8 @@
 📜 <b>═══ QUADRO DE MISSÕES DA GUILDA ═══</b>
 
-Seu rank atual é <b>Rank {adventurer_rank}</b>.
-Contratos disponíveis para seu prestígio:
+📍 <b>Região:</b> {region_name}
+🎖️ <b>Seu Prestígio:</b> Rank {adventurer_rank}
+📅 <b>Concluídas Hoje:</b> {daily_completed}/2
 
+<b>Contratos em Destaque no Quadro:</b>
 {quests_body}

@@ -40,7 +40,8 @@ async def inn_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
             InlineKeyboardButton("⚡ Elixir Divino (10 💎)", callback_data="inn_rest_diamonds"),
         ],
         [
-            InlineKeyboardButton("⬅️ Voltar ao Hub Principal", callback_data="hub_main"),
+            InlineKeyboardButton("⬅️ Voltar ao Hub", callback_data="hub_main"),
+            InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
         ]
     ]
 
@@ -61,7 +62,7 @@ async def inn_rest_simple_action(update: Update, context: ContextTypes.DEFAULT_T
 
     success, msg = EnergySystem.rest_inn_simple(player)
     if success:
-        PlayerRepository.save_player(player)
+        await PlayerRepository.save_player(player)
 
     await update.callback_query.answer(msg, show_alert=True)
     await inn_main(update, context)
@@ -75,7 +76,7 @@ async def inn_rest_luxury_action(update: Update, context: ContextTypes.DEFAULT_T
 
     success, msg = EnergySystem.rest_inn_luxury(player)
     if success:
-        PlayerRepository.save_player(player)
+        await PlayerRepository.save_player(player)
 
     await update.callback_query.answer(msg, show_alert=True)
     await inn_main(update, context)
@@ -89,7 +90,7 @@ async def inn_rest_diamonds_action(update: Update, context: ContextTypes.DEFAULT
 
     success, msg = EnergySystem.recharge_with_diamonds(player)
     if success:
-        PlayerRepository.save_player(player)
+        await PlayerRepository.save_player(player)
 
     await update.callback_query.answer(msg, show_alert=True)
     await inn_main(update, context)

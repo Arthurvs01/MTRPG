@@ -1,5 +1,5 @@
 import logging
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 from models.player import Player
 from models.skill import Spell
 from core.json_loader import JsonLoader

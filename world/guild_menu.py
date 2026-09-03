@@ -52,34 +52,79 @@ async def guild_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def guild_quests_board(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Exibe as missões disponíveis para o Rank do jogador."""
+    """Exibe 4 missões aleatórias da região selecionada para o Rank do jogador."""
     chat_id = update.effective_chat.id
     player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
-    quests = QuestRepository.get_available_quests(player.adventurer_rank)
+    query = update.callback_query
+    callback_data = query.data if query else ""
 
+    # Determina a região selecionada (fittoa ou rikarisu)
+    if "rikarisu" in callback_data:
+        current_region = "rikarisu"
+    elif "fittoa" in callback_data:
+        current_region = "fittoa"
+    else:
+        loc = getattr(player, "current_location", "").lower()
+        orig = getattr(player, "origin_continent", "").lower()
+        if "rikarisu" in loc or "demon" in orig:
+            current_region = "rikarisu"
+        else:
+            current_region = "fittoa"
+
+    # Obtém as 4 missões diárias para esta região
+    quests = QuestRepository.get_daily_board_quests(player, region=current_region)
+    await PlayerRepository.save_player(player)
+
+    region_title = "🌲 Floresta de Fittoa (Asura)" if current_region == "fittoa" else "🏜️ Terras de Rikarisu (Demônio)"
+
+    # Abas de navegação de região
+    tab_buttons = []
+    if current_region == "fittoa":
+        tab_buttons.append(InlineKeyboardButton("🌲 Fittoa (Ativo)", callback_data="guild_quests_board_fittoa"))
+        tab_buttons.append(InlineKeyboardButton("🏜️ Ver Rikarisu", callback_data="guild_quests_board_rikarisu"))
+    else:
+        tab_buttons.append(InlineKeyboardButton("🌲 Ver Fittoa", callback_data="guild_quests_board_fittoa"))
+        tab_buttons.append(InlineKeyboardButton("🏜️ Rikarisu (Ativo)", callback_data="guild_quests_board_rikarisu"))
+
+    keyboard = [tab_buttons]
     quests_body_list = []
-    keyboard = []
+    daily_completed = player.get_daily_quests_completed()
+
     for q in quests:
         quests_body_list.append(
             f"🔸 <b>[{q.rank}] {q.title}</b>\n"
             f"   📝 {q.description}\n"
-            f"   💰 Recompensa: {q.reward_iron_coins} Ferros | 🎖️ +{q.reward_guild_points} pts"
+            f"   🎯 Alvo: {q.required_count}x monstro | 💰 {q.reward_iron_coins} Ferros | 🎖️ +{q.reward_guild_points} pts"
         )
-        keyboard.append([
-            InlineKeyboardButton(f"Aceitar [{q.rank}] {q.title[:20]}...", callback_data=f"accept_quest_{q.id}")
-        ])
+
+        is_active = any(aq.get("id") == q.id for aq in player.active_quests)
+        if is_active:
+            keyboard.append([
+                InlineKeyboardButton(f"⏳ Ativo: {q.title[:20]}...", callback_data="guild_active_quests")
+            ])
+        elif daily_completed >= 2:
+            keyboard.append([
+                InlineKeyboardButton(f"🔒 Limite Diário: {q.title[:18]}...", callback_data=f"accept_quest_{q.id}")
+            ])
+        else:
+            keyboard.append([
+                InlineKeyboardButton(f"📜 Aceitar [{q.rank}] {q.title[:20]}...", callback_data=f"accept_quest_{q.id}")
+            ])
 
     text = TextLoader.load(
         "guild_quests.txt",
+        region_name=region_title,
         adventurer_rank=player.adventurer_rank,
+        daily_completed=daily_completed,
         quests_body="\n\n".join(quests_body_list) if quests_body_list else "<i>Nenhum contrato disponível para seu rank no momento.</i>",
     )
 
     keyboard.append([
-        InlineKeyboardButton("⬅️ Voltar à Guilda", callback_data="guild_main")
+        InlineKeyboardButton("⬅️ Voltar à Guilda", callback_data="guild_main"),
+        InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
     ])
 
     await MessageManager.send_or_edit(
@@ -103,7 +148,7 @@ async def accept_quest_action(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     success, msg = QuestSystem.accept_quest(player, quest_id)
     if success:
-        PlayerRepository.save_player(player)
+        await PlayerRepository.save_player(player)
 
     await query.answer(msg, show_alert=True)
     await guild_active_quests(update, context)
@@ -117,11 +162,13 @@ async def guild_active_quests(update: Update, context: ContextTypes.DEFAULT_TYPE
         return
 
     keyboard = []
+    daily_completed = player.get_daily_quests_completed()
+
     if not player.active_quests:
-        active_body = "<i>Você não possui nenhum contrato ativo no momento.</i>"
+        active_body = f"<i>Você não possui nenhum contrato ativo no momento.</i>\n\n📅 <b>Missões Concluídas Hoje:</b> {daily_completed}/2"
         keyboard.append([InlineKeyboardButton("📜 Ver Quadro de Missões", callback_data="guild_quests_board")])
     else:
-        body_parts = []
+        body_parts = [f"📅 <b>Missões Concluídas Hoje:</b> {daily_completed}/2\n"]
         for q in player.active_quests:
             status_tag = "✅ PRONTA PARA ENTREGA" if q.get("completed") else f"⏳ Progresso: {q.get('current_count', 0)}/{q.get('required_count', 1)}"
             body_parts.append(f"🔸 <b>{q['title']}</b>\n   Status: {status_tag}")
@@ -132,7 +179,10 @@ async def guild_active_quests(update: Update, context: ContextTypes.DEFAULT_TYPE
         active_body = "\n\n".join(body_parts)
         keyboard.append([InlineKeyboardButton("📜 Pegar Mais Missões", callback_data="guild_quests_board")])
 
-    keyboard.append([InlineKeyboardButton("⬅️ Voltar à Guilda", callback_data="guild_main")])
+    keyboard.append([
+        InlineKeyboardButton("⬅️ Voltar à Guilda", callback_data="guild_main"),
+        InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
+    ])
 
     text = TextLoader.load(
         "guild_active_quests.txt",
@@ -161,7 +211,8 @@ async def claim_quest_action(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     success, msg = QuestSystem.claim_rewards(player, quest_id)
     if success:
-        PlayerRepository.save_player(player)
+        await PlayerRepository.save_player(player)
 
-    await query.answer("Recompensa resgatada com sucesso!", show_alert=True)
+    alert_text = msg.replace("<b>", "").replace("</b>", "").replace("🎉 ", "").replace("💰 ", "")
+    await query.answer(alert_text[:200], show_alert=True)
     await guild_active_quests(update, context)

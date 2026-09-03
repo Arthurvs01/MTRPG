@@ -49,7 +49,14 @@ class PlayerRepository:
             return False
 
     @classmethod
-    def _save_player_sync(cls, player: Player, target_file: str) -> None:
+    def save_player_sync(cls, player: Player) -> bool:
+        """Versão síncrona pública para salvar o jogador."""
+        target_file = cls._get_player_file(player.chat_id)
+        os.makedirs(os.path.dirname(target_file), exist_ok=True)
+        return cls._save_player_sync(player, target_file)
+
+    @classmethod
+    def _save_player_sync(cls, player: Player, target_file: str) -> bool:
         """Versão síncrona do salvamento (executada em thread separado)."""
         try:
             dir_name = os.path.dirname(target_file)
@@ -57,8 +64,20 @@ class PlayerRepository:
                 json.dump(player.to_dict(), tf, indent=2, ensure_ascii=False)
                 temp_name = tf.name
             os.replace(temp_name, target_file)
+            return True
         except Exception as e:
             logger.error(f"Erro ao salvar jogador {player.chat_id} (sync): {e}")
+            return False
+
+    @classmethod
+    async def save_player_async(cls, player: Player) -> bool:
+        """Alias para compatibilidade assíncrona."""
+        return await cls.save_player(player)
+
+    @classmethod
+    async def get_player_async(cls, chat_id: int) -> Optional[Player]:
+        """Alias para compatibilidade assíncrona."""
+        return await cls.get_player(chat_id)
 
     @classmethod
     async def get_player(cls, chat_id: int) -> Optional[Player]:

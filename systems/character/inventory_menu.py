@@ -72,7 +72,10 @@ async def inventory_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ])
     keyboard.append([
         InlineKeyboardButton("🏛️ Mercado da Guilda", callback_data="market_main"),
-        InlineKeyboardButton("🏰 Hub Principal", callback_data="hub_main"),
+        InlineKeyboardButton("⬅️ Voltar ao Perfil", callback_data="profile"),
+    ])
+    keyboard.append([
+        InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
     ])
 
     await MessageManager.send_or_edit(
@@ -182,7 +185,7 @@ async def equip_item_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif equip_identifier in player.inventory.get("equipment", []):
         player.inventory["equipment"].remove(equip_identifier)
 
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
     await query.answer(f"Você equipou [{target_eq_dict.get('name')}] no slot [{slot}]!", show_alert=True)
     await equipments_menu(update, context)
 
@@ -199,7 +202,7 @@ async def use_item_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     success, msg = InventorySystem.use_consumable(player, item_id)
     if success:
-        PlayerRepository.save_player(player)
+        await PlayerRepository.save_player(player)
 
     await query.answer(msg.replace("<b>", "").replace("</b>", ""), show_alert=True)
     await inventory_menu(update, context)

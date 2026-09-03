@@ -4,10 +4,18 @@ Carrega variáveis de ambiente de forma segura utilizando python-dotenv.
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv
-
-# Carrega as variáveis do arquivo .env
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    env_file = Path(__file__).resolve().parent / ".env"
+    if env_file.exists():
+        with open(env_file, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip())
 
 # Diretório base do projeto
 BASE_DIR = Path(__file__).resolve().parent

@@ -96,6 +96,23 @@ async def market_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     keyboard = [filter_buttons]
 
+    # Botões de compra para as ofertas exibidas (máx 6)
+    for l in displayed_listings[:6]:
+        if l.get("seller_chat_id") != player.chat_id:
+            keyboard.append([
+                InlineKeyboardButton(f"🛒 Comprar {l['item_name'][:16]} ({l['price_iron_coins']} F)", callback_data=f"mkt_buy_{l['id']}")
+            ])
+
+    # Botões de ação e navegação
+    keyboard.append([
+        InlineKeyboardButton("➕ Anunciar Item", callback_data="mkt_create_menu"),
+        InlineKeyboardButton("📋 Minhas Ofertas", callback_data="mkt_my_listings"),
+    ])
+    keyboard.append([
+        InlineKeyboardButton("⬅️ Voltar à Guilda", callback_data="guild_main"),
+        InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
+    ])
+
     # Carregar template do mercado
     market_listings_body = []
     for l in active_item_listings:
@@ -108,6 +125,8 @@ async def market_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     market_text = TextLoader.load(
         "market_main.txt",
         character_name=player.character_name,
+        iron_coins=player.iron_coins,
+        diamonds=player.diamonds,
         market_listings_body=market_listings_body_str,
     )
 
@@ -136,12 +155,12 @@ async def market_buy_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await market_main(update, context)
         return
 
-    success, msg = MarketRepository.buy_listing(buyer, listing_id)
+    success, msg = await MarketRepository.buy_listing(buyer, listing_id)
     if not success:
         await query.answer(msg, show_alert=True)
         return
 
-    PlayerRepository.save_player(buyer)
+    await PlayerRepository.save_player(buyer)
     await query.answer(msg, show_alert=True)
     await market_main(update, context)
 
@@ -153,7 +172,7 @@ async def market_my_listings(update: Update, context: ContextTypes.DEFAULT_TYPE)
     if not player:
         return
 
-    listings = MarketRepository.get_all_active_listings()
+    listings = await MarketRepository.get_all_active_listings()
     my_listings = [l for l in listings if l["seller_chat_id"] == player.chat_id]
 
     lines = []
@@ -168,6 +187,9 @@ async def market_my_listings(update: Update, context: ContextTypes.DEFAULT_TYPE)
     keyboard.append([
         InlineKeyboardButton("➕ Anunciar Novo Item", callback_data="mkt_create_menu"),
         InlineKeyboardButton("⬅️ Voltar ao Mercado", callback_data="market_main"),
+    ])
+    keyboard.append([
+        InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
     ])
 
     text = TextLoader.load(
@@ -195,12 +217,12 @@ async def market_cancel_action(update: Update, context: ContextTypes.DEFAULT_TYP
     if not player:
         return
 
-    success, msg = MarketRepository.cancel_listing(player, listing_id)
+    success, msg = await MarketRepository.cancel_listing(player, listing_id)
     if not success:
         await query.answer(msg, show_alert=True)
         return
 
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
     await query.answer("Anúncio cancelado com sucesso!", show_alert=True)
     await market_my_listings(update, context)
 
@@ -220,7 +242,6 @@ async def market_create_menu(update: Update, context: ContextTypes.DEFAULT_TYPE)
             mat_item = ItemRepository.get_item(mat_id)
             name = mat_item.name if mat_item else mat_id
             base_val = mat_item.value_in_iron_coins if mat_item else 20
-            # Preço sugerido do mercado = 1.2x do valor base
             suggested_price = int(base_val * 1.3)
             keyboard.append([
                 InlineKeyboardButton(f"Vender {name} x1 por {suggested_price} F", callback_data=f"mkt_sell_mat_{mat_id}_{suggested_price}")
@@ -237,7 +258,8 @@ async def market_create_menu(update: Update, context: ContextTypes.DEFAULT_TYPE)
             ])
 
     keyboard.append([
-        InlineKeyboardButton("⬅️ Voltar ao Mercado", callback_data="market_main")
+        InlineKeyboardButton("⬅️ Voltar ao Mercado", callback_data="market_main"),
+        InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
     ])
 
     text = (
@@ -294,7 +316,7 @@ async def market_sell_item_action(update: Update, context: ContextTypes.DEFAULT_
     else:
         return
 
-    success, msg = MarketRepository.create_listing(
+    success, msg = await MarketRepository.create_listing(
         seller=player,
         item_id=item_id,
         item_type=real_type,
@@ -303,7 +325,7 @@ async def market_sell_item_action(update: Update, context: ContextTypes.DEFAULT_
     )
 
     if success:
-        PlayerRepository.save_player(player)
+        await PlayerRepository.save_player(player)
 
     await query.answer(msg, show_alert=True)
     await market_my_listings(update, context)

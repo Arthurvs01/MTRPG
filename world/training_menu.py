@@ -33,7 +33,8 @@ async def training_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
             InlineKeyboardButton("🥋 Condicionamento de Touki", callback_data="train_touki"),
         ],
         [
-            InlineKeyboardButton("⬅️ Voltar ao Hub Principal", callback_data="hub_main"),
+            InlineKeyboardButton("⬅️ Voltar ao Hub", callback_data="hub_main"),
+            InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
         ]
     ]
 
@@ -57,7 +58,7 @@ async def train_sword_action(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await update.callback_query.answer(msg, show_alert=True)
         return
 
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
     await _show_training_result(update, context, player, "Dojo de Espadas", logs)
 
 
@@ -72,7 +73,7 @@ async def train_magic_action(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await update.callback_query.answer(msg, show_alert=True)
         return
 
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
     await _show_training_result(update, context, player, "Torre de Magia", logs)
 
 
@@ -87,7 +88,7 @@ async def train_touki_action(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await update.callback_query.answer(msg, show_alert=True)
         return
 
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
     await _show_training_result(update, context, player, "Condicionamento Físico", logs)
 
 

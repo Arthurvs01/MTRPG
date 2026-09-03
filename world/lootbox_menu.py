@@ -37,7 +37,8 @@ async def lootbox_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
             InlineKeyboardButton("✨ Relíquia das Seis Faces (100 💎)", callback_data="open_box_six_sided_relic"),
         ],
         [
-            InlineKeyboardButton("⬅️ Voltar ao Hub Principal", callback_data="hub_main"),
+            InlineKeyboardButton("⬅️ Voltar ao Hub", callback_data="hub_main"),
+            InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
         ]
     ]
 
@@ -65,7 +66,7 @@ async def open_box_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.answer(msg, show_alert=True)
         return
 
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
 
     result_text = TextLoader.load(
         "lootbox_result.txt",
@@ -81,7 +82,8 @@ async def open_box_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
             InlineKeyboardButton("🎒 Ver na Mochila", callback_data="inventory_menu"),
         ],
         [
-            InlineKeyboardButton("⬅️ Voltar ao Hub", callback_data="hub_main"),
+            InlineKeyboardButton("⬅️ Voltar aos Baús", callback_data="lootbox_main"),
+            InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
         ]
     ]
 

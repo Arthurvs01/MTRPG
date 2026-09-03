@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 import logging
 from typing import Dict, Any, List, Optional
 from models.item import Equipment
@@ -134,8 +135,11 @@ class Player:
             "accessory": None
         }
 
-        # Quests em Andamento
+        # Quests em Andamento e Controle Diário
         self.active_quests: List[Dict[str, Any]] = []
+        self.daily_quests_completed: int = 0
+        self.last_quest_date: str = ""
+        self.daily_quests_board: Dict[str, Any] = {}
 
     def regen_energy_passively(self):
         """Regenera energia passivamente com base no tempo decorrido (+1 a cada 3 minutos)."""
@@ -155,6 +159,23 @@ class Player:
             self.energy -= amount
             return True
         return False
+
+    def get_today_str(self) -> str:
+        return datetime.now().strftime("%Y-%m-%d")
+
+    def get_daily_quests_completed(self) -> int:
+        today = self.get_today_str()
+        if self.last_quest_date != today:
+            self.daily_quests_completed = 0
+            self.last_quest_date = today
+        return self.daily_quests_completed
+
+    def can_complete_daily_quest(self) -> bool:
+        return self.get_daily_quests_completed() < 2
+
+    def increment_daily_quests_completed(self):
+        self.get_daily_quests_completed()
+        self.daily_quests_completed += 1
 
     def get_total_attack(self) -> int:
         base = self.strength
@@ -246,6 +267,9 @@ class Player:
             "inventory": self.inventory,
             "equipped": self.equipped,
             "active_quests": self.active_quests,
+            "daily_quests_completed": self.daily_quests_completed,
+            "last_quest_date": self.last_quest_date,
+            "daily_quests_board": self.daily_quests_board,
         }
 
     @classmethod
@@ -310,4 +334,7 @@ class Player:
             player.equipped.update(data["equipped"])
 
         player.active_quests = data.get("active_quests", [])
+        player.daily_quests_completed = data.get("daily_quests_completed", 0)
+        player.last_quest_date = data.get("last_quest_date", "")
+        player.daily_quests_board = data.get("daily_quests_board", {})
         return player

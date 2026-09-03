@@ -37,7 +37,8 @@ async def crafting_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
             InlineKeyboardButton("🤝 Mercado da Guilda", callback_data="market_main"),
         ],
         [
-            InlineKeyboardButton("🏰 Hub Principal", callback_data="hub_main"),
+            InlineKeyboardButton("⬅️ Voltar à Guilda", callback_data="guild_main"),
+            InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
         ]
     ]
 
@@ -139,7 +140,7 @@ async def craft_exec_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.answer(msg, show_alert=True)
         return
 
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
 
     keyboard = [
         [
@@ -245,7 +246,7 @@ async def upgrade_level_action(update: Update, context: ContextTypes.DEFAULT_TYP
         await query.answer(msg, show_alert=True)
         return
 
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
     await query.answer("Aprimoramento realizado com sucesso!", show_alert=True)
     await upgrade_menu(update, context)
 
@@ -281,7 +282,10 @@ async def select_rune_for_socket(update: Update, context: ContextTypes.DEFAULT_T
             InlineKeyboardButton(f"🔮 Engastar {name}", callback_data=f"sock_{instance_id}_{r_id}")
         ])
 
-    keyboard.append([InlineKeyboardButton("⬅️ Voltar aos Equipamentos", callback_data="upgrade_menu")])
+    keyboard.append([
+        InlineKeyboardButton("⬅️ Voltar aos Equipamentos", callback_data="upgrade_menu"),
+        InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
+    ])
 
     text = (
         f"🔮 <b>═══ ENGASTE DE RUNA MÁGICA ═══</b>\n\n"
@@ -317,6 +321,6 @@ async def socket_rune_action(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await query.answer(msg, show_alert=True)
         return
 
-    PlayerRepository.save_player(player)
+    await PlayerRepository.save_player(player)
     await query.answer("Runa acoplada com sucesso!", show_alert=True)
     await upgrade_menu(update, context)

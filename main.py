@@ -134,29 +134,29 @@ def build_app():
     app.add_handler(CallbackQueryHandler(character_profile, pattern="^profile$"))
     app.add_handler(CallbackQueryHandler(character_skills_menu, pattern="^skills_menu$"))
     app.add_handler(CallbackQueryHandler(stat_distribute_menu, pattern="^stat_distribute_menu$"))
-    app.add_handler(CallbackQueryHandler(add_stat, pattern="^add_stat_$"))
+    app.add_handler(CallbackQueryHandler(add_stat, pattern="^add_stat_"))
 
     # Mochila & Equipamentos
     app.add_handler(CallbackQueryHandler(inventory_menu, pattern="^inventory_menu$"))
     app.add_handler(CallbackQueryHandler(equipments_menu, pattern="^equipments_menu$"))
-    app.add_handler(CallbackQueryHandler(equip_item_action, pattern="^equip_item_$"))
-    app.add_handler(CallbackQueryHandler(use_item_action, pattern="^use_item_$"))
+    app.add_handler(CallbackQueryHandler(equip_item_action, pattern="^equip_item_"))
+    app.add_handler(CallbackQueryHandler(use_item_action, pattern="^use_item_"))
 
     # Guilda de Aventureiros
     app.add_handler(CallbackQueryHandler(guild_main, pattern="^guild_main$"))
-    app.add_handler(CallbackQueryHandler(guild_quests_board, pattern="^guild_quests_board$"))
+    app.add_handler(CallbackQueryHandler(guild_quests_board, pattern="^guild_quests_board.*"))
     app.add_handler(CallbackQueryHandler(guild_active_quests, pattern="^guild_active_quests$"))
-    app.add_handler(CallbackQueryHandler(accept_quest_action, pattern="^accept_quest_$"))
-    app.add_handler(CallbackQueryHandler(claim_quest_action, pattern="^claim_quest_$"))
+    app.add_handler(CallbackQueryHandler(accept_quest_action, pattern="^accept_quest_"))
+    app.add_handler(CallbackQueryHandler(claim_quest_action, pattern="^claim_quest_"))
 
     # Forja, Crafting e Upgrades
     app.add_handler(CallbackQueryHandler(crafting_main, pattern="^crafting_main$"))
-    app.add_handler(CallbackQueryHandler(crafting_category_menu, pattern="^craft_cat_$"))
-    app.add_handler(CallbackQueryHandler(craft_exec_action, pattern="^craft_exec_$"))
+    app.add_handler(CallbackQueryHandler(crafting_category_menu, pattern="^craft_cat_"))
+    app.add_handler(CallbackQueryHandler(craft_exec_action, pattern="^craft_exec_"))
     app.add_handler(CallbackQueryHandler(upgrade_menu, pattern="^upgrade_menu$"))
-    app.add_handler(CallbackQueryHandler(upgrade_level_action, pattern="^up_lvl_$"))
-    app.add_handler(CallbackQueryHandler(select_rune_for_socket, pattern="^up_rune_$"))
-    app.add_handler(CallbackQueryHandler(socket_rune_action, pattern="^sock_$"))
+    app.add_handler(CallbackQueryHandler(upgrade_level_action, pattern="^up_lvl_"))
+    app.add_handler(CallbackQueryHandler(select_rune_for_socket, pattern="^up_rune_"))
+    app.add_handler(CallbackQueryHandler(socket_rune_action, pattern="^sock_"))
 
     # Mercado entre Players (Player-to-Player)
     app.add_handler(CallbackQueryHandler(market_main, pattern="^market_main$"))
@@ -165,11 +165,11 @@ def build_app():
     app.add_handler(CallbackQueryHandler(market_main, pattern="^mkt_staff$"))      # Filtro: cajados
     app.add_handler(CallbackQueryHandler(market_main, pattern="^mkt_armor$"))      # Filtro: armaduras
     app.add_handler(CallbackQueryHandler(market_main, pattern="^mkt_accessory$"))   # Filtro: acessórios
-    app.add_handler(CallbackQueryHandler(market_buy_action, pattern="^mkt_buy_$"))  # Compra de listing específico
+    app.add_handler(CallbackQueryHandler(market_buy_action, pattern="^mkt_buy_"))  # Compra de listing específico
     app.add_handler(CallbackQueryHandler(market_my_listings, pattern="^mkt_my_listings$"))
-    app.add_handler(CallbackQueryHandler(market_cancel_action, pattern="^mkt_cancel_$"))
+    app.add_handler(CallbackQueryHandler(market_cancel_action, pattern="^mkt_cancel_"))
     app.add_handler(CallbackQueryHandler(market_create_menu, pattern="^mkt_create_menu$"))
-    app.add_handler(CallbackQueryHandler(market_sell_item_action, pattern="^mkt_sell_$"))
+    app.add_handler(CallbackQueryHandler(market_sell_item_action, pattern="^mkt_sell_"))
 
     # Exploração e Caçada
     app.add_handler(CallbackQueryHandler(explore_menu, pattern="^explore_menu$"))
@@ -190,7 +190,7 @@ def build_app():
 
     # Baús & LootBoxes
     app.add_handler(CallbackQueryHandler(lootbox_main, pattern="^lootbox_main$"))
-    app.add_handler(CallbackQueryHandler(open_box_action, pattern="^open_box_$"))
+    app.add_handler(CallbackQueryHandler(open_box_action, pattern="^open_box_"))
 
     # ==========================================
     # 3. Handler Central de Erros (opcional)
