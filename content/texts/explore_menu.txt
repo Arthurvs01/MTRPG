@@ -1,16 +1,18 @@
 🗺️ <b>═══ EXPEDIÇÃO & CAÇADA SELVAGEM ═══</b>
 
-<b>Aventureiro:</b> {character_name} | 📍 <b>Local:</b> {current_location}
+<b>Aventureiro:</b> {character_name} | 📍 <b>Região Atual:</b> {region_name} ({region_difficulty} - Lvl {region_level})
+<b>Local:</b> {current_location}
 
 <b>Status Atual:</b>
 • ❤️ Vida: {hp}/{max_hp}
 • 💧 Mana: {mana}/{max_mana}
 • ⚡ Energia de Ação: {energy}/{max_energy}
 
-<i>Cada caçada consome energia de ação. Certifique-se de ter vigor suficiente para lutar!</i>
+<i>Cada caçada consome 15 de energia. Você só pode caçar monstros da sua região atual!</i>
 
-<b>Destinos de Expedição:</b>
-• 🌲 Floresta de Fittoa (15 ⚡ - Rank F/E) - Faunas leves
-• 🏜️ Terras Ermas de Rikarisu (15 ⚡ - Rank E/C) - Feras demoníacas
-• ⬅️ Voltar ao Hub Principal
-• 🏨 Ir à Estalagem para Descansar
+<b>Monstros desta região:</b> {monster_list}
+
+<b>Opções:</b>
+• ⚔️ Caçar nesta região
+• 🗺️ Mapa & Viagens (para mudar de região)
+• 🏨 Estalagem para recuperar energia

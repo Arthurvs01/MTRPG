@@ -3,6 +3,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
 from core.message_manager import MessageManager
 from core.text_loader import TextLoader
+from core.json_loader import JsonLoader
 from database.player_repo import PlayerRepository
 from systems.combat_system import CombatSystem
 from systems.progression_system import ProgressionSystem
@@ -11,13 +12,33 @@ from systems.energy_system import EnergySystem
 
 
 async def explore_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Menu principal de exploração e áreas selvagens."""
+    """Menu principal de exploração e caçada na região atual."""
     chat_id = update.effective_chat.id
     player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
     player.regen_energy_passively()
+
+    regions_data = JsonLoader.load("regions.json")
+    regions = regions_data.get("regions", [])
+    current_region = next((r for r in regions if r["id"] == player.current_region), None)
+
+    if not current_region:
+        current_region = regions[0] if regions else None
+
+    if not current_region:
+        await MessageManager.send_or_edit(
+            update=update,
+            context=context,
+            image_path="exploracao_floresta.jpg",
+            text="Erro: Nenhuma região encontrada.",
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ Hub", callback_data="hub_main")]])
+        )
+        return
+
+    monsters = current_region.get("monsters", [])
+    monster_names = ", ".join([m.replace("_", " ").title() for m in monsters[:3]]) + ("..." if len(monsters) > 3 else "")
 
     text = TextLoader.load(
         "explore_menu.txt",
@@ -29,20 +50,22 @@ async def explore_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         max_mana=player.max_mana,
         energy=player.energy,
         max_energy=player.max_energy,
+        region_name=current_region["name"],
+        region_difficulty=current_region["difficulty"],
+        region_level=current_region["recommended_level"],
+        monster_list=monster_names,
     )
 
     keyboard = [
         [
-            InlineKeyboardButton("🌲 Floresta de Fittoa (15 ⚡ - Rank F/E)", callback_data="hunt_fittoa"),
+            InlineKeyboardButton(f"⚔️ Caçar em {current_region['name']} (15 ⚡)", callback_data="hunt_current"),
         ],
         [
-            InlineKeyboardButton("🏜️ Terras Ermas de Rikarisu (15 ⚡ - Rank E/C)", callback_data="hunt_rikarisu"),
+            InlineKeyboardButton("🗺️ Mapa & Viagens", callback_data="travel_menu"),
+            InlineKeyboardButton("🏨 Estalagem", callback_data="inn_main"),
         ],
         [
-            InlineKeyboardButton("🏨 Estalagem & Descanso", callback_data="inn_main"),
             InlineKeyboardButton("🏛️ Guilda de Aventureiros", callback_data="guild_main"),
-        ],
-        [
             InlineKeyboardButton("🏰 Hub Principal", callback_data="hub_main"),
         ]
     ]
@@ -56,8 +79,8 @@ async def explore_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
-async def hunt_region_fittoa(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Realiza uma caçada na região florestal de Fittoa."""
+async def hunt_current(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Realiza uma caçada na região atual do jogador."""
     chat_id = update.effective_chat.id
     player = await PlayerRepository.get_player(chat_id)
     if not player:
@@ -72,59 +95,24 @@ async def hunt_region_fittoa(update: Update, context: ContextTypes.DEFAULT_TYPE)
         await update.callback_query.answer("Sua vida está muito baixa! Descanse na Estalagem ou use uma poção antes de lutar.", show_alert=True)
         return
 
-    EnergySystem.consume(player, EnergySystem.HUNT_ENERGY_COST)
+    regions_data = JsonLoader.load("regions.json")
+    regions = regions_data.get("regions", [])
+    current_region = next((r for r in regions if r["id"] == player.current_region), None)
 
-    # Sorteio de monstro por probabilidade escalonada
-    roll = random.random()
-    if roll < 0.35:
-        monster_id = "buena_wild_boar"
-    elif roll < 0.60:
-        monster_id = "horned_wolf"
-    elif roll < 0.78:
-        monster_id = "pax_monkey"
-    elif roll < 0.88:
-        monster_id = "freshwater_snake"
-    elif roll < 0.95:
-        monster_id = "treant_forest"
-    else:
-        monster_id = "iron_claw_bear"
-
-    await _process_hunt(update, context, player, monster_id, "Floresta de Fittoa", "exploracao_floresta.jpg")
-
-
-async def hunt_region_rikarisu(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Realiza uma caçada no Continente Demônio (Rikarisu)."""
-    chat_id = update.effective_chat.id
-    player = await PlayerRepository.get_player(chat_id)
-    if not player:
+    if not current_region:
+        await update.callback_query.answer("Erro: Região atual não encontrada.", show_alert=True)
         return
 
-    can_act, err_msg = EnergySystem.can_perform_action(player, EnergySystem.HUNT_ENERGY_COST)
-    if not can_act:
-        await update.callback_query.answer(err_msg, show_alert=True)
+    monsters = current_region.get("monsters", [])
+    if not monsters:
+        await update.callback_query.answer("Nenhum monstro disponível nesta região.", show_alert=True)
         return
 
-    if player.hp <= 25:
-        await update.callback_query.answer("Sua vida está muito baixa! Cure-se na Estalagem antes de enfrentar as feras demoníacas.", show_alert=True)
-        return
+    monster_id = random.choice(monsters)
 
     EnergySystem.consume(player, EnergySystem.HUNT_ENERGY_COST)
 
-    roll = random.random()
-    if roll < 0.35:
-        monster_id = "demon_coyote_rikarisu"
-    elif roll < 0.60:
-        monster_id = "sand_worm_demon"
-    elif roll < 0.78:
-        monster_id = "kougumo_spider"
-    elif roll < 0.90:
-        monster_id = "demon_vulture_roc"
-    elif roll < 0.96:
-        monster_id = "stone_shell_tortoise"
-    else:
-        monster_id = "two_headed_wyvern"
-
-    await _process_hunt(update, context, player, monster_id, "Terras de Rikarisu", "exploracao_deserto.jpg")
+    await _process_hunt(update, context, player, monster_id, current_region["name"], "exploracao_floresta.jpg")
 
 
 async def _process_hunt(update: Update, context: ContextTypes.DEFAULT_TYPE, player, monster_id: str, region_name: str, image_name: str):
@@ -159,7 +147,7 @@ async def _process_hunt(update: Update, context: ContextTypes.DEFAULT_TYPE, play
 
     elif result["winner"] == "enemy":
         player.deaths += 1
-        player.hp = int(player.max_hp * 0.5)  # Revive com metade da vida
+        player.hp = int(player.max_hp * 0.5)
         summary_lines.append(
             f"💀 <b>VOCÊ FOI DERROTADO!</b>\n"
             f"Aventureiros da Guilda resgataram você inconsciente e o levaram à Estalagem local."
@@ -167,7 +155,6 @@ async def _process_hunt(update: Update, context: ContextTypes.DEFAULT_TYPE, play
     else:
         summary_lines.append("⚖️ O combate terminou em empate e ambos recuaram.")
 
-    # Salva o estado atualizado do jogador
     await PlayerRepository.save_player(player)
 
     text = TextLoader.load(
@@ -181,8 +168,8 @@ async def _process_hunt(update: Update, context: ContextTypes.DEFAULT_TYPE, play
 
     keyboard = [
         [
-            InlineKeyboardButton("⚔️ Caçar Novamente (15 ⚡)", callback_data=update.callback_query.data),
-            InlineKeyboardButton("🗺️ Mudar de Região", callback_data="explore_menu"),
+            InlineKeyboardButton("⚔️ Caçar Novamente (15 ⚡)", callback_data="hunt_current"),
+            InlineKeyboardButton("🗺️ Mapa & Viagens", callback_data="travel_menu"),
         ],
         [
             InlineKeyboardButton("🏨 Ir à Estalagem", callback_data="inn_main"),

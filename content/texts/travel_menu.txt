@@ -1,0 +1,14 @@
+🗺️ <b>═══ MAPA MUNDI & VIAGENS ═══</b>
+
+<b>Aventureiro:</b> {character_name} | 📍 <b>Local Atual:</b> {current_location}
+<b>Nível:</b> {level} | 🎖️ <b>Rank:</b> {adventurer_rank} | ⚡ <b>Energia:</b> {energy}/{max_energy}
+
+<b>Regiões Conhecidas:</b>
+{regions_list}
+
+<i>⏱️ Cooldown de viagem: 30 minutos entre deslocamentos.</i>
+<i>🔓 Regiões bloqueadas exigem nível mínimo e progressão na história.</i>
+
+<b>Opções:</b>
+• Selecione uma região abaixo para viajar
+• ⬅️ Voltar ao Hub Principal

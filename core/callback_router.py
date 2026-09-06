@@ -1,7 +1,19 @@
 import logging
-from typing import Callable, Dict, List, Tuple
+from typing import Callable, Dict, List, Tuple, Optional
 from telegram import Update
 from telegram.ext import ContextTypes
+from world.dungeon_menu import (
+    dungeon_process_create,
+    dungeon_process_join,
+)
+from world.party_menu import (
+    party_process_create,
+    party_process_invite,
+    party_process_kick,
+    party_process_transfer,
+    party_process_deposit,
+    party_process_withdraw,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -72,3 +84,51 @@ class CallbackRouter:
             await query.answer("Ação indisponível ou menu expirado.", show_alert=True)
         except Exception:
             pass
+
+
+async def route_text_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Roteia inputs de texto baseado no estado do usuário (user_data)."""
+    user_data = context.user_data
+
+    # Dungeon creation
+    if user_data.get("dungeon_creating"):
+        await dungeon_process_create(update, context)
+        return
+
+    if user_data.get("dungeon_joining"):
+        await dungeon_process_join(update, context)
+        return
+
+    # Party system
+    if user_data.get("party_creating"):
+        await party_process_create(update, context)
+        return
+
+    if user_data.get("party_invite_target"):
+        await party_process_invite(update, context)
+        return
+
+    if user_data.get("party_kick_target"):
+        await party_process_kick(update, context)
+        return
+
+    if user_data.get("party_transfer_target"):
+        await party_process_transfer(update, context)
+        return
+
+    if user_data.get("party_deposit_amount"):
+        await party_process_deposit(update, context)
+        return
+
+    if user_data.get("party_withdraw_amount"):
+        await party_process_withdraw(update, context)
+        return
+
+    # Login system (name input)
+    if user_data.get("awaiting_name"):
+        from systems.login_system import receive_name
+        await receive_name(update, context)
+        return
+
+    # Se nenhum estado especial, ignora
+    logger.debug(f"Texto recebido sem estado especial: {update.message.text[:50]}")

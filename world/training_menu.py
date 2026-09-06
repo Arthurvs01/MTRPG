@@ -15,11 +15,15 @@ async def training_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     player.regen_energy_passively()
 
+    training_uses_today = player.get_daily_training_uses()
+    training_uses_left = max(0, 2 - training_uses_today)
+
     text = TextLoader.load(
         "training_menu.txt",
         character_name=player.character_name,
         energy=player.energy,
         max_energy=player.max_energy,
+        training_uses_left=training_uses_left,
     )
 
     keyboard = [

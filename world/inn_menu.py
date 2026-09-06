@@ -7,13 +7,16 @@ from systems.energy_system import EnergySystem
 
 
 async def inn_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Exibe o menu da Estalagem para restauração de vida, mana e energia."""
+    """Exibe o menu da Estalagem para restauração de energia."""
     chat_id = update.effective_chat.id
     player = await PlayerRepository.get_player(chat_id)
     if not player:
         return
 
     player.regen_energy_passively()
+
+    inn_uses_today = player.get_daily_inn_uses()
+    inn_uses_left = max(0, 2 - inn_uses_today)
 
     text = TextLoader.load(
         "inn_menu.txt",
@@ -27,17 +30,18 @@ async def inn_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
         max_energy=player.max_energy,
         iron_coins=player.iron_coins,
         diamonds=player.diamonds,
+        inn_uses_left=inn_uses_left,
     )
 
     keyboard = [
         [
-            InlineKeyboardButton("🛏️ Quarto Simples (20 Ferros)", callback_data="inn_rest_simple"),
+            InlineKeyboardButton(f"🛏️ Quarto Simples (20 Ferros) - +50 ⚡", callback_data="inn_rest_simple"),
         ],
         [
-            InlineKeyboardButton("👑 Suíte Nobre (50 Ferros)", callback_data="inn_rest_luxury"),
+            InlineKeyboardButton(f"👑 Suíte Nobre (50 Ferros) - 100% ⚡", callback_data="inn_rest_luxury"),
         ],
         [
-            InlineKeyboardButton("⚡ Elixir Divino (10 💎)", callback_data="inn_rest_diamonds"),
+            InlineKeyboardButton(f"⚡ Elixir Divino (10 💎) - 100% ⚡", callback_data="inn_rest_diamonds"),
         ],
         [
             InlineKeyboardButton("⬅️ Voltar ao Hub", callback_data="hub_main"),

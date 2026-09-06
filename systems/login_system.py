@@ -31,6 +31,7 @@ async def start_login(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text=text,
         reply_markup=None
     )
+    context.user_data["awaiting_name"] = True
     return ASK_NAME
 
 
@@ -42,6 +43,7 @@ async def receive_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return ASK_NAME
 
     context.user_data["temp_char_name"] = name
+    context.user_data["awaiting_name"] = False
 
     data = JsonLoader.load("classes_races.json")
     races = data.get("races", {})
@@ -65,7 +67,7 @@ async def receive_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text=text,
         reply_markup=InlineKeyboardMarkup(keyboard)
     )
-    return ConversationHandler.END
+    return CHOOSE_RACE
 
 
 async def select_race_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -95,6 +97,7 @@ async def select_race_callback(update: Update, context: ContextTypes.DEFAULT_TYP
         text=text,
         reply_markup=InlineKeyboardMarkup(keyboard)
     )
+    return CHOOSE_VOCATION
 
 
 async def select_vocation_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):

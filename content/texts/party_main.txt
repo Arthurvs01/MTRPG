@@ -1,0 +1,15 @@
+🏰 <b>═══ GRUPO DE AVENTUREIROS ═══</b>
+
+<b>Aventureiro:</b> {character_name}
+<b>Status:</b> {party_status}
+
+<b>Sistema de Grupos:</b>
+• Crie seu próprio grupo de aventureiros (máx. 10 membros)
+• Apenas o líder pode convidar novos membros
+• Outros jogadores entram apenas com aprovação do líder
+• Fundo comum para compartilhar recursos
+• Nível do grupo aumenta com atividade conjunta
+
+<b>Opções:</b>
+• ➕ Criar novo grupo
+• 📋 Ver convites pendentes

@@ -1,0 +1,19 @@
+🏰 <b>═══ SISTEMA DE DUNGEONS ═══</b>
+
+<b>Aventureiro:</b> {character_name} | 📍 {current_location}
+⚡ <b>Energia:</b> {energy}/{max_energy} | 📅 <b>Dungeons hoje:</b> {dungeon_count}/3
+
+<b>Sua Região Atual:</b> {region_name}
+<b>Dungeon Disponível:</b> {dungeon_name} (Lvl {dungeon_min_level}+)
+
+<i>⚠️ Regras da Dungeon:</i>
+• Grupo de 4 jogadores (Líder + 3 membros)
+• Líder cria a dungeon com senha de 4 dígitos
+• 5 ondas: 4 de monstros + 1 Boss Final
+• Entre ondas: uso de poções permitido
+• Recompensas proporcionais ao dano causado
+• Apenas sobreviventes recebem recompensas
+• Parte dos caídos é dividida entre vivos
+
+<b>Opções:</b>
+{options}

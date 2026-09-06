@@ -30,33 +30,37 @@ class EnergySystem:
 
     @classmethod
     def rest_inn_simple(cls, player: Player) -> Tuple[bool, str]:
-        """Descanso em quarto simples (Custo: 20 moedas de ferro)."""
+        """Descanso em quarto simples - Recupera apenas energia (Custo: 20 moedas de ferro)."""
+        if not player.can_use_inn():
+            return False, "🚫 Você já usou a Estalagem 2 vezes hoje! Retorne amanhã."
+
         cost = 20
         if player.iron_coins < cost:
             return False, f"Moedas insuficientes ({player.iron_coins}/{cost} Ferros)."
 
         player.iron_coins -= cost
-        player.hp = player.max_hp
-        player.mana = player.max_mana
         player.energy = min(player.max_energy, player.energy + 50)
-        return True, "Você descansou confortavelmente e saboreou uma refeição quente! Vida e Mana 100% restauradas, +50 de Energia!"
+        player.increment_inn_use()
+        return True, "Você descansou no quarto simples! Energia recuperada: +50 ⚡"
 
     @classmethod
     def rest_inn_luxury(cls, player: Player) -> Tuple[bool, str]:
-        """Descanso em suíte nobre (Custo: 50 moedas de ferro)."""
+        """Descanso em suíte nobre - Recupera energia total (Custo: 50 moedas de ferro)."""
+        if not player.can_use_inn():
+            return False, "🚫 Você já usou a Estalagem 2 vezes hoje! Retorne amanhã."
+
         cost = 50
         if player.iron_coins < cost:
             return False, f"Moedas insuficientes ({player.iron_coins}/{cost} Ferros)."
 
         player.iron_coins -= cost
-        player.hp = player.max_hp
-        player.mana = player.max_mana
         player.energy = player.max_energy
-        return True, "Você desfrutou do luxo da suíte nobre! Vida, Mana e Energia de Ação 100% restauradas!"
+        player.increment_inn_use()
+        return True, "Você desfrutou da suíte nobre! Energia de Ação 100% restaurada!"
 
     @classmethod
     def recharge_with_diamonds(cls, player: Player) -> Tuple[bool, str]:
-        """Restauração instantânea total com Diamantes (Custo: 10 diamantes)."""
+        """Restauração instantânea de energia com Diamantes (Custo: 10 diamantes)."""
         cost = 10
         if player.diamonds < cost:
             return False, f"Diamantes insuficientes ({player.diamonds}/{cost} 💎)."

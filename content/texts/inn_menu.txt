@@ -2,7 +2,8 @@
 
 Bem-vindo(a) à acolhedora Estalagem de {current_location}! 🍷
 
-O descanso repõe completamente sua Vida, Mana e Energia de Ação para novas jornadas.
+O descanso repõe sua <b>Energia de Ação</b> para novas jornadas.
+<b>Limite: 2 usos por dia</b> (Restam: {inn_uses_left}/2)
 
 <b>Seu Status:</b>
 • ❤️ Vida Atual: {hp}/{max_hp}
@@ -11,7 +12,7 @@ O descanso repõe completamente sua Vida, Mana e Energia de Ação para novas jo
 • 💰 {iron_coins} Ferros | 💎 {diamonds} Diamantes
 
 <b>Opções de Descanso:</b>
-• 🛏️ Quarto Simples: Restaura 100% HP, Mana e +50 Energia (20 F)
-• 👑 Suíte Nobre: Restaura 100% HP, Mana e 100% Energia Imediato (50 F)
-• ⚡ Elixir Divino: Restaura 100% Energia instantaneamente (10 💎)
+• 🛏️ Quarto Simples: +50 Energia (20 F)
+• 👑 Suíte Nobre: 100% Energia Imediato (50 F)
+• ⚡ Elixir Divino: 100% Energia instantâneo (10 💎)
 • ⬅️ Voltar ao Hub Principal

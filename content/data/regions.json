@@ -1,0 +1,190 @@
+{
+  "regions": [
+    {
+      "id": "buena_village",
+      "name": "Aldeia Buena (Fittoa)",
+      "description": "Pequena vila no território de Fittoa, lar de Rudeus em sua infância. Área inicial segura para novatos.",
+      "continent": "central",
+      "unlock_level": 1,
+      "required_location": null,
+      "difficulty": "F",
+      "recommended_level": "1-5",
+      "monsters": [
+        "buena_wild_boar",
+        "horned_wolf",
+        "pax_monkey",
+        "freshwater_snake",
+        "treant_forest",
+        "iron_claw_bear"
+      ],
+      "dungeon": {
+        "id": "dungeon_buena_cave",
+        "name": "Caverna de Buena",
+        "boss": "ancient_treant",
+        "min_level": 5
+      }
+    },
+    {
+      "id": "roitree_city",
+      "name": "Cidade de Roitree",
+      "description": "Cidade comercial próspera na região de Fittoa. Ponto de encontro de aventureiros e mercadores.",
+      "continent": "central",
+      "unlock_level": 10,
+      "required_location": "buena_village",
+      "difficulty": "E",
+      "recommended_level": "10-15",
+      "monsters": [
+        "forest_goblin",
+        "giant_squirrel",
+        "poison_moth",
+        "moss_golem",
+        "elder_centipede"
+      ],
+      "dungeon": {
+        "id": "dungeon_roitree_sewers",
+        "name": "Esgotos de Roitree",
+        "boss": "sewer_king_rat",
+        "min_level": 12
+      }
+    },
+    {
+      "id": "asura_kingdom",
+      "name": "Reino de Asura - Capital",
+      "description": "Capital do Reino de Asura, lar da Universidade de Magia de Ranoa. Centro de conhecimento e poder mágico.",
+      "continent": "central",
+      "unlock_level": 20,
+      "required_location": "roitree_city",
+      "difficulty": "D",
+      "recommended_level": "20-30",
+      "monsters": [
+        "asura_guard_corrupted",
+        "mana_construct",
+        "arcane_sludge",
+        "spell_thief",
+        "grimoire_mimic"
+      ],
+      "dungeon": {
+        "id": "dungeon_ruins_ranoa",
+        "name": "Ruínas da Universidade de Ranoa",
+        "boss": "archmage_shade",
+        "min_level": 25
+      }
+    },
+    {
+      "id": "milis_continent",
+      "name": "Continente Milis - Capital Santa",
+      "description": "Terra sagrada do Deus Milis. A Igreja domina a política e a vida cotidiana. Peregrinos e cavaleiros sagrados patrulham as ruas.",
+      "continent": "milis",
+      "unlock_level": 35,
+      "required_location": "asura_kingdom",
+      "difficulty": "C",
+      "recommended_level": "35-45",
+      "monsters": [
+        "holy_knight_fallen",
+        "angel_statue_animated",
+        "scripture_wraith",
+        "inquisitor_shade",
+        "divine_golem"
+      ],
+      "dungeon": {
+        "id": "dungeon_milis_catacombs",
+        "name": "Catacumbas da Capital Santa",
+        "boss": "high_inquisitor_undead",
+        "min_level": 40
+      }
+    },
+    {
+      "id": "sharia_city",
+      "name": "Cidade de Sharia (Grande Floresta)",
+      "description": "Cidade élfica escondida nas profundezas da Grande Floresta. Lar dos espíritos e magia antiga da natureza.",
+      "continent": "central",
+      "unlock_level": 45,
+      "required_location": "milis_continent",
+      "difficulty": "B",
+      "recommended_level": "45-55",
+      "monsters": [
+        "elven_guardian",
+        "ancient_dryad",
+        "spirit_beast",
+        "world_tree_root",
+        "elder_elf_archer"
+      ],
+      "dungeon": {
+        "id": "dungeon_world_tree",
+        "name": "Raízes da Árvore do Mundo",
+        "boss": "world_tree_avatar",
+        "min_level": 50
+      }
+    },
+    {
+      "id": "begaritt_continent",
+      "name": "Continente Begaritt - Labirinto",
+      "description": "Terra desolada e perigosa, cheia de labirintos e monstros lendários. Apenas os mais fortes sobrevivem.",
+      "continent": "begaritt",
+      "unlock_level": 60,
+      "required_location": "sharia_city",
+      "difficulty": "A",
+      "recommended_level": "60-75",
+      "monsters": [
+        "sand_drake",
+        "mirage_beast",
+        "ancient_scarab",
+        "phoenix_chick",
+        "labyrinth_guardian"
+      ],
+      "dungeon": {
+        "id": "dungeon_labyrinth_begaritt",
+        "name": "Grande Labirinto de Begaritt",
+        "boss": "labyrinth_master",
+        "min_level": 70
+      }
+    },
+    {
+      "id": "rikarisu_demon_continent",
+      "name": "Cidade de Rikarisu (Continente Demônio)",
+      "description": "Capital do Continente Demônio. Lar das tribos Migurd e Superd. Mana densa e criaturas poderosas.",
+      "continent": "demon",
+      "unlock_level": 75,
+      "required_location": "begaritt_continent",
+      "difficulty": "S",
+      "recommended_level": "75-90",
+      "monsters": [
+        "demon_coyote_rikarisu",
+        "sand_worm_demon",
+        "kougumo_spider",
+        "demon_vulture_roc",
+        "stone_shell_tortoise",
+        "two_headed_wyvern"
+      ],
+      "dungeon": {
+        "id": "dungeon_demon_king_castle",
+        "name": "Castelo do Rei Demônio",
+        "boss": "demon_king_avatar",
+        "min_level": 85
+      }
+    },
+    {
+      "id": "wind_port",
+      "name": "Porto do Vento (Costa Norte)",
+      "description": "Cidade portuária livre, refúgio de mercadores, piratas e aventureiros de todos os continentes.",
+      "continent": "central",
+      "unlock_level": 90,
+      "required_location": "rikarisu_demon_continent",
+      "difficulty": "S",
+      "recommended_level": "90-100",
+      "monsters": [
+        "kraken_tentacle",
+        "sea_serpent",
+        "ghost_ship_crew",
+        "abyssal_leviathan",
+        "storm_elemental"
+      ],
+      "dungeon": {
+        "id": "dungeon_sunken_city",
+        "name": "Cidade Submersa",
+        "boss": "leviathan_lord",
+        "min_level": 95
+      }
+    }
+  ]
+}

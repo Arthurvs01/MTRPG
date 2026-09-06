@@ -2,7 +2,9 @@
 
 📍 <b>Região:</b> {region_name}
 🎖️ <b>Seu Prestígio:</b> Rank {adventurer_rank}
-📅 <b>Concluídas Hoje:</b> {daily_completed}/2
+📅 <b>Concluídas Hoje:</b> {daily_completed}/3
+
+<i>⚠️ Limite: 1 missão ativa por vez | 3 missões por dia</i>
 
 <b>Contratos em Destaque no Quadro:</b>
 {quests_body}

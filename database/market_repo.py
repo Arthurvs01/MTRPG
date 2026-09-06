@@ -5,7 +5,7 @@ import uuid
 import time
 import tempfile
 import logging
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 from config import DATABASE_DIR
 from models.player import Player
 from database.player_repo import PlayerRepository
