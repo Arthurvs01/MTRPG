@@ -122,7 +122,7 @@ async def market_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
             market_listings_body.append(f"🔸 <b>{l['item_name']}</b> (Equipamento) — 💰 {l['price_iron_coins']} Ferros")
     market_listings_body_str = "\n".join(market_listings_body) if market_listings_body else "<i>Nenhuma oferta disponível no momento.</i>"
 
-    market_text = TextLoader.load(
+    market_text = await TextLoader.load_async(
         "market_main.txt",
         character_name=player.character_name,
         iron_coins=player.iron_coins,
@@ -192,7 +192,7 @@ async def market_my_listings(update: Update, context: ContextTypes.DEFAULT_TYPE)
         InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
     ])
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "market_my_listings.txt",
         character_name=player.character_name,
         my_listings_body="\n".join(lines) if lines else "<i>Você não possui nenhuma oferta anunciada no momento.</i>",

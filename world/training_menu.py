@@ -15,7 +15,7 @@ async def training_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     player.regen_energy_passively()
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "training_menu.txt",
         character_name=player.character_name,
         energy=player.energy,

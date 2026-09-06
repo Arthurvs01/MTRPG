@@ -30,6 +30,11 @@ class CraftingSystem:
         return JsonLoader.load("crafting_recipes.json").get("recipes", {})
 
     @classmethod
+    async def get_recipes_async(cls) -> Dict[str, Any]:
+        data = await JsonLoader.load_async("crafting_recipes.json")
+        return data.get("recipes", {})
+
+    @classmethod
     def get_recipe(cls, recipe_id: str) -> Optional[Dict[str, Any]]:
         return cls.get_recipes().get(recipe_id)
 

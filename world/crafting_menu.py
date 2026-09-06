@@ -42,7 +42,7 @@ async def crafting_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]
     ]
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "crafting_main.txt",
         character_name=player.character_name,
         iron_coins=player.iron_coins,
@@ -67,7 +67,7 @@ async def crafting_category_menu(update: Update, context: ContextTypes.DEFAULT_T
     if not player:
         return
 
-    recipes = CraftingSystem.get_recipes()
+    recipes = await CraftingSystem.get_recipes_async()
     recipes_lines = []
     keyboard = []
 
@@ -108,7 +108,7 @@ async def crafting_category_menu(update: Update, context: ContextTypes.DEFAULT_T
     ])
 
     cat_title = CATEGORY_NAMES.get(category, "Equipamentos")
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "crafting_category.txt",
         category_name=cat_title,
         character_name=player.character_name,
@@ -214,7 +214,7 @@ async def upgrade_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         InlineKeyboardButton("🏰 Hub Principal", callback_data="hub_main"),
     ])
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "upgrade_menu.txt",
         character_name=player.character_name,
         iron_coins=player.iron_coins,

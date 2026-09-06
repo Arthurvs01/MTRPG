@@ -17,7 +17,7 @@ async def character_profile(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     touki_display = f"🛡️ {player.touki}/{player.max_touki}" if player.has_touki_awakened else "Não Despertado"
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "character_profile.txt",
         character_name=player.character_name,
         race=player.race,
@@ -75,7 +75,7 @@ async def character_skills_menu(update: Update, context: ContextTypes.DEFAULT_TY
     if not player:
         return
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "character_skills.txt",
         character_name=player.character_name,
         sword_god_rank=player.sword_styles.get("Deus da Espada", "Nenhum"),
@@ -119,7 +119,7 @@ async def stat_distribute_menu(update: Update, context: ContextTypes.DEFAULT_TYP
     if not player:
         return
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "character_stats.txt",
         status_points=player.status_points,
         strength=player.strength,

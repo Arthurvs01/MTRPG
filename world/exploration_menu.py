@@ -19,7 +19,7 @@ async def explore_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     player.regen_energy_passively()
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "explore_menu.txt",
         character_name=player.character_name,
         current_location=player.current_location,
@@ -129,7 +129,7 @@ async def hunt_region_rikarisu(update: Update, context: ContextTypes.DEFAULT_TYP
 
 async def _process_hunt(update: Update, context: ContextTypes.DEFAULT_TYPE, player, monster_id: str, region_name: str, image_name: str):
     """Executa o combate, distribui recompensas, avalia drop de Baú e atualiza missões."""
-    enemy = CombatSystem.get_monster(monster_id)
+    enemy = await CombatSystem.get_monster_async(monster_id)
     result = CombatSystem.simulate_battle(player, enemy)
 
     summary_lines = []
@@ -170,7 +170,7 @@ async def _process_hunt(update: Update, context: ContextTypes.DEFAULT_TYPE, play
     # Salva o estado atualizado do jogador
     await PlayerRepository.save_player(player)
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "hunt_report.txt",
         region_name=region_name,
         battle_logs="\n".join(result["logs"][-6:]),

@@ -42,6 +42,29 @@ class CombatSystem:
         )
 
     @classmethod
+    async def get_monster_async(cls, monster_id: str) -> Combatant:
+        """Versão assíncrona para não bloquear o event loop."""
+        data = await JsonLoader.load_async("monsters.json")
+        monsters = data.get("monsters", {})
+        if monster_id in monsters:
+            m_data = dict(monsters[monster_id])
+            m_data["id"] = monster_id
+            return Combatant.from_dict(m_data)
+        # Fallback de monstro genérico
+        return Combatant(
+            id="wild_beast",
+            name="Fera Selvagem Desconhecida",
+            level=1,
+            hp=80,
+            max_hp=80,
+            attack=10,
+            defense=5,
+            speed=8,
+            xp_reward=20,
+            coins_reward=10
+        )
+
+    @classmethod
     def execute_player_turn(
         cls,
         player: Player,

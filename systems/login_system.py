@@ -22,7 +22,7 @@ async def start_login(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # Jogador já registrado, direciona para o hub principal
         return await hub_main_menu(update, context)
 
-    text = TextLoader.load("welcome.txt")
+    text = await TextLoader.load_async("welcome.txt")
 
     await MessageManager.send_or_edit(
         update=update,
@@ -43,7 +43,7 @@ async def receive_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     context.user_data["temp_char_name"] = name
 
-    data = JsonLoader.load("classes_races.json")
+    data = await JsonLoader.load_async("classes_races.json")
     races = data.get("races", {})
 
     races_lines = []
@@ -52,7 +52,7 @@ async def receive_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
         races_lines.append(f"🔹 <b>{r_info['name']}</b>: {r_info['description']}")
         keyboard.append([InlineKeyboardButton(f"🧬 Escolher {r_info['name']}", callback_data=f"race_{r_key}")])
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "choose_race.txt",
         character_name=name,
         races_description="\n\n".join(races_lines),
@@ -74,7 +74,7 @@ async def select_race_callback(update: Update, context: ContextTypes.DEFAULT_TYP
     race_key = query.data.replace("race_", "")
     context.user_data["temp_race"] = race_key
 
-    data = JsonLoader.load("classes_races.json")
+    data = await JsonLoader.load_async("classes_races.json")
     vocations = data.get("vocations", {})
 
     vocations_lines = []
@@ -83,7 +83,7 @@ async def select_race_callback(update: Update, context: ContextTypes.DEFAULT_TYP
         vocations_lines.append(f"🔸 <b>{v_info['name']}</b>\n   {v_info['description']}")
         keyboard.append([InlineKeyboardButton(f"🗡️ {v_info['name']}", callback_data=f"vocation_{v_key}")])
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "choose_vocation.txt",
         vocations_description="\n\n".join(vocations_lines),
     )
@@ -106,7 +106,7 @@ async def select_vocation_callback(update: Update, context: ContextTypes.DEFAULT
     name = context.user_data.get("temp_char_name", "Aventureiro")
     race_key = context.user_data.get("temp_race", "humano")
 
-    data = JsonLoader.load("classes_races.json")
+    data = await JsonLoader.load_async("classes_races.json")
     race_info = data.get("races", {}).get(race_key, {})
     vocation_info = data.get("vocations", {}).get(vocation_key, {})
 

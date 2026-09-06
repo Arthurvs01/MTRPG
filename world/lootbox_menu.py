@@ -15,7 +15,7 @@ async def lootbox_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     can_daily, daily_status = LootboxSystem.get_daily_status(player)
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "lootbox_menu.txt",
         character_name=player.character_name,
         diamonds=player.diamonds,
@@ -61,14 +61,14 @@ async def open_box_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not player:
         return
 
-    success, msg, result = LootboxSystem.open_lootbox(player, box_id)
+    success, msg, result = await LootboxSystem.open_lootbox_async(player, box_id)
     if not success:
         await query.answer(msg, show_alert=True)
         return
 
     await PlayerRepository.save_player(player)
 
-    result_text = TextLoader.load(
+    result_text = await TextLoader.load_async(
         "lootbox_result.txt",
         box_name=result.get("box_name", "Baú"),
         rewards_body=result.get("rewards_text", ""),

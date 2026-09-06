@@ -14,7 +14,7 @@ async def hub_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     player.regen_energy_passively()
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "hub_menu.txt",
         character_name=player.character_name,
         current_location=player.current_location,

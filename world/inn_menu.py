@@ -15,7 +15,7 @@ async def inn_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     player.regen_energy_passively()
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "inn_menu.txt",
         current_location=player.current_location,
         character_name=player.character_name,

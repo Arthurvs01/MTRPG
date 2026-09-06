@@ -16,7 +16,7 @@ async def guild_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     player.regen_energy_passively()
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "guild_main.txt",
         character_name=player.character_name,
         adventurer_rank=player.adventurer_rank,
@@ -114,7 +114,7 @@ async def guild_quests_board(update: Update, context: ContextTypes.DEFAULT_TYPE)
                 InlineKeyboardButton(f"📜 Aceitar [{q.rank}] {q.title[:20]}...", callback_data=f"accept_quest_{q.id}")
             ])
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "guild_quests.txt",
         region_name=region_title,
         adventurer_rank=player.adventurer_rank,
@@ -184,7 +184,7 @@ async def guild_active_quests(update: Update, context: ContextTypes.DEFAULT_TYPE
         InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
     ])
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "guild_active_quests.txt",
         character_name=player.character_name,
         active_quests_body=active_body,

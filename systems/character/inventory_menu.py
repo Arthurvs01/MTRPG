@@ -44,7 +44,7 @@ async def inventory_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
             name = item.name if item else item_id.replace("_", " ").title()
             runes_list.append(f"🔮 <b>{name}</b> x{qty}")
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "inventory.txt",
         character_name=player.character_name,
         iron_coins=player.iron_coins,
@@ -128,7 +128,7 @@ async def equipments_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         InlineKeyboardButton("🏰 Hub Principal", callback_data="hub_main"),
     ])
 
-    text = TextLoader.load(
+    text = await TextLoader.load_async(
         "equipments.txt",
         character_name=player.character_name,
         weapon_str=weapon_str,

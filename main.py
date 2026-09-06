@@ -3,6 +3,7 @@ Módulo Principal do Bot de RPG de Mushoku Tensei via Telegram.
 Inicializa o bot, registra comandos e handlers de callbacks (botões).
 """
 import logging
+import asyncio
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
@@ -10,8 +11,16 @@ from telegram.ext import (
     MessageHandler,
     ConversationHandler,
     filters,
+    Defaults,
 )
+from telegram import constants, LinkPreviewOptions
 from config import BOT_TOKEN
+try:
+    import aiohttp
+    from aiohttp import TCPConnector
+    HAS_AIOHTTP = True
+except ImportError:
+    HAS_AIOHTTP = False
 
 # Handlers de Registro e Hub
 from systems.login_system import (
@@ -96,15 +105,78 @@ logger = logging.getLogger(__name__)
 
 def build_app():
     """Constrói e configura a aplicação do Telegram Bot."""
-    app = (
-        ApplicationBuilder()
-        .token(BOT_TOKEN)
-        .connect_timeout(60)
-        .read_timeout(60)
-        .write_timeout(60)
-        .pool_timeout(60)
-        .build()
-    )
+    if HAS_AIOHTTP:
+        connector = TCPConnector(
+            limit=100,
+            limit_per_host=30,
+            ttl_dns_cache=300,
+            use_dns_cache=True,
+            keepalive_timeout=30,
+            enable_cleanup_closed=True,
+            force_close=False,
+        )
+        client_session = aiohttp.ClientSession(
+            connector=connector,
+            timeout=aiohttp.ClientTimeout(
+                total=15,
+                connect=10,
+                sock_read=15,
+                sock_connect=10,
+            ),
+        )
+        app = (
+            ApplicationBuilder()
+            .token(BOT_TOKEN)
+            .connect_timeout(10)
+            .read_timeout(15)
+            .write_timeout(15)
+            .pool_timeout(10)
+            .get_updates_read_timeout(30)
+            .get_updates_write_timeout(15)
+            .get_updates_connect_timeout(10)
+            .get_updates_pool_timeout(10)
+            .defaults(Defaults(
+                parse_mode=constants.ParseMode.HTML,
+                do_quote=False,
+                link_preview_options=LinkPreviewOptions(is_disabled=True),
+            ))
+            .concurrent_updates(True)
+            .http_version("2")
+            .post_shutdown(_close_session)
+            .build()
+        )
+        app._http_client = client_session
+    else:
+        app = (
+            ApplicationBuilder()
+            .token(BOT_TOKEN)
+            .connect_timeout(10)
+            .read_timeout(15)
+            .write_timeout(15)
+            .pool_timeout(10)
+            .get_updates_read_timeout(30)
+            .get_updates_write_timeout(15)
+            .get_updates_connect_timeout(10)
+            .get_updates_pool_timeout(10)
+            .defaults(Defaults(
+                parse_mode=constants.ParseMode.HTML,
+                do_quote=False,
+                link_preview_options=LinkPreviewOptions(is_disabled=True),
+            ))
+            .concurrent_updates(True)
+            .post_shutdown(_close_session)
+            .build()
+        )
+    return app
+
+
+async def _close_session(app):
+    """Fecha a sessão HTTP personalizada ao desligar."""
+    if hasattr(app, '_http_client') and app._http_client:
+        await app._http_client.close()
+    if HAS_AIOHTTP:
+        import aiohttp
+        await aiohttp.client._default_client.close()
 
     # ==========================================
     # 1. Comando /start (único comando restante)
@@ -203,9 +275,41 @@ def build_app():
 def main():
     """Função de inicialização do serviço."""
     logger.info("Iniciando Bot de RPG - Mushoku Tensei...")
+    
+    # Pré-carrega imagens comuns para evitar I/O de disco nas primeiras interações
+    common_images = [
+        "welcome.jpg",
+        "city_hub.png",
+        "character_menu.jpg",
+        "inventario_bolsa.png",
+        "guilda_aventureiros.png",
+        "exploracao_floresta.jpg",
+        "dojo_treinamento.jpg",
+        "bau_lootbox.png",
+        "commerce.png",
+        "quadro_missoes.png",
+        "status_atributos.jpg",
+        "equipamentos_armas.png",
+        "perfil_aventureiro.jpg",
+        "missions.png",
+        "allies.png",
+        "reencarnacao_boas_vindas.jpg",
+        "floor_1.jpg",
+    ]
+    from core.message_manager import MessageManager
+    import asyncio
+    asyncio.run(MessageManager.preload_images(common_images))
+    logger.info(f"Pré-carregadas {len(common_images)} imagens no cache")
+    
     app = build_app()
     logger.info("Bot pronto e escutando eventos...")
-    app.run_polling()
+    app.run_polling(
+        poll_interval=0.0,
+        timeout=10,
+        bootstrap_retries=3,
+        drop_pending_updates=True,
+        allowed_updates=["callback_query", "message", "inline_query"],
+    )
 
 
 if __name__ == "__main__":

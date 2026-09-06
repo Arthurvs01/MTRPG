@@ -36,7 +36,7 @@ class JsonLoader:
     @classmethod
     async def load_async(cls, relative_path: str, force_reload: bool = False) -> Dict[str, Any]:
         """Carrega JSON de forma assíncrona (não-blocking)."""
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         return await loop.run_in_executor(
             None,
             cls._load_sync,

@@ -22,6 +22,11 @@ class LootboxSystem:
         return JsonLoader.load("lootboxes.json").get("lootboxes", {})
 
     @classmethod
+    async def get_lootboxes_data_async(cls) -> Dict[str, Any]:
+        data = await JsonLoader.load_async("lootboxes.json")
+        return data.get("lootboxes", {})
+
+    @classmethod
     def get_daily_status(cls, player: Player) -> Tuple[bool, str]:
         """Retorna se o baú diário está disponível ou o tempo restante."""
         now = time.time()
@@ -39,6 +44,28 @@ class LootboxSystem:
     @classmethod
     def open_lootbox(cls, player: Player, box_id: str) -> Tuple[bool, str, Dict[str, Any]]:
         boxes = cls.get_lootboxes_data()
+        if box_id not in boxes:
+            return False, "Tipo de baú desconhecido.", {}
+
+        box_data = boxes[box_id]
+        cost_type = box_data.get("cost_type", "free")
+        cost_amount = box_data.get("cost_amount", 0)
+
+        # 1. Validação de Custo / Cooldown
+        if cost_type == "free":
+            can_open, status_str = cls.get_daily_status(player)
+            if not can_open:
+                return False, f"O Baú Diário ainda não está pronto ({status_str}).", {}
+            player.last_daily_lootbox_timestamp = time.time()
+
+        elif cost_type == "item_hunt_chest":
+            if player.hunt_lootbox_count < 1:
+                return False, "Você não possui nenhum Baú Arcano de Caçada na mochila.", {}
+            player.hunt_lootbox_count -= 1
+
+    @classmethod
+    async def open_lootbox_async(cls, player: Player, box_id: str) -> Tuple[bool, str, Dict[str, Any]]:
+        boxes = await cls.get_lootboxes_data_async()
         if box_id not in boxes:
             return False, "Tipo de baú desconhecido.", {}
 
