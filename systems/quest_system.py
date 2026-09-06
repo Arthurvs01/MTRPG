@@ -11,13 +11,14 @@ class QuestSystem:
     """
     Sistema de Gestão de Missões da Guilda de Aventureiros.
     Controla aceitação de contratos, atualização de progresso e resgate de recompensas.
+    Limite: 1 missão ativa por vez, 3 missões diárias.
     """
 
     @classmethod
     def accept_quest(cls, player: Player, quest_id: str) -> Tuple[bool, str]:
         # Verifica se já atingiu o limite diário de conclusões
-        if player.get_daily_quests_completed() >= 2:
-            return False, "🚫 Você já concluiu o limite de 2 missões diárias hoje! Retorne amanhã para pegar novos contratos."
+        if player.get_daily_quests_completed() >= 3:
+            return False, "🚫 Você já concluiu o limite de 3 missões diárias hoje! Retorne amanhã para pegar novos contratos."
 
         quest = QuestRepository.get_quest_by_id(quest_id)
         if not quest:
@@ -28,8 +29,9 @@ class QuestSystem:
             if q.get("id") == quest_id:
                 return False, "Você já aceitou este contrato."
 
-        if len(player.active_quests) >= 3:
-            return False, "Limite máximo de contratos simultâneos atingido (Máximo: 3)."
+        # Limite de 1 missão ativa por vez
+        if len(player.active_quests) >= 1:
+            return False, "Você só pode ter 1 missão ativa por vez. Complete ou abandone a atual primeiro."
 
         player.active_quests.append({
             "id": quest_id,
@@ -56,8 +58,8 @@ class QuestSystem:
 
     @classmethod
     def claim_rewards(cls, player: Player, quest_id: str) -> Tuple[bool, str]:
-        if player.get_daily_quests_completed() >= 2:
-            return False, "🚫 Você já concluiu o limite máximo de 2 missões diárias hoje! Retorne amanhã para resgatar mais recompensas."
+        if player.get_daily_quests_completed() >= 3:
+            return False, "🚫 Você já concluiu o limite máximo de 3 missões diárias hoje! Retorne amanhã para resgatar mais recompensas."
 
         target_q = None
         for q in player.active_quests:
@@ -95,6 +97,6 @@ class QuestSystem:
             f"💰 +{quest_data.reward_iron_coins} Moedas de Ferro\n"
             + "\n".join(xp_logs) + "\n"
             + "\n".join(guild_logs) + "\n"
-            f"📅 <b>Missões Concluídas Hoje:</b> {player.get_daily_quests_completed()}/2"
+            f"📅 <b>Missões Concluídas Hoje:</b> {player.get_daily_quests_completed()}/3"
         )
         return True, reward_msg

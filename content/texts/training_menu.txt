@@ -1,14 +1,14 @@
 🥋 <b>═══ DOJO & TORRE DE MAGIA: TREINAMENTO ═══</b>
 
-Aqui aventureiros dedicam tempo e esforço para lapidar sua técnica de espada e compreensão mágica.
-
-Cada sessão de treino aprimora atributos e concede experiência.
+Aqui aventureiros dedicam tempo e esforço para lapidar sua técnica e ganhar experiência.
+<b>Limite: 2 treinos por dia</b> (Restam: {training_uses_left}/2)
+<b>Recompensa: Apenas Experiência (XP)</b>
 
 <b>Seu Perfil:</b>
 • ⚡ Energia Disponível: {energy}/{max_energy} (Consome 20 por treino)
 
 <b>Opções de Treinamento:</b>
-• 🗡️ Dojo de Espadas: 1000 Cortes de Madeira - Foco em Força, Velocidade e Técnica
-• 🪄 Torre de Magia: Meditação Elemental - Foco em Controle de Mana e Poder
-• 🥋 Condicionamento de Touki: Revestimento de Mana e Defesa Física
+• 🗡️ Dojo de Espadas: 1000 Cortes de Madeira - +65 XP
+• 🪄 Torre de Magia: Meditação Elemental - +65 XP
+• 🥋 Condicionamento de Touki: Revestimento de Mana - +65 XP
 • ⬅️ Voltar ao Hub Principal

@@ -20,6 +20,8 @@ from systems.login_system import (
     select_race_callback,
     select_vocation_callback,
     ASK_NAME,
+    CHOOSE_RACE,
+    CHOOSE_VOCATION,
 )
 from world.hub_menu import hub_main_menu
 
@@ -37,7 +39,7 @@ from systems.character.inventory_menu import (
     use_item_action,
 )
 
-# Handlers do Mundo (Guilda, Exploração, Estalagem, Treino, LootBoxes)
+# Handlers do Mundo (Guilda, Exploração, Estalagem, Treino, LootBoxes, Viagem, Dungeons, Grupos)
 from world.guild_menu import (
     guild_main,
     guild_quests_board,
@@ -47,8 +49,7 @@ from world.guild_menu import (
 )
 from world.exploration_menu import (
     explore_menu,
-    hunt_region_fittoa,
-    hunt_region_rikarisu,
+    hunt_current,
 )
 from world.inn_menu import (
     inn_main,
@@ -65,6 +66,45 @@ from world.training_menu import (
 from world.lootbox_menu import (
     lootbox_main,
     open_box_action,
+)
+from world.travel_menu import (
+    travel_menu,
+    travel_action,
+)
+from world.dungeon_menu import (
+    dungeon_main,
+    dungeon_create,
+    dungeon_join,
+    dungeon_process_create,
+    dungeon_process_join,
+    dungeon_start,
+    dungeon_cancel,
+    dungeon_leave,
+    dungeon_attack,
+    dungeon_next_wave,
+    dungeon_potion,
+    dungeon_info,
+)
+from world.party_menu import (
+    party_main,
+    party_create,
+    party_process_create,
+    party_invite,
+    party_process_invite,
+    party_invites,
+    party_accept,
+    party_decline,
+    party_leave,
+    party_kick,
+    party_process_kick,
+    party_disband,
+    party_transfer,
+    party_process_transfer,
+    party_funds,
+    party_deposit,
+    party_process_deposit,
+    party_withdraw,
+    party_process_withdraw,
 )
 
 # Handlers de Forja, Crafting e Mercado entre Players
@@ -114,6 +154,12 @@ def build_app():
         states={
             ASK_NAME: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, receive_name)
+            ],
+            CHOOSE_RACE: [
+                CallbackQueryHandler(select_race_callback, pattern="^race_")
+            ],
+            CHOOSE_VOCATION: [
+                CallbackQueryHandler(select_vocation_callback, pattern="^vocation_")
             ],
         },
         fallbacks=[CommandHandler("start", start_login)],
@@ -173,8 +219,11 @@ def build_app():
 
     # Exploração e Caçada
     app.add_handler(CallbackQueryHandler(explore_menu, pattern="^explore_menu$"))
-    app.add_handler(CallbackQueryHandler(hunt_region_fittoa, pattern="^hunt_fittoa$"))
-    app.add_handler(CallbackQueryHandler(hunt_region_rikarisu, pattern="^hunt_rikarisu$"))
+    app.add_handler(CallbackQueryHandler(hunt_current, pattern="^hunt_current$"))
+
+    # Mapa & Viagens
+    app.add_handler(CallbackQueryHandler(travel_menu, pattern="^travel_menu$"))
+    app.add_handler(CallbackQueryHandler(travel_action, pattern="^travel_"))
 
     # Estalagem e Descanso
     app.add_handler(CallbackQueryHandler(inn_main, pattern="^inn_main$"))
@@ -188,9 +237,40 @@ def build_app():
     app.add_handler(CallbackQueryHandler(train_magic_action, pattern="^train_magic$"))
     app.add_handler(CallbackQueryHandler(train_touki_action, pattern="^train_touki$"))
 
+    # Dungeons
+    app.add_handler(CallbackQueryHandler(dungeon_main, pattern="^dungeon_main$"))
+    app.add_handler(CallbackQueryHandler(dungeon_create, pattern="^dungeon_create$"))
+    app.add_handler(CallbackQueryHandler(dungeon_join, pattern="^dungeon_join$"))
+    app.add_handler(CallbackQueryHandler(dungeon_start, pattern="^dungeon_start_"))
+    app.add_handler(CallbackQueryHandler(dungeon_cancel, pattern="^dungeon_cancel_"))
+    app.add_handler(CallbackQueryHandler(dungeon_leave, pattern="^dungeon_leave_"))
+    app.add_handler(CallbackQueryHandler(dungeon_attack, pattern="^dungeon_attack_"))
+    app.add_handler(CallbackQueryHandler(dungeon_next_wave, pattern="^dungeon_next_wave_"))
+    app.add_handler(CallbackQueryHandler(dungeon_potion, pattern="^dungeon_potion_"))
+    app.add_handler(CallbackQueryHandler(dungeon_info, pattern="^dungeon_info_"))
+
+    # Grupos de Aventureiros
+    app.add_handler(CallbackQueryHandler(party_main, pattern="^party_main$"))
+    app.add_handler(CallbackQueryHandler(party_create, pattern="^party_create$"))
+    app.add_handler(CallbackQueryHandler(party_invite, pattern="^party_invite$"))
+    app.add_handler(CallbackQueryHandler(party_invites, pattern="^party_invites$"))
+    app.add_handler(CallbackQueryHandler(party_accept, pattern="^party_accept_"))
+    app.add_handler(CallbackQueryHandler(party_decline, pattern="^party_decline_"))
+    app.add_handler(CallbackQueryHandler(party_leave, pattern="^party_leave$"))
+    app.add_handler(CallbackQueryHandler(party_kick, pattern="^party_kick$"))
+    app.add_handler(CallbackQueryHandler(party_disband, pattern="^party_disband$"))
+    app.add_handler(CallbackQueryHandler(party_transfer, pattern="^party_transfer$"))
+    app.add_handler(CallbackQueryHandler(party_funds, pattern="^party_funds$"))
+    app.add_handler(CallbackQueryHandler(party_deposit, pattern="^party_deposit$"))
+    app.add_handler(CallbackQueryHandler(party_withdraw, pattern="^party_withdraw$"))
+
     # Baús & LootBoxes
     app.add_handler(CallbackQueryHandler(lootbox_main, pattern="^lootbox_main$"))
     app.add_handler(CallbackQueryHandler(open_box_action, pattern="^open_box_"))
+
+    # MessageHandler único para inputs de texto baseados no estado do usuário
+    from core.callback_router import route_text_input
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, route_text_input))
 
     # ==========================================
     # 3. Handler Central de Erros (opcional)

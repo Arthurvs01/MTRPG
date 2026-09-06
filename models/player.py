@@ -1,7 +1,7 @@
 import time
 from datetime import datetime
 import logging
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 from models.item import Equipment
 
 logger = logging.getLogger(__name__)
@@ -28,6 +28,7 @@ class Player:
         self.vocation = vocation  # Espadachim, Mago, Híbrido
         self.origin_continent = origin_continent  # central, demon, milis, begaritt
         self.current_location = "Aldeia Buena (Fittoa)" if origin_continent == "central" else "Cidade de Rikarisu"
+        self.current_region = "buena_village" if origin_continent == "central" else "rikarisu_demon_continent"
 
         # Progressão de Nível e Guilda
         self.level: int = 1
@@ -141,6 +142,25 @@ class Player:
         self.last_quest_date: str = ""
         self.daily_quests_board: Dict[str, Any] = {}
 
+        # Sistema de Viagem e Regiões
+        self.unlocked_regions: List[str] = ["buena_village"]
+        self.travel_cooldown: float = 0.0
+
+        # Contadores Diários
+        self.daily_inn_uses: int = 0
+        self.last_inn_date: str = ""
+        self.daily_training_uses: int = 0
+        self.last_training_date: str = ""
+
+        # Dungeons
+        self.daily_dungeon_count: int = 0
+        self.last_dungeon_date: str = ""
+
+        # Grupo de Aventureiros (Party/Guild)
+        self.party_id: Optional[str] = None
+        self.party_role: str = ""  # "leader", "member"
+        self.party_join_requests: List[str] = []  # IDs de convites pendentes
+
     def regen_energy_passively(self):
         """Regenera energia passivamente com base no tempo decorrido (+1 a cada 3 minutos)."""
         now = time.time()
@@ -176,6 +196,102 @@ class Player:
     def increment_daily_quests_completed(self):
         self.get_daily_quests_completed()
         self.daily_quests_completed += 1
+
+    def get_today_str(self) -> str:
+        return datetime.now().strftime("%Y-%m-%d")
+
+    def get_daily_inn_uses(self) -> int:
+        today = self.get_today_str()
+        if self.last_inn_date != today:
+            self.daily_inn_uses = 0
+            self.last_inn_date = today
+        return self.daily_inn_uses
+
+    def can_use_inn(self) -> bool:
+        return self.get_daily_inn_uses() < 2
+
+    def increment_inn_use(self):
+        self.get_daily_inn_uses()
+        self.daily_inn_uses += 1
+
+    def get_daily_training_uses(self) -> int:
+        today = self.get_today_str()
+        if self.last_training_date != today:
+            self.daily_training_uses = 0
+            self.last_training_date = today
+        return self.daily_training_uses
+
+    def can_train(self) -> bool:
+        return self.get_daily_training_uses() < 2
+
+    def increment_training_use(self):
+        self.get_daily_training_uses()
+        self.daily_training_uses += 1
+
+    def get_daily_dungeon_count(self) -> int:
+        today = self.get_today_str()
+        if self.last_dungeon_date != today:
+            self.daily_dungeon_count = 0
+            self.last_dungeon_date = today
+        return self.daily_dungeon_count
+
+    def can_enter_dungeon(self) -> bool:
+        return self.get_daily_dungeon_count() < 3
+
+    def increment_dungeon_count(self):
+        self.get_daily_dungeon_count()
+        self.daily_dungeon_count += 1
+
+    def can_travel_to(self, region_id: str, regions_data: list) -> Tuple[bool, str]:
+        """Verifica se o jogador pode viajar para uma região."""
+        import time
+        
+        # Cooldown de viagem (30 minutos)
+        if time.time() - self.travel_cooldown < 1800:
+            remaining = int((1800 - (time.time() - self.travel_cooldown)) / 60)
+            return False, f"Você deve aguardar {remaining} minutos antes de viajar novamente."
+
+        # Verifica se a região existe
+        region = next((r for r in regions_data if r["id"] == region_id), None)
+        if not region:
+            return False, "Região não encontrada."
+
+        # Verifica se já está na região
+        if self.current_region == region_id:
+            return False, "Você já está nesta região."
+
+        # Verifica nível mínimo
+        if self.level < region["unlock_level"]:
+            return False, f"Nível {region['unlock_level']} necessário para acessar {region['name']}."
+
+        # Verifica pré-requisito de localização
+        if region["required_location"] and region["required_location"] not in self.unlocked_regions:
+            req_region = next((r for r in regions_data if r["id"] == region["required_location"]), None)
+            req_name = req_region["name"] if req_region else region["required_location"]
+            return False, f"Você deve desbloquear {req_name} primeiro."
+
+        return True, "Viagem permitida."
+
+    def travel_to(self, region_id: str, regions_data: list) -> Tuple[bool, str]:
+        """Realiza a viagem para uma nova região."""
+        can_travel, msg = self.can_travel_to(region_id, regions_data)
+        if not can_travel:
+            return False, msg
+
+        region = next((r for r in regions_data if r["id"] == region_id), None)
+        if not region:
+            return False, "Região não encontrada."
+
+        import time
+        self.travel_cooldown = time.time()
+        self.current_region = region_id
+        self.current_location = region["name"]
+
+        # Desbloqueia a região se não estiver desbloqueada
+        if region_id not in self.unlocked_regions:
+            self.unlocked_regions.append(region_id)
+
+        return True, f"Você viajou para {region['name']}!"
 
     def get_total_attack(self) -> int:
         base = self.strength
@@ -231,6 +347,7 @@ class Player:
             "vocation": self.vocation,
             "origin_continent": self.origin_continent,
             "current_location": self.current_location,
+            "current_region": self.current_region,
             "level": self.level,
             "xp": self.xp,
             "xp_next_level": self.xp_next_level,
@@ -270,6 +387,17 @@ class Player:
             "daily_quests_completed": self.daily_quests_completed,
             "last_quest_date": self.last_quest_date,
             "daily_quests_board": self.daily_quests_board,
+            "unlocked_regions": self.unlocked_regions,
+            "travel_cooldown": self.travel_cooldown,
+            "daily_inn_uses": self.daily_inn_uses,
+            "last_inn_date": self.last_inn_date,
+            "daily_training_uses": self.daily_training_uses,
+            "last_training_date": self.last_training_date,
+            "daily_dungeon_count": self.daily_dungeon_count,
+            "last_dungeon_date": self.last_dungeon_date,
+            "party_id": self.party_id,
+            "party_role": self.party_role,
+            "party_join_requests": self.party_join_requests,
         }
 
     @classmethod
@@ -282,6 +410,7 @@ class Player:
             origin_continent=data.get("origin_continent", "central"),
         )
         player.current_location = data.get("current_location", player.current_location)
+        player.current_region = data.get("current_region", player.current_region)
         player.level = data.get("level", 1)
         player.xp = data.get("xp", 0)
         player.xp_next_level = data.get("xp_next_level", 100)
@@ -337,4 +466,16 @@ class Player:
         player.daily_quests_completed = data.get("daily_quests_completed", 0)
         player.last_quest_date = data.get("last_quest_date", "")
         player.daily_quests_board = data.get("daily_quests_board", {})
+
+        player.unlocked_regions = data.get("unlocked_regions", ["buena_village"])
+        player.travel_cooldown = data.get("travel_cooldown", 0.0)
+        player.daily_inn_uses = data.get("daily_inn_uses", 0)
+        player.last_inn_date = data.get("last_inn_date", "")
+        player.daily_training_uses = data.get("daily_training_uses", 0)
+        player.last_training_date = data.get("last_training_date", "")
+        player.daily_dungeon_count = data.get("daily_dungeon_count", 0)
+        player.last_dungeon_date = data.get("last_dungeon_date", "")
+        player.party_id = data.get("party_id", None)
+        player.party_role = data.get("party_role", "")
+        player.party_join_requests = data.get("party_join_requests", [])
         return player
