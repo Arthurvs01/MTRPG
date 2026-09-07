@@ -5,6 +5,7 @@ from telegram.ext import ContextTypes
 from world.dungeon_menu import (
     dungeon_process_create,
     dungeon_process_join,
+    dungeon_process_join_selected,
 )
 from world.party_menu import (
     party_process_create,
@@ -97,6 +98,10 @@ async def route_text_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if user_data.get("dungeon_joining"):
         await dungeon_process_join(update, context)
+        return
+
+    if user_data.get("dungeon_joining_selected"):
+        await dungeon_process_join_selected(update, context)
         return
 
     # Party system

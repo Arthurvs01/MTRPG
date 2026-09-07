@@ -45,6 +45,7 @@ async def travel_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         keyboard.append([InlineKeyboardButton(button_text, callback_data=callback)])
 
     keyboard.append([InlineKeyboardButton("⬅️ Voltar ao Hub", callback_data="hub_main")])
+    keyboard.append([InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main")])
 
     text = TextLoader.load(
         "travel_menu.txt",

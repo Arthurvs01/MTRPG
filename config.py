@@ -26,6 +26,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 # Caminhos de Armazenamento e Conteúdo
 DATABASE_DIR = BASE_DIR / os.getenv("DATABASE_DIR", "database/data")
 PLAYERS_DIR = DATABASE_DIR / "players"
+PARTIES_DIR = DATABASE_DIR / "parties"
 CONTENT_DIR = BASE_DIR / "content"
 DATA_DIR = CONTENT_DIR / "data"
 TEXTS_DIR = CONTENT_DIR / "texts"
@@ -33,6 +34,7 @@ IMAGES_DIR = CONTENT_DIR / "images"
 
 # Garante que as pastas básicas existam
 os.makedirs(PLAYERS_DIR, exist_ok=True)
+os.makedirs(PARTIES_DIR, exist_ok=True)
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(TEXTS_DIR, exist_ok=True)
 os.makedirs(IMAGES_DIR, exist_ok=True)

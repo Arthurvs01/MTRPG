@@ -49,6 +49,11 @@ async def hub_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ],
         [
             InlineKeyboardButton("🎁 Baús & Relíquias", callback_data="lootbox_main"),
+            InlineKeyboardButton("🗺️ Mapa & Viagens", callback_data="travel_menu"),
+        ],
+        [
+            InlineKeyboardButton("🏰 Dungeons", callback_data="dungeon_main"),
+            InlineKeyboardButton("🤝 Grupo de Aventureiros", callback_data="party_main"),
         ]
     ]
 

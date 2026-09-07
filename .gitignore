@@ -1,6 +1,5 @@
 .env
 *.log
-*.md
 *.pyc
 
 .venv/

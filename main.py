@@ -10,6 +10,7 @@ from telegram.ext import (
     MessageHandler,
     ConversationHandler,
     filters,
+    ContextTypes,
 )
 from config import BOT_TOKEN
 
@@ -77,6 +78,8 @@ from world.dungeon_menu import (
     dungeon_join,
     dungeon_process_create,
     dungeon_process_join,
+    dungeon_process_join_selected,
+    dungeon_join_select,
     dungeon_start,
     dungeon_cancel,
     dungeon_leave,
@@ -105,6 +108,13 @@ from world.party_menu import (
     party_process_deposit,
     party_withdraw,
     party_process_withdraw,
+    party_info_callback,
+    party_browse,
+    party_request_join,
+    party_join_requests,
+    party_approve_join,
+    party_deny_join,
+    party_toggle_public,
 )
 
 # Handlers de Forja, Crafting e Mercado entre Players
@@ -241,6 +251,7 @@ def build_app():
     app.add_handler(CallbackQueryHandler(dungeon_main, pattern="^dungeon_main$"))
     app.add_handler(CallbackQueryHandler(dungeon_create, pattern="^dungeon_create$"))
     app.add_handler(CallbackQueryHandler(dungeon_join, pattern="^dungeon_join$"))
+    app.add_handler(CallbackQueryHandler(dungeon_join_select, pattern="^dungeon_join_select_"))
     app.add_handler(CallbackQueryHandler(dungeon_start, pattern="^dungeon_start_"))
     app.add_handler(CallbackQueryHandler(dungeon_cancel, pattern="^dungeon_cancel_"))
     app.add_handler(CallbackQueryHandler(dungeon_leave, pattern="^dungeon_leave_"))
@@ -263,6 +274,13 @@ def build_app():
     app.add_handler(CallbackQueryHandler(party_funds, pattern="^party_funds$"))
     app.add_handler(CallbackQueryHandler(party_deposit, pattern="^party_deposit$"))
     app.add_handler(CallbackQueryHandler(party_withdraw, pattern="^party_withdraw$"))
+    app.add_handler(CallbackQueryHandler(party_info_callback, pattern="^party_info_"))
+    app.add_handler(CallbackQueryHandler(party_browse, pattern="^party_browse$"))
+    app.add_handler(CallbackQueryHandler(party_request_join, pattern="^party_request_join_"))
+    app.add_handler(CallbackQueryHandler(party_join_requests, pattern="^party_join_requests"))
+    app.add_handler(CallbackQueryHandler(party_approve_join, pattern="^party_approve_"))
+    app.add_handler(CallbackQueryHandler(party_deny_join, pattern="^party_deny_"))
+    app.add_handler(CallbackQueryHandler(party_toggle_public, pattern="^party_toggle_public$"))
 
     # Baús & LootBoxes
     app.add_handler(CallbackQueryHandler(lootbox_main, pattern="^lootbox_main$"))
@@ -273,9 +291,21 @@ def build_app():
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, route_text_input))
 
     # ==========================================
-    # 3. Handler Central de Erros (opcional)
+    # 3. Handler Central de Erros
     # ==========================================
-    # Pode adicionar error handlers aqui se desejar
+    async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
+        """Log errors and notify user if possible."""
+        logger.error(f"Exception while handling an update: {context.error}", exc_info=context.error)
+        
+        if isinstance(update, Update) and update.effective_message:
+            try:
+                await update.effective_message.reply_text(
+                    "❌ Ocorreu um erro interno. A equipe foi notificada. Tente novamente em alguns instantes."
+                )
+            except Exception:
+                pass
+
+    app.add_error_handler(error_handler)
 
     return app
 

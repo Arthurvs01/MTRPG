@@ -55,6 +55,7 @@ async def dungeon_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
     options.append(f"👥 Grupo: 2-4 jogadores")
 
     keyboard.append([InlineKeyboardButton("⬅️ Voltar ao Hub", callback_data="hub_main")])
+    keyboard.append([InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main")])
 
     text = TextLoader.load(
         "dungeon_main.txt",
@@ -145,7 +146,7 @@ async def dungeon_create(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def dungeon_join(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Inicia entrada em dungeon - pede ID e senha."""
+    """Exibe lista de dungeons disponíveis na região para entrar."""
     query = update.callback_query
     chat_id = query.message.chat_id
     player = await PlayerRepository.get_player(chat_id)
@@ -156,14 +157,107 @@ async def dungeon_join(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.answer("🚫 Limite diário de dungeons atingido!", show_alert=True)
         return
 
-    context.user_data["dungeon_joining"] = True
+    # Busca dungeons ativas na região atual que não começaram e têm vaga
+    available_dungeons = []
+    for instance in DungeonSystem._active_dungeons.values():
+        if (not instance.is_active and 
+            not instance.is_completed and 
+            len(instance.members) < 4 and
+            instance.get_member(player.chat_id) is None):
+            # Verifica se a dungeon é da região atual do player
+            dungeon_region = instance.dungeon_id.split("_")[0] + "_" + instance.dungeon_id.split("_")[1]
+            if dungeon_region == player.current_region:
+                leader = instance.get_member(instance.leader_id)
+                leader_name = leader.character_name if leader else "Desconhecido"
+                available_dungeons.append({
+                    "dungeon_id": instance.dungeon_id,
+                    "leader_name": leader_name,
+                    "members": len(instance.members),
+                    "password": instance.password,  # Para exibir se for do próprio player
+                })
+
+    if not available_dungeons:
+        text = (
+            "🔑 <b>ENTRAR NA DUNGEON</b>\n\n"
+            "Nenhuma dungeon disponível na sua região no momento.\n"
+            "Você pode criar uma nova ou aguardar alguém criar."
+        )
+        keyboard = [[InlineKeyboardButton("⬅️ Voltar", callback_data="dungeon_main")]]
+        await MessageManager.send_or_edit(update, context, "dungeon_entrada.jpg", text, InlineKeyboardMarkup(keyboard))
+        return
+
+    text = "🔑 <b>DUNGEONS DISPONÍVEIS NA REGIÃO</b>\n\nSelecione uma dungeon para entrar (apenas a senha será necessária):\n"
+    keyboard = []
+
+    for d in available_dungeons:
+        text += f"\n• <b>{d['dungeon_id']}</b>\n  Líder: {d['leader_name']} | Jogadores: {d['members']}/4"
+        keyboard.append([
+            InlineKeyboardButton(f"🔑 Entrar: {d['leader_name']} ({d['members']}/4)", callback_data=f"dungeon_join_select_{d['dungeon_id']}")
+        ])
+
+    keyboard.append([InlineKeyboardButton("⬅️ Voltar", callback_data="dungeon_main")])
+
+    await MessageManager.send_or_edit(
+        update=update,
+        context=context,
+        image_path="dungeon_entrada.jpg",
+        text=text,
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+
+async def dungeon_join_select(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Processa seleção de dungeon - pede apenas a senha."""
+    query = update.callback_query
+    chat_id = query.message.chat_id
+    player = await PlayerRepository.get_player(chat_id)
+    if not player:
+        return
+
+    dungeon_id = query.data.replace("dungeon_join_select_", "")
+    
+    # Verifica se a dungeon ainda existe e tem vaga
+    instance = DungeonSystem._active_dungeons.get(dungeon_id)
+    if not instance or instance.is_active or instance.is_completed or len(instance.members) >= 4:
+        await query.answer("Esta dungeon não está mais disponível.", show_alert=True)
+        await dungeon_join(update, context)
+        return
+
+    context.user_data["dungeon_joining_selected"] = dungeon_id
     await query.answer()
     await query.edit_message_text(
-        "🔑 <b>ENTRAR NA DUNGEON</b>\n\n"
-        "Digite o <b>ID da Dungeon</b> e a <b>Senha</b> separados por espaço:\n"
-        "<i>Exemplo: dungeon_buena_cave_123456789_1700000000 1234</i>",
+        f"🔑 <b>ENTRAR NA DUNGEON</b>\n\n"
+        f"Dungeon: <code>{dungeon_id}</code>\n\n"
+        f"Digite a <b>senha de 4 dígitos</b>:\n"
+        f"<i>Exemplo: 1234</i>",
         parse_mode="HTML"
     )
+
+
+async def dungeon_process_join_selected(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Processa entrada em dungeon selecionada (apenas senha)."""
+    chat_id = update.effective_chat.id
+    player = await PlayerRepository.get_player(chat_id)
+    if not player or not context.user_data.get("dungeon_joining_selected"):
+        return
+
+    dungeon_id = context.user_data["dungeon_joining_selected"]
+    password = update.message.text.strip()
+    
+    if len(password) != 4 or not password.isdigit():
+        await update.message.reply_text("❌ A senha deve ter exatamente 4 dígitos numéricos!")
+        return
+
+    context.user_data["dungeon_joining_selected"] = False
+
+    success, msg = DungeonSystem.join_dungeon(player, dungeon_id, password)
+    await PlayerRepository.save_player(player)
+
+    if success:
+        await update.message.reply_text(f"✅ {msg}", parse_mode="HTML")
+        await dungeon_main(update, context)
+    else:
+        await update.message.reply_text(f"❌ {msg}", parse_mode="HTML")
 
 
 async def dungeon_process_create(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -195,7 +289,7 @@ async def dungeon_process_create(update: Update, context: ContextTypes.DEFAULT_T
 
 
 async def dungeon_process_join(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Processa entrada em dungeon com ID e senha."""
+    """Processa entrada em dungeon com ID e senha (legado - compatibilidade)."""
     chat_id = update.effective_chat.id
     player = await PlayerRepository.get_player(chat_id)
     if not player or not context.user_data.get("dungeon_joining"):
