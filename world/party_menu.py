@@ -29,10 +29,15 @@ async def party_main(update: Update, context: ContextTypes.DEFAULT_TYPE):
         party_status="❌ Sem grupo",
     )
 
+    # Busca grupos públicos
+    public_parties = PartySystem.get_public_parties()
+
     keyboard = [
         [InlineKeyboardButton("➕ Criar Grupo de Aventureiros", callback_data="party_create")],
         [InlineKeyboardButton("📋 Ver Convites Pendentes", callback_data="party_invites")],
+        [InlineKeyboardButton("🔍 Buscar Grupos Públicos", callback_data="party_browse")],
         [InlineKeyboardButton("⬅️ Voltar ao Hub", callback_data="hub_main")],
+        [InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main")],
     ]
 
     await MessageManager.send_or_edit(
@@ -71,6 +76,10 @@ async def party_info_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, pl
             InlineKeyboardButton("💰 Gerenciar Fundos", callback_data="party_funds"),
         ])
         keyboard.append([
+            InlineKeyboardButton("📋 Solicitações de Entrada", callback_data=f"party_join_requests_{party_info['party_id']}"),
+            InlineKeyboardButton("🔓 Alternar Público/Privado", callback_data="party_toggle_public"),
+        ])
+        keyboard.append([
             InlineKeyboardButton("👑 Transferir Liderança", callback_data="party_transfer"),
             InlineKeyboardButton("🗑️ Dissolver Grupo", callback_data="party_disband"),
         ])
@@ -83,6 +92,9 @@ async def party_info_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, pl
         InlineKeyboardButton("📋 Convites Pendentes", callback_data="party_invites"),
         InlineKeyboardButton("⬅️ Hub", callback_data="hub_main"),
     ])
+    keyboard.append([
+        InlineKeyboardButton("🏰 Menu Principal", callback_data="hub_main"),
+    ])
 
     await MessageManager.send_or_edit(
         update=update,
@@ -91,6 +103,24 @@ async def party_info_menu(update: Update, context: ContextTypes.DEFAULT_TYPE, pl
         text=text,
         reply_markup=InlineKeyboardMarkup(keyboard)
     )
+
+
+async def party_info_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Handler para callback party_info_{party_id}."""
+    query = update.callback_query
+    party_id = query.data.replace("party_info_", "")
+    
+    chat_id = update.effective_chat.id
+    player = await PlayerRepository.get_player(chat_id)
+    if not player:
+        return
+    
+    party_info = PartySystem.get_party_info(party_id)
+    if party_info:
+        await party_info_menu(update, context, player, party_info)
+    else:
+        await query.answer("Grupo não encontrado.", show_alert=True)
+        await party_main(update, context)
 
 
 async def party_create(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -471,3 +501,160 @@ async def party_process_withdraw(update: Update, context: ContextTypes.DEFAULT_T
     await PlayerRepository.save_player(player)
 
     await update.message.reply_text(f"{'✅' if success else '❌'} {msg}", parse_mode="HTML")
+
+
+async def party_browse(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Exibe grupos públicos disponíveis para entrar."""
+    chat_id = update.effective_chat.id
+    player = await PlayerRepository.get_player(chat_id)
+    if not player:
+        return
+
+    public_parties = PartySystem.get_public_parties()
+
+    if not public_parties:
+        text = "🔍 <b>BUSCAR GRUPOS PÚBLICOS</b>\n\nNenhum grupo público disponível no momento."
+        keyboard = [[InlineKeyboardButton("⬅️ Voltar", callback_data="party_main")]]
+        await MessageManager.send_or_edit(update, context, "grupo_aventureiros.jpg", text, InlineKeyboardMarkup(keyboard))
+        return
+
+    text = "🔍 <b>GRUPOS PÚBLICOS DISPONÍVEIS</b>\n\n"
+    keyboard = []
+
+    for party in public_parties:
+        text += (
+            f"• <b>{party['name']}</b>\n"
+            f"  Líder: {party['leader_name']} | Nível: {party['level']} | "
+            f"Membros: {party['member_count']}/{party['max_members']}\n"
+        )
+        keyboard.append([
+            InlineKeyboardButton(f"📝 Solicitar: {party['name'][:20]}", callback_data=f"party_request_join_{party['party_id']}")
+        ])
+
+    keyboard.append([InlineKeyboardButton("⬅️ Voltar", callback_data="party_main")])
+
+    await MessageManager.send_or_edit(
+        update=update,
+        context=context,
+        image_path="grupo_aventureiros.jpg",
+        text=text,
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+
+async def party_request_join(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Processa solicitação de entrada em grupo público."""
+    query = update.callback_query
+    chat_id = query.message.chat_id
+    player = await PlayerRepository.get_player(chat_id)
+    if not player:
+        return
+
+    party_id = query.data.replace("party_request_join_", "")
+    success, msg = PartySystem.request_join(player, party_id)
+    await PlayerRepository.save_player(player)
+
+    await query.answer(msg, show_alert=True)
+    if success:
+        await party_browse(update, context)
+    else:
+        await party_main(update, context)
+
+
+async def party_join_requests(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Exibe solicitações de entrada pendentes (para líder)."""
+    query = update.callback_query
+    chat_id = update.effective_chat.id
+    player = await PlayerRepository.get_player(chat_id)
+    if not player:
+        return
+
+    # Extrai party_id do callback se presente
+    party_id = player.party_id
+    if query and "party_join_requests_" in query.data:
+        party_id = query.data.replace("party_join_requests_", "")
+
+    if not party_id:
+        if query:
+            await query.answer("Você não está em um grupo.", show_alert=True)
+        return
+
+    requests = PartySystem.get_join_requests(player)
+
+    if not requests:
+        text = "📋 <b>SOLICITAÇÕES DE ENTRADA</b>\n\nNenhuma solicitação pendente."
+        keyboard = [[InlineKeyboardButton("⬅️ Voltar", callback_data=f"party_info_{party_id}")]]
+        await MessageManager.send_or_edit(update, context, "grupo_aventureiros.jpg", text, InlineKeyboardMarkup(keyboard))
+        return
+
+    text = "📋 <b>SOLICITAÇÕES DE ENTRADA PENDENTES</b>\n\n"
+    keyboard = []
+
+    for req in requests:
+        text += f"• <b>{req['name']}</b> (Lvl {req['level']} {req['vocation']})\n"
+        keyboard.append([
+            InlineKeyboardButton(f"✅ Aprovar {req['name'][:15]}", callback_data=f"party_approve_{req['chat_id']}"),
+            InlineKeyboardButton(f"❌ Recusar {req['name'][:15]}", callback_data=f"party_deny_{req['chat_id']}"),
+        ])
+
+    keyboard.append([InlineKeyboardButton("⬅️ Voltar", callback_data=f"party_info_{party_id}")])
+
+    await MessageManager.send_or_edit(
+        update=update,
+        context=context,
+        image_path="grupo_aventureiros.jpg",
+        text=text,
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+
+async def party_approve_join(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Aprova solicitação de entrada."""
+    query = update.callback_query
+    chat_id = query.message.chat_id
+    player = await PlayerRepository.get_player(chat_id)
+    if not player:
+        return
+
+    target_chat_id = int(query.data.replace("party_approve_", ""))
+    success, msg = PartySystem.approve_join_request(player, target_chat_id)
+    await PlayerRepository.save_player(player)
+
+    await query.answer(msg, show_alert=True)
+    if success:
+        await party_join_requests(update, context)
+    else:
+        await party_info_menu(update, context, player, PartySystem.get_party_info(player.party_id))
+
+
+async def party_deny_join(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Recusa solicitação de entrada."""
+    query = update.callback_query
+    chat_id = query.message.chat_id
+    player = await PlayerRepository.get_player(chat_id)
+    if not player:
+        return
+
+    target_chat_id = int(query.data.replace("party_deny_", ""))
+    success, msg = PartySystem.deny_join_request(player, target_chat_id)
+
+    await query.answer(msg, show_alert=True)
+    if success:
+        await party_join_requests(update, context)
+    else:
+        await party_info_menu(update, context, player, PartySystem.get_party_info(player.party_id))
+
+
+async def party_toggle_public(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Alterna visibilidade pública do grupo."""
+    query = update.callback_query
+    chat_id = query.message.chat_id
+    player = await PlayerRepository.get_player(chat_id)
+    if not player:
+        return
+
+    success, msg = PartySystem.toggle_public(player)
+    await PlayerRepository.save_player(player)
+
+    await query.answer(msg, show_alert=True)
+    await party_info_menu(update, context, player, PartySystem.get_party_info(player.party_id))

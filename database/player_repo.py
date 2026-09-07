@@ -105,6 +105,11 @@ class PlayerRepository:
             return None
 
     @classmethod
+    def get_player_sync(cls, chat_id: int) -> Optional[Player]:
+        """Versão síncrona pública para carregar o jogador."""
+        return cls._get_player_sync(chat_id)
+
+    @classmethod
     async def delete_player(cls, chat_id: int) -> bool:
         """Exclui o arquivo do jogador caso precise reiniciar o progresso."""
         target_file = cls._get_player_file(chat_id)

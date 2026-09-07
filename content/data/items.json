@@ -5,14 +5,18 @@
       "description": "Elixir restaurador básico produzido a partir de ervas medicinais.",
       "item_type": "consumable",
       "value_in_iron_coins": 20,
-      "effects": {"heal_hp": 60}
+      "effects": {
+        "heal_hp": 60
+      }
     },
     "potion_mana_minor": {
       "name": "Frasco de Água Mágica Refinada",
       "description": "Restaura o fluxo de mana e alivia o desgaste espiritual.",
       "item_type": "consumable",
       "value_in_iron_coins": 30,
-      "effects": {"restore_mana": 40}
+      "effects": {
+        "restore_mana": 40
+      }
     },
     "boar_hide": {
       "name": "Couro de Javali",
@@ -213,6 +217,264 @@
       "rune_type": "speed",
       "rune_value": 4,
       "value_in_iron_coins": 70
+    },
+    "ancient_grimoire": {
+      "name": "Grimório Ancião",
+      "description": "Livro mágico antigo contendo feitiços perdidos.",
+      "item_type": "material",
+      "value_in_iron_coins": 500
+    },
+    "angel_feather": {
+      "name": "Pena de Anjo",
+      "description": "Pena pura de um anjo caído, brilha com luz sagrada.",
+      "item_type": "material",
+      "value_in_iron_coins": 300
+    },
+    "arcane_essence": {
+      "name": "Essência Arcana",
+      "description": "Essência concentrada de mana arcano.",
+      "item_type": "material",
+      "value_in_iron_coins": 200
+    },
+    "basilisk_eye": {
+      "name": "Olho de Basilisco",
+      "description": "Olho petrificante de um basilisco.",
+      "item_type": "material",
+      "value_in_iron_coins": 250
+    },
+    "bat_wing": {
+      "name": "Asa de Morcego",
+      "description": "Asa de morcego de caverna, usada em alquimia.",
+      "item_type": "material",
+      "value_in_iron_coins": 15
+    },
+    "centipede_shell": {
+      "name": "Carapaça Segmentada",
+      "description": "Carapaça dura de centopeia anciã.",
+      "item_type": "material",
+      "value_in_iron_coins": 80
+    },
+    "cockroach_shell": {
+      "name": "Carapaça de Barata",
+      "description": "Carapaça resistente de barata gigante.",
+      "item_type": "material",
+      "value_in_iron_coins": 40
+    },
+    "corrupted_badge": {
+      "name": "Insígnia Corrompida",
+      "description": "Insígnia de um guarda de Asura corrompido pela mana.",
+      "item_type": "material",
+      "value_in_iron_coins": 150
+    },
+    "divine_core": {
+      "name": "Núcleo Divino",
+      "description": "Núcleo de energia divina de um golem sagrado.",
+      "item_type": "material",
+      "value_in_iron_coins": 500
+    },
+    "drake_scale": {
+      "name": "Escama de Draco",
+      "description": "Escama resistente de um draco das areias.",
+      "item_type": "material",
+      "value_in_iron_coins": 200
+    },
+    "elder_elf_bow": {
+      "name": "Arco do Arqueiro Ancião",
+      "description": "Arco lendário de um arqueiro élfico ancião.",
+      "item_type": "material",
+      "value_in_iron_coins": 800
+    },
+    "elven_bow": {
+      "name": "Arco Élfico Antigo",
+      "description": "Arco tradicional dos elfos da Grande Floresta.",
+      "item_type": "material",
+      "value_in_iron_coins": 400
+    },
+    "fallen_knight_sword": {
+      "name": "Espada do Cavaleiro Caído",
+      "description": "Espada de um cavaleiro sagrado que caiu em desgraça.",
+      "item_type": "material",
+      "value_in_iron_coins": 600
+    },
+    "ghost_coin": {
+      "name": "Moeda Fantasma",
+      "description": "Moeda espectral que brilha na escuridão.",
+      "item_type": "material",
+      "value_in_iron_coins": 100
+    },
+    "goblin_ear": {
+      "name": "Orelha de Goblin",
+      "description": "Orelha pontuda de goblin, prova de abate.",
+      "item_type": "material",
+      "value_in_iron_coins": 10
+    },
+    "holy_scripture_fragment": {
+      "name": "Fragmento de Escritura Sagrada",
+      "description": "Pedaço de pergaminho sagrado com runas divinas.",
+      "item_type": "material",
+      "value_in_iron_coins": 180
+    },
+    "inquisitor_robe": {
+      "name": "Manto do Inquisidor",
+      "description": "Manto cerimonial de um inquisidor da Igreja.",
+      "item_type": "material",
+      "value_in_iron_coins": 400
+    },
+    "kraken_ink": {
+      "name": "Tinta de Kraken",
+      "description": "Tinta negra profunda de um kraken do abismo.",
+      "item_type": "material",
+      "value_in_iron_coins": 350
+    },
+    "labyrinth_key": {
+      "name": "Chave do Labirinto",
+      "description": "Chave antiga que abre portas no Grande Labirinto.",
+      "item_type": "material",
+      "value_in_iron_coins": 500
+    },
+    "leviathan_heart": {
+      "name": "Coração de Leviatã",
+      "description": "Coração pulsante de um leviatã abissal.",
+      "item_type": "material",
+      "value_in_iron_coins": 2000
+    },
+    "mana_crystal": {
+      "name": "Cristal de Mana Concentrada",
+      "description": "Cristal puro de mana condensada.",
+      "item_type": "material",
+      "value_in_iron_coins": 300
+    },
+    "miner_pickaxe": {
+      "name": "Picareta de Mineiro",
+      "description": "Picareta usada por mineiros mortos-vivos.",
+      "item_type": "material",
+      "value_in_iron_coins": 60
+    },
+    "mirage_eye": {
+      "name": "Olho da Miragem",
+      "description": "Olho de uma fera da miragem, vê através de ilusões.",
+      "item_type": "material",
+      "value_in_iron_coins": 250
+    },
+    "moss_golem_core": {
+      "name": "Núcleo de Musgo Vivo",
+      "description": "Núcleo pulsante de um golem de musgo.",
+      "item_type": "material",
+      "value_in_iron_coins": 120
+    },
+    "moth_wing_dust": {
+      "name": "Pó de Asa Venenoso",
+      "description": "Pó tóxico das asas de mariposa venenosa.",
+      "item_type": "material",
+      "value_in_iron_coins": 50
+    },
+    "phoenix_feather": {
+      "name": "Pena de Fênix",
+      "description": "Pena que brilha com fogo eterno.",
+      "item_type": "material",
+      "value_in_iron_coins": 600
+    },
+    "rat_king_crown": {
+      "name": "Coroa do Rei Rato",
+      "description": "Coroa feita de lixo e ossos, símbolo do rei dos ratos.",
+      "item_type": "material",
+      "value_in_iron_coins": 300
+    },
+    "rat_tail": {
+      "name": "Cauda de Rato",
+      "description": "Cauda longa de rato gigante.",
+      "item_type": "material",
+      "value_in_iron_coins": 8
+    },
+    "rock_golem_core": {
+      "name": "Núcleo de Golem de Rocha",
+      "description": "Núcleo mineral de um golem de rocha.",
+      "item_type": "material",
+      "value_in_iron_coins": 100
+    },
+    "scarab_shell": {
+      "name": "Carapaça de Escorpião Ancião",
+      "description": "Carapaça indestrutível de escorpião do deserto.",
+      "item_type": "material",
+      "value_in_iron_coins": 400
+    },
+    "sea_serpent_scale": {
+      "name": "Escama de Serpente Marinha",
+      "description": "Escama gigantesca de serpente do mar.",
+      "item_type": "material",
+      "value_in_iron_coins": 500
+    },
+    "slime_essence": {
+      "name": "Essência de Slime",
+      "description": "Essência viscosa de slime mágico.",
+      "item_type": "material",
+      "value_in_iron_coins": 80
+    },
+    "snake_venom": {
+      "name": "Veneno de Cobra",
+      "description": "Veneno potente extraído de cobra de esgoto.",
+      "item_type": "material",
+      "value_in_iron_coins": 90
+    },
+    "spider_silk": {
+      "name": "Seda de Aranha",
+      "description": "Seda forte e flexível de aranha de caverna.",
+      "item_type": "material",
+      "value_in_iron_coins": 70
+    },
+    "spirit_essence": {
+      "name": "Essência Espiritual",
+      "description": "Essência de um espírito da natureza.",
+      "item_type": "material",
+      "value_in_iron_coins": 200
+    },
+    "squirrel_tail": {
+      "name": "Cauda de Esquilo Gigante",
+      "description": "Cauda felpuda de esquilo da floresta.",
+      "item_type": "material",
+      "value_in_iron_coins": 25
+    },
+    "stolen_grimoire_page": {
+      "name": "Página de Grimório Roubada",
+      "description": "Página rasgada de um grimório proibido.",
+      "item_type": "material",
+      "value_in_iron_coins": 150
+    },
+    "storm_core": {
+      "name": "Núcleo da Tempestade",
+      "description": "Núcleo de energia de um elemental da tempestade.",
+      "item_type": "material",
+      "value_in_iron_coins": 400
+    },
+    "toxic_essence": {
+      "name": "Essência Tóxica",
+      "description": "Essência concentrada de toxinas mortais.",
+      "item_type": "material",
+      "value_in_iron_coins": 120
+    },
+    "troll_blood": {
+      "name": "Sangue de Troll",
+      "description": "Sangue regenerativo de troll de caverna.",
+      "item_type": "material",
+      "value_in_iron_coins": 80
+    },
+    "turtle_shell": {
+      "name": "Carapaça de Tartaruga",
+      "description": "Carapaça dura de tartaruga mutante.",
+      "item_type": "material",
+      "value_in_iron_coins": 150
+    },
+    "world_tree_root_piece": {
+      "name": "Fragmento de Raiz Mundial",
+      "description": "Pedaço da raiz da Árvore do Mundo.",
+      "item_type": "material",
+      "value_in_iron_coins": 350
+    },
+    "world_tree_sap": {
+      "name": "Seiva da Árvore do Mundo",
+      "description": "Seiva mágica da Árvore do Mundo, cura qualquer ferida.",
+      "item_type": "material",
+      "value_in_iron_coins": 800
     }
   },
   "equipments": {
@@ -307,19 +569,63 @@
   },
   "shops": {
     "central": [
-      {"id": "potion_hp_minor", "price": 20, "type": "item"},
-      {"id": "potion_mana_minor", "price": 30, "type": "item"},
-      {"id": "iron_ore", "price": 15, "type": "item"},
-      {"id": "rune_str_1", "price": 75, "type": "item"},
-      {"id": "rune_mag_1", "price": 75, "type": "item"},
-      {"id": "rune_def_1", "price": 70, "type": "item"},
-      {"id": "rune_spd_1", "price": 70, "type": "item"}
+      {
+        "id": "potion_hp_minor",
+        "price": 20,
+        "type": "item"
+      },
+      {
+        "id": "potion_mana_minor",
+        "price": 30,
+        "type": "item"
+      },
+      {
+        "id": "iron_ore",
+        "price": 15,
+        "type": "item"
+      },
+      {
+        "id": "rune_str_1",
+        "price": 75,
+        "type": "item"
+      },
+      {
+        "id": "rune_mag_1",
+        "price": 75,
+        "type": "item"
+      },
+      {
+        "id": "rune_def_1",
+        "price": 70,
+        "type": "item"
+      },
+      {
+        "id": "rune_spd_1",
+        "price": 70,
+        "type": "item"
+      }
     ],
     "demon": [
-      {"id": "potion_hp_minor", "price": 25, "type": "item"},
-      {"id": "potion_mana_minor", "price": 35, "type": "item"},
-      {"id": "rune_str_1", "price": 80, "type": "item"},
-      {"id": "rune_mag_1", "price": 80, "type": "item"}
+      {
+        "id": "potion_hp_minor",
+        "price": 25,
+        "type": "item"
+      },
+      {
+        "id": "potion_mana_minor",
+        "price": 35,
+        "type": "item"
+      },
+      {
+        "id": "rune_str_1",
+        "price": 80,
+        "type": "item"
+      },
+      {
+        "id": "rune_mag_1",
+        "price": 80,
+        "type": "item"
+      }
     ]
   }
 }

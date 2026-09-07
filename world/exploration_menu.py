@@ -67,6 +67,9 @@ async def explore_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [
             InlineKeyboardButton("🏛️ Guilda de Aventureiros", callback_data="guild_main"),
             InlineKeyboardButton("🏰 Hub Principal", callback_data="hub_main"),
+        ],
+        [
+            InlineKeyboardButton("⬅️ Voltar", callback_data="hub_main"),
         ]
     ]
 

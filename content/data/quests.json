@@ -11,7 +11,9 @@
       "reward_iron_coins": 50,
       "reward_guild_points": 15,
       "reward_xp": 80,
-      "reward_items": ["potion_hp_minor"]
+      "reward_items": [
+        "potion_hp_minor"
+      ]
     },
     "quest_fittoa_02": {
       "title": "Protegendo a Colheita da Aldeia Buena",
@@ -24,7 +26,9 @@
       "reward_iron_coins": 70,
       "reward_guild_points": 20,
       "reward_xp": 110,
-      "reward_items": ["boar_meat"]
+      "reward_items": [
+        "boar_meat"
+      ]
     },
     "quest_fittoa_03": {
       "title": "Ameaça no Bosque: Javali Enraivecido",
@@ -37,7 +41,9 @@
       "reward_iron_coins": 40,
       "reward_guild_points": 10,
       "reward_xp": 60,
-      "reward_items": ["boar_hide"]
+      "reward_items": [
+        "boar_hide"
+      ]
     },
     "quest_fittoa_04": {
       "title": "Suprimentos para a Guarda de Buena",
@@ -50,7 +56,9 @@
       "reward_iron_coins": 55,
       "reward_guild_points": 15,
       "reward_xp": 85,
-      "reward_items": ["potion_hp_minor"]
+      "reward_items": [
+        "potion_hp_minor"
+      ]
     },
     "quest_fittoa_05": {
       "title": "Limpando as Trilhas Rurais de Asura",
@@ -63,7 +71,9 @@
       "reward_iron_coins": 45,
       "reward_guild_points": 12,
       "reward_xp": 70,
-      "reward_items": ["boar_meat"]
+      "reward_items": [
+        "boar_meat"
+      ]
     },
     "quest_fittoa_06": {
       "title": "Defesa dos Mercadores Locais",
@@ -76,7 +86,9 @@
       "reward_iron_coins": 60,
       "reward_guild_points": 18,
       "reward_xp": 90,
-      "reward_items": ["boar_hide"]
+      "reward_items": [
+        "boar_hide"
+      ]
     },
     "quest_fittoa_07": {
       "title": "Patrulha Rural de Fittoa",
@@ -89,7 +101,9 @@
       "reward_iron_coins": 75,
       "reward_guild_points": 22,
       "reward_xp": 120,
-      "reward_items": ["potion_hp_minor"]
+      "reward_items": [
+        "potion_hp_minor"
+      ]
     },
     "quest_fittoa_08": {
       "title": "Feras Vorazes dos Arredores",
@@ -102,7 +116,9 @@
       "reward_iron_coins": 50,
       "reward_guild_points": 15,
       "reward_xp": 80,
-      "reward_items": ["boar_meat"]
+      "reward_items": [
+        "boar_meat"
+      ]
     },
     "quest_fittoa_09": {
       "title": "Ameaça na Estrada: Lobos com Chifre",
@@ -115,7 +131,9 @@
       "reward_iron_coins": 90,
       "reward_guild_points": 25,
       "reward_xp": 150,
-      "reward_items": ["potion_mana_minor"]
+      "reward_items": [
+        "potion_mana_minor"
+      ]
     },
     "quest_fittoa_10": {
       "title": "Alcateia Voraz da Colina Norte",
@@ -128,7 +146,9 @@
       "reward_iron_coins": 130,
       "reward_guild_points": 35,
       "reward_xp": 200,
-      "reward_items": ["wolf_pelt"]
+      "reward_items": [
+        "wolf_pelt"
+      ]
     },
     "quest_fittoa_11": {
       "title": "Os Travessos Macacos Pax",
@@ -141,7 +161,9 @@
       "reward_iron_coins": 100,
       "reward_guild_points": 28,
       "reward_xp": 160,
-      "reward_items": ["pax_fur"]
+      "reward_items": [
+        "pax_fur"
+      ]
     },
     "quest_fittoa_12": {
       "title": "Resgate de Caravana: Emboscada de Lobos",
@@ -154,7 +176,9 @@
       "reward_iron_coins": 95,
       "reward_guild_points": 26,
       "reward_xp": 155,
-      "reward_items": ["wolf_horn"]
+      "reward_items": [
+        "wolf_horn"
+      ]
     },
     "quest_fittoa_13": {
       "title": "Imitadores da Floresta: Caça aos Macacos Pax",
@@ -167,7 +191,9 @@
       "reward_iron_coins": 140,
       "reward_guild_points": 38,
       "reward_xp": 210,
-      "reward_items": ["pax_fur"]
+      "reward_items": [
+        "pax_fur"
+      ]
     },
     "quest_fittoa_14": {
       "title": "Feras Rápidas da Trilha Leste",
@@ -180,7 +206,9 @@
       "reward_iron_coins": 90,
       "reward_guild_points": 25,
       "reward_xp": 145,
-      "reward_items": ["potion_hp_minor"]
+      "reward_items": [
+        "potion_hp_minor"
+      ]
     },
     "quest_fittoa_15": {
       "title": "Perigo no Rio: Serpente de Água Doce",
@@ -193,7 +221,9 @@
       "reward_iron_coins": 160,
       "reward_guild_points": 45,
       "reward_xp": 260,
-      "reward_items": ["serpent_scale"]
+      "reward_items": [
+        "serpent_scale"
+      ]
     },
     "quest_fittoa_16": {
       "title": "Investigação Florestal: O Treant Ancião",
@@ -206,7 +236,9 @@
       "reward_iron_coins": 180,
       "reward_guild_points": 50,
       "reward_xp": 300,
-      "reward_items": ["treant_elder_wood"]
+      "reward_items": [
+        "treant_elder_wood"
+      ]
     },
     "quest_fittoa_17": {
       "title": "Serpentes do Lago de Fittoa",
@@ -219,7 +251,9 @@
       "reward_iron_coins": 220,
       "reward_guild_points": 60,
       "reward_xp": 350,
-      "reward_items": ["magic_stone_green"]
+      "reward_items": [
+        "magic_stone_green"
+      ]
     },
     "quest_fittoa_18": {
       "title": "O Guardião Enlouquecido das Árvores",
@@ -232,7 +266,9 @@
       "reward_iron_coins": 190,
       "reward_guild_points": 52,
       "reward_xp": 310,
-      "reward_items": ["magic_stone_green"]
+      "reward_items": [
+        "magic_stone_green"
+      ]
     },
     "quest_fittoa_19": {
       "title": "Terror das Montanhas: Urso de Garras de Ferro",
@@ -245,7 +281,9 @@
       "reward_iron_coins": 280,
       "reward_guild_points": 80,
       "reward_xp": 450,
-      "reward_items": ["iron_claw"]
+      "reward_items": [
+        "iron_claw"
+      ]
     },
     "quest_fittoa_20": {
       "title": "Eliminação de Predador Alfa: Fera de Ferro",
@@ -258,7 +296,9 @@
       "reward_iron_coins": 300,
       "reward_guild_points": 85,
       "reward_xp": 480,
-      "reward_items": ["iron_claw"]
+      "reward_items": [
+        "iron_claw"
+      ]
     },
     "quest_rikarisu_01": {
       "title": "Deserto de Rikarisu: Coiotes Ácidos",
@@ -271,7 +311,9 @@
       "reward_iron_coins": 100,
       "reward_guild_points": 30,
       "reward_xp": 170,
-      "reward_items": ["acid_fang"]
+      "reward_items": [
+        "acid_fang"
+      ]
     },
     "quest_rikarisu_02": {
       "title": "Praga de Coiotes nos Portões de Rikarisu",
@@ -284,7 +326,9 @@
       "reward_iron_coins": 135,
       "reward_guild_points": 40,
       "reward_xp": 240,
-      "reward_items": ["demon_stone_fragment"]
+      "reward_items": [
+        "demon_stone_fragment"
+      ]
     },
     "quest_rikarisu_03": {
       "title": "Sobrevivência no Continente Demônio",
@@ -297,7 +341,9 @@
       "reward_iron_coins": 105,
       "reward_guild_points": 32,
       "reward_xp": 180,
-      "reward_items": ["potion_hp_minor"]
+      "reward_items": [
+        "potion_hp_minor"
+      ]
     },
     "quest_rikarisu_04": {
       "title": "Feras Ácidas da Ravina Rochosa",
@@ -310,7 +356,9 @@
       "reward_iron_coins": 110,
       "reward_guild_points": 33,
       "reward_xp": 185,
-      "reward_items": ["acid_fang"]
+      "reward_items": [
+        "acid_fang"
+      ]
     },
     "quest_rikarisu_05": {
       "title": "Ameaça às Caravanas Migurd",
@@ -323,7 +371,9 @@
       "reward_iron_coins": 140,
       "reward_guild_points": 42,
       "reward_xp": 250,
-      "reward_items": ["demon_stone_fragment"]
+      "reward_items": [
+        "demon_stone_fragment"
+      ]
     },
     "quest_rikarisu_06": {
       "title": "Patrulha das Fronteiras Demoníacas",
@@ -336,7 +386,9 @@
       "reward_iron_coins": 100,
       "reward_guild_points": 30,
       "reward_xp": 175,
-      "reward_items": ["potion_mana_minor"]
+      "reward_items": [
+        "potion_mana_minor"
+      ]
     },
     "quest_rikarisu_07": {
       "title": "Presas Corrosivas do Deserto Vermelho",
@@ -349,7 +401,9 @@
       "reward_iron_coins": 115,
       "reward_guild_points": 35,
       "reward_xp": 190,
-      "reward_items": ["acid_fang"]
+      "reward_items": [
+        "acid_fang"
+      ]
     },
     "quest_rikarisu_08": {
       "title": "Fome nas Terras Ermas",
@@ -362,7 +416,9 @@
       "reward_iron_coins": 130,
       "reward_guild_points": 38,
       "reward_xp": 230,
-      "reward_items": ["demon_stone_fragment"]
+      "reward_items": [
+        "demon_stone_fragment"
+      ]
     },
     "quest_rikarisu_09": {
       "title": "Emboscada Subterrânea: Sandworm de Rikarisu",
@@ -375,7 +431,9 @@
       "reward_iron_coins": 170,
       "reward_guild_points": 48,
       "reward_xp": 280,
-      "reward_items": ["sandworm_skin"]
+      "reward_items": [
+        "sandworm_skin"
+      ]
     },
     "quest_rikarisu_10": {
       "title": "Vermes Gigantes das Dunas",
@@ -388,7 +446,9 @@
       "reward_iron_coins": 230,
       "reward_guild_points": 65,
       "reward_xp": 380,
-      "reward_items": ["demon_stone_fragment"]
+      "reward_items": [
+        "demon_stone_fragment"
+      ]
     },
     "quest_rikarisu_11": {
       "title": "A Rota Comercial dos Mercadores do Deserto",
@@ -401,7 +461,9 @@
       "reward_iron_coins": 175,
       "reward_guild_points": 50,
       "reward_xp": 290,
-      "reward_items": ["sandworm_skin"]
+      "reward_items": [
+        "sandworm_skin"
+      ]
     },
     "quest_rikarisu_12": {
       "title": "Tremores de Areia: O Predador Furtivo",
@@ -414,7 +476,9 @@
       "reward_iron_coins": 240,
       "reward_guild_points": 68,
       "reward_xp": 390,
-      "reward_items": ["sandworm_skin"]
+      "reward_items": [
+        "sandworm_skin"
+      ]
     },
     "quest_rikarisu_13": {
       "title": "Eliminação de Elite: A Aranha Kougumo",
@@ -427,7 +491,9 @@
       "reward_iron_coins": 260,
       "reward_guild_points": 75,
       "reward_xp": 420,
-      "reward_items": ["steel_silk"]
+      "reward_items": [
+        "steel_silk"
+      ]
     },
     "quest_rikarisu_14": {
       "title": "Ninhos de Teia de Aço nas Fendas",
@@ -440,7 +506,9 @@
       "reward_iron_coins": 360,
       "reward_guild_points": 100,
       "reward_xp": 560,
-      "reward_items": ["spider_venom_gland"]
+      "reward_items": [
+        "spider_venom_gland"
+      ]
     },
     "quest_rikarisu_15": {
       "title": "Céus Sombrios: O Pássaro Carniceiro Roc",
@@ -453,7 +521,9 @@
       "reward_iron_coins": 310,
       "reward_guild_points": 88,
       "reward_xp": 480,
-      "reward_items": ["roc_feather"]
+      "reward_items": [
+        "roc_feather"
+      ]
     },
     "quest_rikarisu_16": {
       "title": "Carniceiros das Alturas Rochosas",
@@ -466,7 +536,9 @@
       "reward_iron_coins": 400,
       "reward_guild_points": 110,
       "reward_xp": 620,
-      "reward_items": ["roc_feather"]
+      "reward_items": [
+        "roc_feather"
+      ]
     },
     "quest_rikarisu_17": {
       "title": "Ameaça Venenosa: As Garras de Kougumo",
@@ -479,7 +551,9 @@
       "reward_iron_coins": 270,
       "reward_guild_points": 78,
       "reward_xp": 440,
-      "reward_items": ["steel_silk"]
+      "reward_items": [
+        "steel_silk"
+      ]
     },
     "quest_rikarisu_18": {
       "title": "O Monólito Vivo: Tartaruga de Pedra Ancestral",
@@ -492,7 +566,9 @@
       "reward_iron_coins": 460,
       "reward_guild_points": 130,
       "reward_xp": 700,
-      "reward_items": ["ancient_stone_shell"]
+      "reward_items": [
+        "ancient_stone_shell"
+      ]
     },
     "quest_rikarisu_19": {
       "title": "Defesa Imutável das Ruínas Demoníacas",
@@ -505,7 +581,9 @@
       "reward_iron_coins": 480,
       "reward_guild_points": 135,
       "reward_xp": 720,
-      "reward_items": ["magic_stone_green"]
+      "reward_items": [
+        "magic_stone_green"
+      ]
     },
     "quest_rikarisu_20": {
       "title": "Pesadelo Alado: Wyvern Demoníaco de Duas Cabeças",
@@ -518,7 +596,1809 @@
       "reward_iron_coins": 600,
       "reward_guild_points": 160,
       "reward_xp": 900,
-      "reward_items": ["wyvern_wing_membrane"]
+      "reward_items": [
+        "wyvern_wing_membrane"
+      ]
+    },
+    "quest_roit_01": {
+      "title": "Coleta de Recursos: Partes de Goblin da Floresta de Roitree",
+      "rank": "E",
+      "region": "roitree_city",
+      "description": "Mercadores relataram goblin da floresta de roitrees bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "forest_goblin",
+      "required_count": 3,
+      "reward_iron_coins": 100,
+      "reward_guild_points": 25,
+      "reward_xp": 180,
+      "reward_items": [
+        "potion_hp_minor"
+      ]
+    },
+    "quest_roit_02": {
+      "title": "Patrulha de Rotina: Eliminação de Goblin da Floresta de Roitrees",
+      "rank": "E",
+      "region": "roitree_city",
+      "description": "Um grupo de goblin da floresta de roitrees invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "forest_goblin",
+      "required_count": 3,
+      "reward_iron_coins": 130,
+      "reward_guild_points": 30,
+      "reward_xp": 220,
+      "reward_items": [
+        "goblin_ear"
+      ]
+    },
+    "quest_roit_03": {
+      "title": "Controle de Pragas: Goblin da Floresta de Roitrees",
+      "rank": "E",
+      "region": "roitree_city",
+      "description": "A guarnição precisa de materiais de goblin da floresta de roitree para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "forest_goblin",
+      "required_count": 2,
+      "reward_iron_coins": 80,
+      "reward_guild_points": 20,
+      "reward_xp": 150,
+      "reward_items": [
+        "iron_ore"
+      ]
+    },
+    "quest_roit_04": {
+      "title": "Coleta de Recursos: Partes de Esquilo Gigante da Floresta",
+      "rank": "E",
+      "region": "roitree_city",
+      "description": "A guarnição precisa de materiais de esquilo gigante da floresta para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "giant_squirrel",
+      "required_count": 2,
+      "reward_iron_coins": 110,
+      "reward_guild_points": 28,
+      "reward_xp": 200,
+      "reward_items": [
+        "squirrel_tail"
+      ]
+    },
+    "quest_roit_05": {
+      "title": "Controle de Pragas: Esquilo Gigante da Florestas",
+      "rank": "E",
+      "region": "roitree_city",
+      "description": "Mercadores relataram esquilo gigante da florestas bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "giant_squirrel",
+      "required_count": 2,
+      "reward_iron_coins": 90,
+      "reward_guild_points": 25,
+      "reward_xp": 170,
+      "reward_items": [
+        "magic_stone_green"
+      ]
+    },
+    "quest_roit_06": {
+      "title": "Coleta de Recursos: Partes de Mariposa Venenosa da Floresta",
+      "rank": "D",
+      "region": "roitree_city",
+      "description": "Mercadores relataram mariposa venenosa da florestas bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "poison_moth",
+      "required_count": 3,
+      "reward_iron_coins": 150,
+      "reward_guild_points": 35,
+      "reward_xp": 280,
+      "reward_items": [
+        "potion_mana_minor"
+      ]
+    },
+    "quest_roit_07": {
+      "title": "Limpeza da Área: Mariposa Venenosa da Florestas",
+      "rank": "D",
+      "region": "roitree_city",
+      "description": "Mercadores relataram mariposa venenosa da florestas bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "poison_moth",
+      "required_count": 4,
+      "reward_iron_coins": 180,
+      "reward_guild_points": 40,
+      "reward_xp": 320,
+      "reward_items": [
+        "moth_wing_dust"
+      ]
+    },
+    "quest_roit_08": {
+      "title": "Defesa dos Colonos contra Mariposa Venenosa da Florestas",
+      "rank": "D",
+      "region": "roitree_city",
+      "description": "Faça uma patrulha pela região e elimine os mariposa venenosa da florestas.",
+      "quest_type": "slay",
+      "target_id": "poison_moth",
+      "required_count": 1,
+      "reward_iron_coins": 120,
+      "reward_guild_points": 30,
+      "reward_xp": 240,
+      "reward_items": [
+        "spider_venom_gland"
+      ]
+    },
+    "quest_roit_09": {
+      "title": "Ameaça Regular: Golem de Musgo Ancião Enraivecido",
+      "rank": "D",
+      "region": "roitree_city",
+      "description": "Faça uma patrulha pela região e elimine os golem de musgo anciãos.",
+      "quest_type": "slay",
+      "target_id": "moss_golem",
+      "required_count": 2,
+      "reward_iron_coins": 160,
+      "reward_guild_points": 38,
+      "reward_xp": 300,
+      "reward_items": [
+        "moss_golem_core"
+      ]
+    },
+    "quest_roit_10": {
+      "title": "Suprimentos para a Guarda Local",
+      "rank": "D",
+      "region": "roitree_city",
+      "description": "A guarnição precisa de materiais de golem de musgo ancião para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "moss_golem",
+      "required_count": 2,
+      "reward_iron_coins": 140,
+      "reward_guild_points": 35,
+      "reward_xp": 260,
+      "reward_items": [
+        "treant_elder_wood"
+      ]
+    },
+    "quest_roit_11": {
+      "title": "Coleta de Recursos: Partes de Centopeia Anciã das Raízes",
+      "rank": "D",
+      "region": "roitree_city",
+      "description": "Mercadores relataram centopeia anciã das raízess bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "elder_centipede",
+      "required_count": 3,
+      "reward_iron_coins": 170,
+      "reward_guild_points": 40,
+      "reward_xp": 320,
+      "reward_items": [
+        "centipede_shell"
+      ]
+    },
+    "quest_roit_12": {
+      "title": "Limpeza da Área: Centopeia Anciã das Raízess",
+      "rank": "D",
+      "region": "roitree_city",
+      "description": "Um centopeia anciã das raízes agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "elder_centipede",
+      "required_count": 2,
+      "reward_iron_coins": 150,
+      "reward_guild_points": 38,
+      "reward_xp": 280,
+      "reward_items": [
+        "magic_stone_green"
+      ]
+    },
+    "quest_roit_13": {
+      "title": "Protegendo a Região contra Centopeia Anciã das Raízess",
+      "rank": "C",
+      "region": "roitree_city",
+      "description": "Um centopeia anciã das raízes agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "elder_centipede",
+      "required_count": 1,
+      "reward_iron_coins": 200,
+      "reward_guild_points": 50,
+      "reward_xp": 400,
+      "reward_items": [
+        "iron_claw"
+      ]
+    },
+    "quest_roit_14": {
+      "title": "Protegendo a Região contra Goblin da Floresta de Roitrees",
+      "rank": "E",
+      "region": "roitree_city",
+      "description": "Moradores locais relatam que goblin da floresta de roitrees estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "forest_goblin",
+      "required_count": 4,
+      "reward_iron_coins": 180,
+      "reward_guild_points": 42,
+      "reward_xp": 300,
+      "reward_items": [
+        "potion_hp_minor"
+      ]
+    },
+    "quest_roit_15": {
+      "title": "Patrulha de Rotina: Eliminação de Esquilo Gigante da Florestas",
+      "rank": "E",
+      "region": "roitree_city",
+      "description": "Um esquilo gigante da floresta agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "giant_squirrel",
+      "required_count": 3,
+      "reward_iron_coins": 160,
+      "reward_guild_points": 40,
+      "reward_xp": 280,
+      "reward_items": [
+        "squirrel_tail"
+      ]
+    },
+    "quest_roit_16": {
+      "title": "Ameaça Regular: Mariposa Venenosa da Floresta Enraivecido",
+      "rank": "D",
+      "region": "roitree_city",
+      "description": "Moradores locais relatam que mariposa venenosa da florestas estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "poison_moth",
+      "required_count": 3,
+      "reward_iron_coins": 200,
+      "reward_guild_points": 45,
+      "reward_xp": 350,
+      "reward_items": [
+        "moth_wing_dust"
+      ]
+    },
+    "quest_roit_17": {
+      "title": "Ameaça Regular: Golem de Musgo Ancião Enraivecido",
+      "rank": "D",
+      "region": "roitree_city",
+      "description": "Garanta que as rotas comerciais estejam livres de golem de musgo anciãos.",
+      "quest_type": "slay",
+      "target_id": "moss_golem",
+      "required_count": 2,
+      "reward_iron_coins": 180,
+      "reward_guild_points": 42,
+      "reward_xp": 330,
+      "reward_items": [
+        "moss_golem_core"
+      ]
+    },
+    "quest_roit_18": {
+      "title": "Controle de Pragas: Centopeia Anciã das Raízess",
+      "rank": "C",
+      "region": "roitree_city",
+      "description": "A guarnição precisa de materiais de centopeia anciã das raízes para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "elder_centipede",
+      "required_count": 1,
+      "reward_iron_coins": 220,
+      "reward_guild_points": 55,
+      "reward_xp": 420,
+      "reward_items": [
+        "centipede_shell"
+      ]
+    },
+    "quest_roit_19": {
+      "title": "Patrulha de Rotina: Eliminação de Goblin da Floresta de Roitrees",
+      "rank": "E",
+      "region": "roitree_city",
+      "description": "Mercadores relataram goblin da floresta de roitrees bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "forest_goblin",
+      "required_count": 2,
+      "reward_iron_coins": 110,
+      "reward_guild_points": 30,
+      "reward_xp": 200,
+      "reward_items": [
+        "goblin_ear"
+      ]
+    },
+    "quest_roit_20": {
+      "title": "Patrulha de Rotina: Eliminação de Esquilo Gigante da Florestas",
+      "rank": "E",
+      "region": "roitree_city",
+      "description": "Faça uma patrulha pela região e elimine os esquilo gigante da florestas.",
+      "quest_type": "slay",
+      "target_id": "giant_squirrel",
+      "required_count": 1,
+      "reward_iron_coins": 100,
+      "reward_guild_points": 28,
+      "reward_xp": 180,
+      "reward_items": [
+        "magic_stone_green"
+      ]
+    },
+    "quest_asur_21": {
+      "title": "Protegendo a Região contra Guarda de Asura Corrompidos",
+      "rank": "D",
+      "region": "asura_kingdom",
+      "description": "Um guarda de asura corrompido agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "asura_guard_corrupted",
+      "required_count": 2,
+      "reward_iron_coins": 300,
+      "reward_guild_points": 60,
+      "reward_xp": 500,
+      "reward_items": [
+        "potion_hp_minor"
+      ]
+    },
+    "quest_asur_22": {
+      "title": "Controle de Pragas: Guarda de Asura Corrompidos",
+      "rank": "D",
+      "region": "asura_kingdom",
+      "description": "Mercadores relataram guarda de asura corrompidos bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "asura_guard_corrupted",
+      "required_count": 4,
+      "reward_iron_coins": 350,
+      "reward_guild_points": 70,
+      "reward_xp": 580,
+      "reward_items": [
+        "corrupted_badge"
+      ]
+    },
+    "quest_asur_23": {
+      "title": "Defesa dos Colonos contra Guarda de Asura Corrompidos",
+      "rank": "D",
+      "region": "asura_kingdom",
+      "description": "Faça uma patrulha pela região e elimine os guarda de asura corrompidos.",
+      "quest_type": "slay",
+      "target_id": "asura_guard_corrupted",
+      "required_count": 2,
+      "reward_iron_coins": 280,
+      "reward_guild_points": 60,
+      "reward_xp": 480,
+      "reward_items": [
+        "magic_stone_green"
+      ]
+    },
+    "quest_asur_24": {
+      "title": "Protegendo a Região contra Construto de Mana Puras",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Moradores locais relatam que construto de mana puras estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "mana_construct",
+      "required_count": 2,
+      "reward_iron_coins": 400,
+      "reward_guild_points": 80,
+      "reward_xp": 650,
+      "reward_items": [
+        "mana_crystal"
+      ]
+    },
+    "quest_asur_25": {
+      "title": "Controle de Pragas: Construto de Mana Puras",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Um construto de mana pura agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "mana_construct",
+      "required_count": 3,
+      "reward_iron_coins": 450,
+      "reward_guild_points": 85,
+      "reward_xp": 720,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_asur_26": {
+      "title": "Defesa dos Colonos contra Lodo Arcano Instávels",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Colete partes de lodo arcano instável para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "arcane_sludge",
+      "required_count": 2,
+      "reward_iron_coins": 420,
+      "reward_guild_points": 80,
+      "reward_xp": 700,
+      "reward_items": [
+        "arcane_essence"
+      ]
+    },
+    "quest_asur_27": {
+      "title": "Protegendo a Região contra Lodo Arcano Instávels",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Garanta que as rotas comerciais estejam livres de lodo arcano instávels.",
+      "quest_type": "slay",
+      "target_id": "arcane_sludge",
+      "required_count": 2,
+      "reward_iron_coins": 380,
+      "reward_guild_points": 75,
+      "reward_xp": 620,
+      "reward_items": [
+        "demon_stone_fragment"
+      ]
+    },
+    "quest_asur_28": {
+      "title": "Coleta de Recursos: Partes de Ladrão de Feitiços",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Mercadores relataram ladrão de feitiçoss bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "spell_thief",
+      "required_count": 2,
+      "reward_iron_coins": 440,
+      "reward_guild_points": 85,
+      "reward_xp": 750,
+      "reward_items": [
+        "stolen_grimoire_page"
+      ]
+    },
+    "quest_asur_29": {
+      "title": "Controle de Pragas: Ladrão de Feitiçoss",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Colete partes de ladrão de feitiços para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "spell_thief",
+      "required_count": 2,
+      "reward_iron_coins": 400,
+      "reward_guild_points": 80,
+      "reward_xp": 680,
+      "reward_items": [
+        "steel_silk"
+      ]
+    },
+    "quest_asur_30": {
+      "title": "Patrulha de Rotina: Eliminação de Mímico de Grimório Anciãos",
+      "rank": "B",
+      "region": "asura_kingdom",
+      "description": "Um grupo de mímico de grimório anciãos invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "grimoire_mimic",
+      "required_count": 1,
+      "reward_iron_coins": 550,
+      "reward_guild_points": 110,
+      "reward_xp": 950,
+      "reward_items": [
+        "ancient_grimoire"
+      ]
+    },
+    "quest_asur_31": {
+      "title": "Ameaça Elite: Mímico de Grimório Ancião Enraivecido",
+      "rank": "B",
+      "region": "asura_kingdom",
+      "description": "Colete partes de mímico de grimório ancião para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "grimoire_mimic",
+      "required_count": 1,
+      "reward_iron_coins": 580,
+      "reward_guild_points": 115,
+      "reward_xp": 1000,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_asur_32": {
+      "title": "Defesa dos Colonos contra Guarda de Asura Corrompidos",
+      "rank": "D",
+      "region": "asura_kingdom",
+      "description": "Faça uma patrulha pela região e elimine os guarda de asura corrompidos.",
+      "quest_type": "slay",
+      "target_id": "asura_guard_corrupted",
+      "required_count": 3,
+      "reward_iron_coins": 360,
+      "reward_guild_points": 75,
+      "reward_xp": 600,
+      "reward_items": [
+        "corrupted_badge"
+      ]
+    },
+    "quest_asur_33": {
+      "title": "Protegendo a Região contra Construto de Mana Puras",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "A guarnição precisa de materiais de construto de mana pura para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "mana_construct",
+      "required_count": 3,
+      "reward_iron_coins": 460,
+      "reward_guild_points": 90,
+      "reward_xp": 750,
+      "reward_items": [
+        "mana_crystal"
+      ]
+    },
+    "quest_asur_34": {
+      "title": "Ameaça Veterano: Lodo Arcano Instável Enraivecido",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Moradores locais relatam que lodo arcano instávels estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "arcane_sludge",
+      "required_count": 2,
+      "reward_iron_coins": 390,
+      "reward_guild_points": 78,
+      "reward_xp": 640,
+      "reward_items": [
+        "arcane_essence"
+      ]
+    },
+    "quest_asur_35": {
+      "title": "Patrulha de Rotina: Eliminação de Ladrão de Feitiçoss",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Colete partes de ladrão de feitiços para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "spell_thief",
+      "required_count": 1,
+      "reward_iron_coins": 410,
+      "reward_guild_points": 85,
+      "reward_xp": 700,
+      "reward_items": [
+        "stolen_grimoire_page"
+      ]
+    },
+    "quest_asur_36": {
+      "title": "Protegendo a Região contra Mímico de Grimório Anciãos",
+      "rank": "B",
+      "region": "asura_kingdom",
+      "description": "Um grupo de mímico de grimório anciãos invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "grimoire_mimic",
+      "required_count": 1,
+      "reward_iron_coins": 600,
+      "reward_guild_points": 120,
+      "reward_xp": 1050,
+      "reward_items": [
+        "ancient_grimoire"
+      ]
+    },
+    "quest_asur_37": {
+      "title": "Patrulha de Rotina: Eliminação de Guarda de Asura Corrompidos",
+      "rank": "D",
+      "region": "asura_kingdom",
+      "description": "Mercadores relataram guarda de asura corrompidos bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "asura_guard_corrupted",
+      "required_count": 5,
+      "reward_iron_coins": 400,
+      "reward_guild_points": 80,
+      "reward_xp": 650,
+      "reward_items": [
+        "magic_stone_green"
+      ]
+    },
+    "quest_asur_38": {
+      "title": "Limpeza da Área: Construto de Mana Puras",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Mercadores relataram construto de mana puras bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "mana_construct",
+      "required_count": 4,
+      "reward_iron_coins": 480,
+      "reward_guild_points": 95,
+      "reward_xp": 800,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_asur_39": {
+      "title": "Ameaça Veterano: Lodo Arcano Instável Enraivecido",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Um lodo arcano instável agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "arcane_sludge",
+      "required_count": 3,
+      "reward_iron_coins": 430,
+      "reward_guild_points": 88,
+      "reward_xp": 720,
+      "reward_items": [
+        "demon_stone_fragment"
+      ]
+    },
+    "quest_asur_40": {
+      "title": "Protegendo a Região contra Ladrão de Feitiçoss",
+      "rank": "C",
+      "region": "asura_kingdom",
+      "description": "Um ladrão de feitiços agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "spell_thief",
+      "required_count": 2,
+      "reward_iron_coins": 420,
+      "reward_guild_points": 88,
+      "reward_xp": 720,
+      "reward_items": [
+        "steel_silk"
+      ]
+    },
+    "quest_mili_41": {
+      "title": "Limpeza da Área: Cavaleiro Sagrado Caídos",
+      "rank": "C",
+      "region": "milis_continent",
+      "description": "Colete partes de cavaleiro sagrado caído para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "holy_knight_fallen",
+      "required_count": 3,
+      "reward_iron_coins": 600,
+      "reward_guild_points": 130,
+      "reward_xp": 1100,
+      "reward_items": [
+        "potion_hp_minor"
+      ]
+    },
+    "quest_mili_42": {
+      "title": "Suprimentos para a Guarda Local",
+      "rank": "C",
+      "region": "milis_continent",
+      "description": "Mercadores relataram cavaleiro sagrado caídos bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "holy_knight_fallen",
+      "required_count": 4,
+      "reward_iron_coins": 680,
+      "reward_guild_points": 145,
+      "reward_xp": 1250,
+      "reward_items": [
+        "fallen_knight_sword"
+      ]
+    },
+    "quest_mili_43": {
+      "title": "Protegendo a Região contra Cavaleiro Sagrado Caídos",
+      "rank": "C",
+      "region": "milis_continent",
+      "description": "Mercadores relataram cavaleiro sagrado caídos bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "holy_knight_fallen",
+      "required_count": 2,
+      "reward_iron_coins": 550,
+      "reward_guild_points": 120,
+      "reward_xp": 1000,
+      "reward_items": [
+        "dragon_scale_red"
+      ]
+    },
+    "quest_mili_44": {
+      "title": "Limpeza da Área: Estátua de Anjo Animadas",
+      "rank": "B",
+      "region": "milis_continent",
+      "description": "Colete partes de estátua de anjo animada para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "angel_statue_animated",
+      "required_count": 2,
+      "reward_iron_coins": 750,
+      "reward_guild_points": 170,
+      "reward_xp": 1400,
+      "reward_items": [
+        "angel_feather"
+      ]
+    },
+    "quest_mili_45": {
+      "title": "Controle de Pragas: Estátua de Anjo Animadas",
+      "rank": "B",
+      "region": "milis_continent",
+      "description": "Colete partes de estátua de anjo animada para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "angel_statue_animated",
+      "required_count": 2,
+      "reward_iron_coins": 680,
+      "reward_guild_points": 160,
+      "reward_xp": 1300,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_mili_46": {
+      "title": "Defesa dos Colonos contra Espectro das Escriturass",
+      "rank": "B",
+      "region": "milis_continent",
+      "description": "Mercadores relataram espectro das escriturass bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "scripture_wraith",
+      "required_count": 3,
+      "reward_iron_coins": 720,
+      "reward_guild_points": 165,
+      "reward_xp": 1350,
+      "reward_items": [
+        "holy_scripture_fragment"
+      ]
+    },
+    "quest_mili_47": {
+      "title": "Ameaça Elite: Espectro das Escrituras Enraivecido",
+      "rank": "B",
+      "region": "milis_continent",
+      "description": "Faça uma patrulha pela região e elimine os espectro das escriturass.",
+      "quest_type": "slay",
+      "target_id": "scripture_wraith",
+      "required_count": 2,
+      "reward_iron_coins": 650,
+      "reward_guild_points": 150,
+      "reward_xp": 1200,
+      "reward_items": [
+        "magic_stone_green"
+      ]
+    },
+    "quest_mili_48": {
+      "title": "Suprimentos para a Guarda Local",
+      "rank": "A",
+      "region": "milis_continent",
+      "description": "Garanta que as rotas comerciais estejam livres de sombra do inquisidors.",
+      "quest_type": "slay",
+      "target_id": "inquisitor_shade",
+      "required_count": 1,
+      "reward_iron_coins": 950,
+      "reward_guild_points": 210,
+      "reward_xp": 1800,
+      "reward_items": [
+        "inquisitor_robe"
+      ]
+    },
+    "quest_mili_49": {
+      "title": "Coleta de Recursos: Partes de Sombra do Inquisidor",
+      "rank": "A",
+      "region": "milis_continent",
+      "description": "Um grupo de sombra do inquisidors invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "inquisitor_shade",
+      "required_count": 1,
+      "reward_iron_coins": 1000,
+      "reward_guild_points": 220,
+      "reward_xp": 1900,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_mili_50": {
+      "title": "Suprimentos para a Guarda Local",
+      "rank": "A",
+      "region": "milis_continent",
+      "description": "Garanta que as rotas comerciais estejam livres de golem divino protetors.",
+      "quest_type": "slay",
+      "target_id": "divine_golem",
+      "required_count": 1,
+      "reward_iron_coins": 1100,
+      "reward_guild_points": 240,
+      "reward_xp": 2100,
+      "reward_items": [
+        "divine_core"
+      ]
+    },
+    "quest_mili_51": {
+      "title": "Limpeza da Área: Golem Divino Protetors",
+      "rank": "A",
+      "region": "milis_continent",
+      "description": "Mercadores relataram golem divino protetors bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "divine_golem",
+      "required_count": 1,
+      "reward_iron_coins": 1150,
+      "reward_guild_points": 250,
+      "reward_xp": 2200,
+      "reward_items": [
+        "ancient_stone_shell"
+      ]
+    },
+    "quest_mili_52": {
+      "title": "Controle de Pragas: Cavaleiro Sagrado Caídos",
+      "rank": "C",
+      "region": "milis_continent",
+      "description": "Um grupo de cavaleiro sagrado caídos invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "holy_knight_fallen",
+      "required_count": 3,
+      "reward_iron_coins": 700,
+      "reward_guild_points": 150,
+      "reward_xp": 1300,
+      "reward_items": [
+        "fallen_knight_sword"
+      ]
+    },
+    "quest_mili_53": {
+      "title": "Protegendo a Região contra Estátua de Anjo Animadas",
+      "rank": "B",
+      "region": "milis_continent",
+      "description": "Moradores locais relatam que estátua de anjo animadas estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "angel_statue_animated",
+      "required_count": 3,
+      "reward_iron_coins": 780,
+      "reward_guild_points": 175,
+      "reward_xp": 1450,
+      "reward_items": [
+        "angel_feather"
+      ]
+    },
+    "quest_mili_54": {
+      "title": "Ameaça Elite: Espectro das Escrituras Enraivecido",
+      "rank": "B",
+      "region": "milis_continent",
+      "description": "Faça uma patrulha pela região e elimine os espectro das escriturass.",
+      "quest_type": "slay",
+      "target_id": "scripture_wraith",
+      "required_count": 3,
+      "reward_iron_coins": 740,
+      "reward_guild_points": 170,
+      "reward_xp": 1400,
+      "reward_items": [
+        "holy_scripture_fragment"
+      ]
+    },
+    "quest_mili_55": {
+      "title": "Protegendo a Região contra Sombra do Inquisidors",
+      "rank": "A",
+      "region": "milis_continent",
+      "description": "Garanta que as rotas comerciais estejam livres de sombra do inquisidors.",
+      "quest_type": "slay",
+      "target_id": "inquisitor_shade",
+      "required_count": 2,
+      "reward_iron_coins": 1050,
+      "reward_guild_points": 230,
+      "reward_xp": 2000,
+      "reward_items": [
+        "inquisitor_robe"
+      ]
+    },
+    "quest_mili_56": {
+      "title": "Protegendo a Região contra Golem Divino Protetors",
+      "rank": "A",
+      "region": "milis_continent",
+      "description": "A guarnição precisa de materiais de golem divino protetor para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "divine_golem",
+      "required_count": 2,
+      "reward_iron_coins": 1200,
+      "reward_guild_points": 260,
+      "reward_xp": 2300,
+      "reward_items": [
+        "divine_core"
+      ]
+    },
+    "quest_mili_57": {
+      "title": "Controle de Pragas: Cavaleiro Sagrado Caídos",
+      "rank": "C",
+      "region": "milis_continent",
+      "description": "Moradores locais relatam que cavaleiro sagrado caídos estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "holy_knight_fallen",
+      "required_count": 5,
+      "reward_iron_coins": 750,
+      "reward_guild_points": 160,
+      "reward_xp": 1400,
+      "reward_items": [
+        "dragon_scale_red"
+      ]
+    },
+    "quest_mili_58": {
+      "title": "Defesa dos Colonos contra Estátua de Anjo Animadas",
+      "rank": "B",
+      "region": "milis_continent",
+      "description": "A guarnição precisa de materiais de estátua de anjo animada para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "angel_statue_animated",
+      "required_count": 4,
+      "reward_iron_coins": 800,
+      "reward_guild_points": 180,
+      "reward_xp": 1500,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_mili_59": {
+      "title": "Protegendo a Região contra Espectro das Escriturass",
+      "rank": "B",
+      "region": "milis_continent",
+      "description": "Mercadores relataram espectro das escriturass bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "scripture_wraith",
+      "required_count": 4,
+      "reward_iron_coins": 780,
+      "reward_guild_points": 175,
+      "reward_xp": 1450,
+      "reward_items": [
+        "magic_stone_green"
+      ]
+    },
+    "quest_mili_60": {
+      "title": "Ameaça Mestre: Sombra do Inquisidor Enraivecido",
+      "rank": "A",
+      "region": "milis_continent",
+      "description": "Moradores locais relatam que sombra do inquisidors estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "inquisitor_shade",
+      "required_count": 3,
+      "reward_iron_coins": 1100,
+      "reward_guild_points": 240,
+      "reward_xp": 2100,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_shar_61": {
+      "title": "Controle de Pragas: Guardião Élfico da Florestas",
+      "rank": "B",
+      "region": "sharia_city",
+      "description": "Um grupo de guardião élfico da florestas invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "elven_guardian",
+      "required_count": 2,
+      "reward_iron_coins": 900,
+      "reward_guild_points": 200,
+      "reward_xp": 1700,
+      "reward_items": [
+        "potion_hp_minor"
+      ]
+    },
+    "quest_shar_62": {
+      "title": "Patrulha de Rotina: Eliminação de Guardião Élfico da Florestas",
+      "rank": "B",
+      "region": "sharia_city",
+      "description": "Colete partes de guardião élfico da floresta para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "elven_guardian",
+      "required_count": 3,
+      "reward_iron_coins": 1000,
+      "reward_guild_points": 220,
+      "reward_xp": 1900,
+      "reward_items": [
+        "elven_bow"
+      ]
+    },
+    "quest_shar_63": {
+      "title": "Protegendo a Região contra Guardião Élfico da Florestas",
+      "rank": "B",
+      "region": "sharia_city",
+      "description": "Mercadores relataram guardião élfico da florestas bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "elven_guardian",
+      "required_count": 2,
+      "reward_iron_coins": 850,
+      "reward_guild_points": 190,
+      "reward_xp": 1600,
+      "reward_items": [
+        "steel_silk"
+      ]
+    },
+    "quest_shar_64": {
+      "title": "Protegendo a Região contra Dríade Anciã da Árvore do Mundos",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "Faça uma patrulha pela região e elimine os dríade anciã da árvore do mundos.",
+      "quest_type": "slay",
+      "target_id": "ancient_dryad",
+      "required_count": 1,
+      "reward_iron_coins": 1200,
+      "reward_guild_points": 270,
+      "reward_xp": 2300,
+      "reward_items": [
+        "world_tree_sap"
+      ]
+    },
+    "quest_shar_65": {
+      "title": "Defesa dos Colonos contra Dríade Anciã da Árvore do Mundos",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "Faça uma patrulha pela região e elimine os dríade anciã da árvore do mundos.",
+      "quest_type": "slay",
+      "target_id": "ancient_dryad",
+      "required_count": 1,
+      "reward_iron_coins": 1250,
+      "reward_guild_points": 280,
+      "reward_xp": 2400,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_shar_66": {
+      "title": "Suprimentos para a Guarda Local",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "Um grupo de fera espiritual da grande florestas invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "spirit_beast",
+      "required_count": 3,
+      "reward_iron_coins": 1100,
+      "reward_guild_points": 250,
+      "reward_xp": 2100,
+      "reward_items": [
+        "spirit_essence"
+      ]
+    },
+    "quest_shar_67": {
+      "title": "Ameaça Mestre: Fera Espiritual da Grande Floresta Enraivecido",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "Mercadores relataram fera espiritual da grande florestas bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "spirit_beast",
+      "required_count": 2,
+      "reward_iron_coins": 1050,
+      "reward_guild_points": 240,
+      "reward_xp": 2000,
+      "reward_items": [
+        "dragon_scale_red"
+      ]
+    },
+    "quest_shar_68": {
+      "title": "Defesa dos Colonos contra Raiz Viva da Árvore do Mundos",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "Um raiz viva da árvore do mundo agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "world_tree_root",
+      "required_count": 1,
+      "reward_iron_coins": 1300,
+      "reward_guild_points": 290,
+      "reward_xp": 2500,
+      "reward_items": [
+        "world_tree_root_piece"
+      ]
+    },
+    "quest_shar_69": {
+      "title": "Controle de Pragas: Raiz Viva da Árvore do Mundos",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "Garanta que as rotas comerciais estejam livres de raiz viva da árvore do mundos.",
+      "quest_type": "slay",
+      "target_id": "world_tree_root",
+      "required_count": 1,
+      "reward_iron_coins": 1350,
+      "reward_guild_points": 300,
+      "reward_xp": 2600,
+      "reward_items": [
+        "treant_elder_wood"
+      ]
+    },
+    "quest_shar_70": {
+      "title": "Coleta de Recursos: Partes de Arqueiro Élfico Ancião",
+      "rank": "S",
+      "region": "sharia_city",
+      "description": "Colete partes de arqueiro élfico ancião para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "elder_elf_archer",
+      "required_count": 1,
+      "reward_iron_coins": 1600,
+      "reward_guild_points": 350,
+      "reward_xp": 3000,
+      "reward_items": [
+        "elder_elf_bow"
+      ]
+    },
+    "quest_shar_71": {
+      "title": "Patrulha de Rotina: Eliminação de Arqueiro Élfico Anciãos",
+      "rank": "S",
+      "region": "sharia_city",
+      "description": "Garanta que as rotas comerciais estejam livres de arqueiro élfico anciãos.",
+      "quest_type": "slay",
+      "target_id": "elder_elf_archer",
+      "required_count": 1,
+      "reward_iron_coins": 1650,
+      "reward_guild_points": 360,
+      "reward_xp": 3100,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_shar_72": {
+      "title": "Controle de Pragas: Guardião Élfico da Florestas",
+      "rank": "B",
+      "region": "sharia_city",
+      "description": "A guarnição precisa de materiais de guardião élfico da floresta para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "elven_guardian",
+      "required_count": 3,
+      "reward_iron_coins": 1050,
+      "reward_guild_points": 230,
+      "reward_xp": 2000,
+      "reward_items": [
+        "elven_bow"
+      ]
+    },
+    "quest_shar_73": {
+      "title": "Ameaça Mestre: Dríade Anciã da Árvore do Mundo Enraivecido",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "A guarnição precisa de materiais de dríade anciã da árvore do mundo para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "ancient_dryad",
+      "required_count": 2,
+      "reward_iron_coins": 1280,
+      "reward_guild_points": 290,
+      "reward_xp": 2500,
+      "reward_items": [
+        "world_tree_sap"
+      ]
+    },
+    "quest_shar_74": {
+      "title": "Ameaça Mestre: Fera Espiritual da Grande Floresta Enraivecido",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "Um fera espiritual da grande floresta agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "spirit_beast",
+      "required_count": 3,
+      "reward_iron_coins": 1150,
+      "reward_guild_points": 260,
+      "reward_xp": 2200,
+      "reward_items": [
+        "spirit_essence"
+      ]
+    },
+    "quest_shar_75": {
+      "title": "Suprimentos para a Guarda Local",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "Faça uma patrulha pela região e elimine os raiz viva da árvore do mundos.",
+      "quest_type": "slay",
+      "target_id": "world_tree_root",
+      "required_count": 2,
+      "reward_iron_coins": 1400,
+      "reward_guild_points": 310,
+      "reward_xp": 2700,
+      "reward_items": [
+        "treant_elder_wood"
+      ]
+    },
+    "quest_shar_76": {
+      "title": "Limpeza da Área: Arqueiro Élfico Anciãos",
+      "rank": "S",
+      "region": "sharia_city",
+      "description": "Faça uma patrulha pela região e elimine os arqueiro élfico anciãos.",
+      "quest_type": "slay",
+      "target_id": "elder_elf_archer",
+      "required_count": 2,
+      "reward_iron_coins": 1700,
+      "reward_guild_points": 370,
+      "reward_xp": 3200,
+      "reward_items": [
+        "elder_elf_bow"
+      ]
+    },
+    "quest_shar_77": {
+      "title": "Protegendo a Região contra Guardião Élfico da Florestas",
+      "rank": "B",
+      "region": "sharia_city",
+      "description": "Mercadores relataram guardião élfico da florestas bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "elven_guardian",
+      "required_count": 5,
+      "reward_iron_coins": 1100,
+      "reward_guild_points": 240,
+      "reward_xp": 2100,
+      "reward_items": [
+        "steel_silk"
+      ]
+    },
+    "quest_shar_78": {
+      "title": "Limpeza da Área: Dríade Anciã da Árvore do Mundos",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "A guarnição precisa de materiais de dríade anciã da árvore do mundo para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "ancient_dryad",
+      "required_count": 3,
+      "reward_iron_coins": 1300,
+      "reward_guild_points": 300,
+      "reward_xp": 2600,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_shar_79": {
+      "title": "Suprimentos para a Guarda Local",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "Mercadores relataram fera espiritual da grande florestas bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "spirit_beast",
+      "required_count": 4,
+      "reward_iron_coins": 1200,
+      "reward_guild_points": 270,
+      "reward_xp": 2300,
+      "reward_items": [
+        "dragon_scale_red"
+      ]
+    },
+    "quest_shar_80": {
+      "title": "Coleta de Recursos: Partes de Raiz Viva da Árvore do Mundo",
+      "rank": "A",
+      "region": "sharia_city",
+      "description": "Um raiz viva da árvore do mundo agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "world_tree_root",
+      "required_count": 3,
+      "reward_iron_coins": 1450,
+      "reward_guild_points": 320,
+      "reward_xp": 2800,
+      "reward_items": [
+        "world_tree_root_piece"
+      ]
+    },
+    "quest_bega_81": {
+      "title": "Defesa dos Colonos contra Draco das Areias de Begaritts",
+      "rank": "A",
+      "region": "begaritt_continent",
+      "description": "Mercadores relataram draco das areias de begaritts bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "sand_drake",
+      "required_count": 3,
+      "reward_iron_coins": 1800,
+      "reward_guild_points": 400,
+      "reward_xp": 3500,
+      "reward_items": [
+        "potion_hp_minor"
+      ]
+    },
+    "quest_bega_82": {
+      "title": "Suprimentos para a Guarda Local",
+      "rank": "A",
+      "region": "begaritt_continent",
+      "description": "A guarnição precisa de materiais de draco das areias de begaritt para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "sand_drake",
+      "required_count": 3,
+      "reward_iron_coins": 2000,
+      "reward_guild_points": 440,
+      "reward_xp": 3900,
+      "reward_items": [
+        "drake_scale"
+      ]
+    },
+    "quest_bega_83": {
+      "title": "Coleta de Recursos: Partes de Draco das Areias de Begaritt",
+      "rank": "A",
+      "region": "begaritt_continent",
+      "description": "Um grupo de draco das areias de begaritts invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "sand_drake",
+      "required_count": 2,
+      "reward_iron_coins": 1700,
+      "reward_guild_points": 380,
+      "reward_xp": 3300,
+      "reward_items": [
+        "dragon_scale_red"
+      ]
+    },
+    "quest_bega_84": {
+      "title": "Patrulha de Rotina: Eliminação de Fera da Miragems",
+      "rank": "A",
+      "region": "begaritt_continent",
+      "description": "Mercadores relataram fera da miragems bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "mirage_beast",
+      "required_count": 2,
+      "reward_iron_coins": 1900,
+      "reward_guild_points": 420,
+      "reward_xp": 3700,
+      "reward_items": [
+        "mirage_eye"
+      ]
+    },
+    "quest_bega_85": {
+      "title": "Ameaça Mestre: Fera da Miragem Enraivecido",
+      "rank": "A",
+      "region": "begaritt_continent",
+      "description": "Mercadores relataram fera da miragems bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "mirage_beast",
+      "required_count": 2,
+      "reward_iron_coins": 1800,
+      "reward_guild_points": 400,
+      "reward_xp": 3500,
+      "reward_items": [
+        "magic_stone_green"
+      ]
+    },
+    "quest_bega_86": {
+      "title": "Defesa dos Colonos contra Escorpião Ancião do Desertos",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "Um grupo de escorpião ancião do desertos invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "ancient_scarab",
+      "required_count": 1,
+      "reward_iron_coins": 2400,
+      "reward_guild_points": 550,
+      "reward_xp": 4800,
+      "reward_items": [
+        "scarab_shell"
+      ]
+    },
+    "quest_bega_87": {
+      "title": "Ameaça Lendário: Escorpião Ancião do Deserto Enraivecido",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "Faça uma patrulha pela região e elimine os escorpião ancião do desertos.",
+      "quest_type": "slay",
+      "target_id": "ancient_scarab",
+      "required_count": 1,
+      "reward_iron_coins": 2500,
+      "reward_guild_points": 570,
+      "reward_xp": 5000,
+      "reward_items": [
+        "behemoth_horn"
+      ]
+    },
+    "quest_bega_88": {
+      "title": "Patrulha de Rotina: Eliminação de Filhote de Fênix do Desertos",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "Garanta que as rotas comerciais estejam livres de filhote de fênix do desertos.",
+      "quest_type": "slay",
+      "target_id": "phoenix_chick",
+      "required_count": 1,
+      "reward_iron_coins": 2600,
+      "reward_guild_points": 600,
+      "reward_xp": 5200,
+      "reward_items": [
+        "phoenix_feather"
+      ]
+    },
+    "quest_bega_89": {
+      "title": "Defesa dos Colonos contra Filhote de Fênix do Desertos",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "Um filhote de fênix do deserto agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "phoenix_chick",
+      "required_count": 1,
+      "reward_iron_coins": 2700,
+      "reward_guild_points": 620,
+      "reward_xp": 5400,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_bega_90": {
+      "title": "Defesa dos Colonos contra Guardião do Labirinto de Begaritts",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "Um guardião do labirinto de begaritt agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "labyrinth_guardian",
+      "required_count": 1,
+      "reward_iron_coins": 2800,
+      "reward_guild_points": 650,
+      "reward_xp": 5600,
+      "reward_items": [
+        "labyrinth_key"
+      ]
+    },
+    "quest_bega_91": {
+      "title": "Patrulha de Rotina: Eliminação de Guardião do Labirinto de Begaritts",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "Mercadores relataram guardião do labirinto de begaritts bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "labyrinth_guardian",
+      "required_count": 1,
+      "reward_iron_coins": 2900,
+      "reward_guild_points": 670,
+      "reward_xp": 5800,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_bega_92": {
+      "title": "Defesa dos Colonos contra Draco das Areias de Begaritts",
+      "rank": "A",
+      "region": "begaritt_continent",
+      "description": "Moradores locais relatam que draco das areias de begaritts estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "sand_drake",
+      "required_count": 3,
+      "reward_iron_coins": 2100,
+      "reward_guild_points": 460,
+      "reward_xp": 4100,
+      "reward_items": [
+        "drake_scale"
+      ]
+    },
+    "quest_bega_93": {
+      "title": "Limpeza da Área: Fera da Miragems",
+      "rank": "A",
+      "region": "begaritt_continent",
+      "description": "Faça uma patrulha pela região e elimine os fera da miragems.",
+      "quest_type": "slay",
+      "target_id": "mirage_beast",
+      "required_count": 3,
+      "reward_iron_coins": 2200,
+      "reward_guild_points": 480,
+      "reward_xp": 4300,
+      "reward_items": [
+        "mirage_eye"
+      ]
+    },
+    "quest_bega_94": {
+      "title": "Controle de Pragas: Escorpião Ancião do Desertos",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "Um grupo de escorpião ancião do desertos invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "ancient_scarab",
+      "required_count": 2,
+      "reward_iron_coins": 2600,
+      "reward_guild_points": 600,
+      "reward_xp": 5200,
+      "reward_items": [
+        "scarab_shell"
+      ]
+    },
+    "quest_bega_95": {
+      "title": "Protegendo a Região contra Filhote de Fênix do Desertos",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "A guarnição precisa de materiais de filhote de fênix do deserto para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "phoenix_chick",
+      "required_count": 2,
+      "reward_iron_coins": 2800,
+      "reward_guild_points": 640,
+      "reward_xp": 5600,
+      "reward_items": [
+        "phoenix_feather"
+      ]
+    },
+    "quest_bega_96": {
+      "title": "Controle de Pragas: Guardião do Labirinto de Begaritts",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "Moradores locais relatam que guardião do labirinto de begaritts estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "labyrinth_guardian",
+      "required_count": 2,
+      "reward_iron_coins": 3000,
+      "reward_guild_points": 690,
+      "reward_xp": 6000,
+      "reward_items": [
+        "labyrinth_key"
+      ]
+    },
+    "quest_bega_97": {
+      "title": "Defesa dos Colonos contra Draco das Areias de Begaritts",
+      "rank": "A",
+      "region": "begaritt_continent",
+      "description": "Faça uma patrulha pela região e elimine os draco das areias de begaritts.",
+      "quest_type": "slay",
+      "target_id": "sand_drake",
+      "required_count": 5,
+      "reward_iron_coins": 2200,
+      "reward_guild_points": 480,
+      "reward_xp": 4300,
+      "reward_items": [
+        "dragon_scale_red"
+      ]
+    },
+    "quest_bega_98": {
+      "title": "Limpeza da Área: Fera da Miragems",
+      "rank": "A",
+      "region": "begaritt_continent",
+      "description": "Um fera da miragem agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "mirage_beast",
+      "required_count": 4,
+      "reward_iron_coins": 2300,
+      "reward_guild_points": 500,
+      "reward_xp": 4500,
+      "reward_items": [
+        "magic_stone_green"
+      ]
+    },
+    "quest_bega_99": {
+      "title": "Defesa dos Colonos contra Escorpião Ancião do Desertos",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "Moradores locais relatam que escorpião ancião do desertos estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "ancient_scarab",
+      "required_count": 3,
+      "reward_iron_coins": 2700,
+      "reward_guild_points": 620,
+      "reward_xp": 5400,
+      "reward_items": [
+        "behemoth_horn"
+      ]
+    },
+    "quest_bega_100": {
+      "title": "Suprimentos para a Guarda Local",
+      "rank": "S",
+      "region": "begaritt_continent",
+      "description": "Mercadores relataram filhote de fênix do desertos bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "phoenix_chick",
+      "required_count": 3,
+      "reward_iron_coins": 2900,
+      "reward_guild_points": 660,
+      "reward_xp": 5800,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_wind_101": {
+      "title": "Patrulha de Rotina: Eliminação de Tentáculo de Kraken do Abismos",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Colete partes de tentáculo de kraken do abismo para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "kraken_tentacle",
+      "required_count": 1,
+      "reward_iron_coins": 3500,
+      "reward_guild_points": 800,
+      "reward_xp": 7000,
+      "reward_items": [
+        "potion_hp_minor"
+      ]
+    },
+    "quest_wind_102": {
+      "title": "Protegendo a Região contra Tentáculo de Kraken do Abismos",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "A guarnição precisa de materiais de tentáculo de kraken do abismo para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "kraken_tentacle",
+      "required_count": 1,
+      "reward_iron_coins": 3600,
+      "reward_guild_points": 820,
+      "reward_xp": 7200,
+      "reward_items": [
+        "kraken_ink"
+      ]
+    },
+    "quest_wind_103": {
+      "title": "Controle de Pragas: Tentáculo de Kraken do Abismos",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Um tentáculo de kraken do abismo agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "kraken_tentacle",
+      "required_count": 1,
+      "reward_iron_coins": 3700,
+      "reward_guild_points": 840,
+      "reward_xp": 7400,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_wind_104": {
+      "title": "Defesa dos Colonos contra Serpente Marinha Colossals",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Garanta que as rotas comerciais estejam livres de serpente marinha colossals.",
+      "quest_type": "slay",
+      "target_id": "sea_serpent",
+      "required_count": 1,
+      "reward_iron_coins": 3800,
+      "reward_guild_points": 860,
+      "reward_xp": 7600,
+      "reward_items": [
+        "sea_serpent_scale"
+      ]
+    },
+    "quest_wind_105": {
+      "title": "Ameaça Lendário: Serpente Marinha Colossal Enraivecido",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Colete partes de serpente marinha colossal para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "sea_serpent",
+      "required_count": 1,
+      "reward_iron_coins": 3900,
+      "reward_guild_points": 880,
+      "reward_xp": 7800,
+      "reward_items": [
+        "dragon_scale_red"
+      ]
+    },
+    "quest_wind_106": {
+      "title": "Limpeza da Área: Tripulação do Navio Fantasmas",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Mercadores relataram tripulação do navio fantasmas bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "ghost_ship_crew",
+      "required_count": 1,
+      "reward_iron_coins": 4000,
+      "reward_guild_points": 900,
+      "reward_xp": 8000,
+      "reward_items": [
+        "ghost_coin"
+      ]
+    },
+    "quest_wind_107": {
+      "title": "Protegendo a Região contra Tripulação do Navio Fantasmas",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Garanta que as rotas comerciais estejam livres de tripulação do navio fantasmas.",
+      "quest_type": "slay",
+      "target_id": "ghost_ship_crew",
+      "required_count": 1,
+      "reward_iron_coins": 4100,
+      "reward_guild_points": 920,
+      "reward_xp": 8200,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_wind_108": {
+      "title": "Controle de Pragas: Leviatã Abissals",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Um leviatã abissal agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "abyssal_leviathan",
+      "required_count": 1,
+      "reward_iron_coins": 4500,
+      "reward_guild_points": 1000,
+      "reward_xp": 9000,
+      "reward_items": [
+        "leviathan_heart"
+      ]
+    },
+    "quest_wind_109": {
+      "title": "Coleta de Recursos: Partes de Leviatã Abissal",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Moradores locais relatam que leviatã abissals estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "abyssal_leviathan",
+      "required_count": 1,
+      "reward_iron_coins": 4600,
+      "reward_guild_points": 1020,
+      "reward_xp": 9200,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_wind_110": {
+      "title": "Controle de Pragas: Elemental da Tempestades",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Colete partes de elemental da tempestade para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "storm_elemental",
+      "required_count": 1,
+      "reward_iron_coins": 4200,
+      "reward_guild_points": 950,
+      "reward_xp": 8400,
+      "reward_items": [
+        "storm_core"
+      ]
+    },
+    "quest_wind_111": {
+      "title": "Patrulha de Rotina: Eliminação de Elemental da Tempestades",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Um grupo de elemental da tempestades invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "storm_elemental",
+      "required_count": 1,
+      "reward_iron_coins": 4300,
+      "reward_guild_points": 970,
+      "reward_xp": 8600,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_wind_112": {
+      "title": "Protegendo a Região contra Tentáculo de Kraken do Abismos",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Moradores locais relatam que tentáculo de kraken do abismos estão causando problemas na região. Elimine-os.",
+      "quest_type": "slay",
+      "target_id": "kraken_tentacle",
+      "required_count": 2,
+      "reward_iron_coins": 3800,
+      "reward_guild_points": 860,
+      "reward_xp": 7600,
+      "reward_items": [
+        "kraken_ink"
+      ]
+    },
+    "quest_wind_113": {
+      "title": "Patrulha de Rotina: Eliminação de Serpente Marinha Colossals",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Mercadores relataram serpente marinha colossals bloqueando as estradas. Limpe a passagem.",
+      "quest_type": "slay",
+      "target_id": "sea_serpent",
+      "required_count": 2,
+      "reward_iron_coins": 4000,
+      "reward_guild_points": 900,
+      "reward_xp": 8000,
+      "reward_items": [
+        "sea_serpent_scale"
+      ]
+    },
+    "quest_wind_114": {
+      "title": "Patrulha de Rotina: Eliminação de Tripulação do Navio Fantasmas",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Um tripulação do navio fantasma agressivo está atacando viajantes. Elimine a ameaça.",
+      "quest_type": "slay",
+      "target_id": "ghost_ship_crew",
+      "required_count": 2,
+      "reward_iron_coins": 4200,
+      "reward_guild_points": 950,
+      "reward_xp": 8400,
+      "reward_items": [
+        "ghost_coin"
+      ]
+    },
+    "quest_wind_115": {
+      "title": "Suprimentos para a Guarda Local",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Garanta que as rotas comerciais estejam livres de leviatã abissals.",
+      "quest_type": "slay",
+      "target_id": "abyssal_leviathan",
+      "required_count": 2,
+      "reward_iron_coins": 4700,
+      "reward_guild_points": 1050,
+      "reward_xp": 9400,
+      "reward_items": [
+        "leviathan_heart"
+      ]
+    },
+    "quest_wind_116": {
+      "title": "Protegendo a Região contra Elemental da Tempestades",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "A guarnição precisa de materiais de elemental da tempestade para equipamentos.",
+      "quest_type": "slay",
+      "target_id": "storm_elemental",
+      "required_count": 2,
+      "reward_iron_coins": 4400,
+      "reward_guild_points": 1000,
+      "reward_xp": 8800,
+      "reward_items": [
+        "storm_core"
+      ]
+    },
+    "quest_wind_117": {
+      "title": "Coleta de Recursos: Partes de Tentáculo de Kraken do Abismo",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Colete partes de tentáculo de kraken do abismo para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "kraken_tentacle",
+      "required_count": 3,
+      "reward_iron_coins": 4000,
+      "reward_guild_points": 900,
+      "reward_xp": 8000,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_wind_118": {
+      "title": "Controle de Pragas: Serpente Marinha Colossals",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Garanta que as rotas comerciais estejam livres de serpente marinha colossals.",
+      "quest_type": "slay",
+      "target_id": "sea_serpent",
+      "required_count": 3,
+      "reward_iron_coins": 4200,
+      "reward_guild_points": 950,
+      "reward_xp": 8400,
+      "reward_items": [
+        "dragon_scale_red"
+      ]
+    },
+    "quest_wind_119": {
+      "title": "Limpeza da Área: Tripulação do Navio Fantasmas",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Colete partes de tripulação do navio fantasma para artesãos locais.",
+      "quest_type": "slay",
+      "target_id": "ghost_ship_crew",
+      "required_count": 3,
+      "reward_iron_coins": 4400,
+      "reward_guild_points": 1000,
+      "reward_xp": 8800,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
+    },
+    "quest_wind_120": {
+      "title": "Ameaça Lendário: Leviatã Abissal Enraivecido",
+      "rank": "S",
+      "region": "wind_port",
+      "description": "Um grupo de leviatã abissals invadiu a área. Abata-os para garantir a segurança.",
+      "quest_type": "slay",
+      "target_id": "abyssal_leviathan",
+      "required_count": 3,
+      "reward_iron_coins": 4800,
+      "reward_guild_points": 1100,
+      "reward_xp": 9600,
+      "reward_items": [
+        "dragon_magic_core"
+      ]
     }
   }
 }
