@@ -1,3 +1,4 @@
+import random
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
 from core.message_manager import MessageManager
@@ -387,7 +388,8 @@ async def dungeon_attack(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     instance = DungeonSystem._active_dungeons.get(dungeon_id)
     if not instance or not instance.is_active:
-        await update.message.reply_text("Dungeon não está ativa.")
+        if update.message:
+            await update.message.reply_text("Dungeon não está ativa.")
         return
 
     # Pega monstros da onda atual

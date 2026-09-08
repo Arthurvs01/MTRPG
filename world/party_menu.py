@@ -159,7 +159,7 @@ async def party_process_create(update: Update, context: ContextTypes.DEFAULT_TYP
 
     context.user_data["party_creating"] = False
 
-    success, msg, party = PartySystem.create_party(player, name)
+    success, msg, party = await PartySystem.create_party(player, name)
     await PlayerRepository.save_player(player)
 
     if success:

@@ -218,116 +218,12 @@ Referenciadas por nome em `MessageManager.send_or_edit(image_path="nome.jpg")`. 
 [X][07/09/2026 - 18:30:00] Persistência de Party implementada - PartyRepository criado, Party movido para models/party.py, dados salvos em disco
 
 ### PROBLEMAS
-- /home/Arthurvs01/Projetos/MTRPG/world/party_menu.py:162: RuntimeWarning: coroutine 'PartySystem.create_party' was never awaited
-  success, msg, party = PartySystem.create_party(player, name)
-RuntimeWarning: Enable tracemalloc to get the object allocation traceback
-2026-09-07 17:00:13,935 - [ERROR] - __main__: Exception while handling an update: cannot unpack non-iterable coroutine object
-Traceback (most recent call last):
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_application.py", line 1315, in process_update
-    await coroutine
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_handlers/basehandler.py", line 159, in handle_update
-    return await self.callback(update, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/Arthurvs01/Projetos/MTRPG/core/callback_router.py", line 109, in route_text_input
-    await party_process_create(update, context)
-  File "/home/Arthurvs01/Projetos/MTRPG/world/party_menu.py", line 162, in party_process_create
-    success, msg, party = PartySystem.create_party(player, name)
-    ^^^^^^^^^^^^^^^^^^^
-TypeError: cannot unpack non-iterable coroutine object
-2026-09-07 17:00:13,991 - [ERROR] - telegram.ext.Application: An error was raised and an uncaught error was raised while handling the error with an error_handler.
-Traceback (most recent call last):
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_application.py", line 1315, in process_update
-    await coroutine
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_handlers/basehandler.py", line 159, in handle_update
-    return await self.callback(update, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/Arthurvs01/Projetos/MTRPG/core/callback_router.py", line 109, in route_text_input
-    await party_process_create(update, context)
-  File "/home/Arthurvs01/Projetos/MTRPG/world/party_menu.py", line 162, in party_process_create
-    success, msg, party = PartySystem.create_party(player, name)
-    ^^^^^^^^^^^^^^^^^^^
-TypeError: cannot unpack non-iterable coroutine object
 
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_application.py", line 1928, in process_error
-    await callback(update, context)
-  File "/home/Arthurvs01/Projetos/MTRPG/main.py", line 300, in error_handler
-    if isinstance(update, Update) and update.effective_message:
-                          ^^^^^^
-NameError: name 'Update' is not defined. Did you mean: 'update'?
-
-- 2026-09-07 17:05:17,097 - [ERROR] - __main__: Exception while handling an update: 'NoneType' object has no attribute 'reply_text'
-Traceback (most recent call last):
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_application.py", line 1315, in process_update
-    await coroutine
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_handlers/basehandler.py", line 159, in handle_update
-    return await self.callback(update, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/Arthurvs01/Projetos/MTRPG/world/dungeon_menu.py", line 329, in dungeon_start
-    await dungeon_attack(update, context)
-  File "/home/Arthurvs01/Projetos/MTRPG/world/dungeon_menu.py", line 390, in dungeon_attack
-    await update.message.reply_text("Dungeon não está ativa.")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'reply_text'
-2026-09-07 17:05:17,156 - [ERROR] - telegram.ext.Application: An error was raised and an uncaught error was raised while handling the error with an error_handler.
-Traceback (most recent call last):
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_application.py", line 1315, in process_update
-    await coroutine
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_handlers/basehandler.py", line 159, in handle_update
-    return await self.callback(update, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/Arthurvs01/Projetos/MTRPG/world/dungeon_menu.py", line 329, in dungeon_start
-    await dungeon_attack(update, context)
-  File "/home/Arthurvs01/Projetos/MTRPG/world/dungeon_menu.py", line 390, in dungeon_attack
-    await update.message.reply_text("Dungeon não está ativa.")
-          ^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'reply_text'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_application.py", line 1928, in process_error
-    await callback(update, context)
-  File "/home/Arthurvs01/Projetos/MTRPG/main.py", line 300, in error_handler
-    if isinstance(update, Update) and update.effective_message:
-                          ^^^^^^
-NameError: name 'Update' is not defined. Did you mean: 'update'?
-
-- 2026-09-07 17:25:12,765 - [ERROR] - __main__: Exception while handling an update: invalid literal for int() with base 10: 'fur'
-Traceback (most recent call last):
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_application.py", line 1315, in process_update
-    await coroutine
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_handlers/basehandler.py", line 159, in handle_update
-    return await self.callback(update, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/Arthurvs01/Projetos/MTRPG/world/market_menu.py", line 289, in market_sell_item_action
-    price = int(parts[4])
-ValueError: invalid literal for int() with base 10: 'fur'
-2026-09-07 17:25:12,798 - [ERROR] - telegram.ext.Application: An error was raised and an uncaught error was raised while handling the error with an error_handler.
-Traceback (most recent call last):
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_application.py", line 1315, in process_update
-    await coroutine
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_handlers/basehandler.py", line 159, in handle_update
-    return await self.callback(update, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/Arthurvs01/Projetos/MTRPG/world/market_menu.py", line 289, in market_sell_item_action
-    price = int(parts[4])
-ValueError: invalid literal for int() with base 10: 'fur'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/Arthurvs01/Projetos/MTRPG/.venv/lib/python3.13/site-packages/telegram/ext/_application.py", line 1928, in process_error
-    await callback(update, context)
-  File "/home/Arthurvs01/Projetos/MTRPG/main.py", line 300, in error_handler
-    if isinstance(update, Update) and update.effective_message:
-                          ^^^^^^
-NameError: name 'Update' is not defined. Did you mean: 'update'?
 
 ### PENDENTES
 
+[ ][                     ] Nas Dungeons o as Ondas de Monstros devem avançar sozinhas quando os players atingirem 30 abates. Remover tambem a opcao do lider avançar as Ondas de Monstros
+[ ][                     ] Nas Dungeons caso o player morra ele nao deve conseguir lutar novamente naquele ataque à Dungeon
 [ ][                     ] Itens e Equipamentos não devem possuir valor predefinido, cada player decide por quanto ira vender seus itens e equipamentos e no caso dos itens decide tambem a quantidade
 [ ][                     ] Somente deve ser possivel aceitar missões da região em que estiver
 [ ][                     ] Adicionar monstros das dungeons avançadas (Asura, Milis, Sharia, Begaritt, Demon King, Sunken City)

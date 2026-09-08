@@ -3,6 +3,7 @@ Módulo Principal do Bot de RPG de Mushoku Tensei via Telegram.
 Inicializa o bot, registra comandos e handlers de callbacks (botões).
 """
 import logging
+from telegram import Update
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,

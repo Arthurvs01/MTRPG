@@ -286,7 +286,11 @@ async def market_sell_item_action(update: Update, context: ContextTypes.DEFAULT_
 
     item_type = parts[2]
     item_id = parts[3]
-    price = int(parts[4])
+    try:
+        price = int(parts[4])
+    except (ValueError, IndexError):
+        await query.answer("❌ Erro ao processar preço do anúncio.", show_alert=True)
+        return
 
     chat_id = update.effective_chat.id
     player = await PlayerRepository.get_player(chat_id)
